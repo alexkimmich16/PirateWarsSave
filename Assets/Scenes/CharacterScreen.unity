@@ -424,10 +424,20 @@ MonoBehaviour:
   Gold: 0
   Diamonds: 0
   ARG: 0
-  Pirates: []
+  Pirates:
+  - {fileID: 11400000, guid: a78220edbe2762a4f90354c6bc73daea, type: 2}
   Weapons: []
   Armour: []
-  GamePirates: []
+  GamePirates:
+  - rarity: 0
+    pirateBase: {fileID: 11400000, guid: a78220edbe2762a4f90354c6bc73daea, type: 2}
+    Health: 0
+    Armour: 0
+    AttackSpeed: 0
+    Speed: 0
+    Rank: 0
+    Level: 0
+    Experience: 0
   GameWeapons: []
   GameArmours: []
 --- !u!4 &615893404
