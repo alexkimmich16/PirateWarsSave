@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | %UNITY_WEB_NAME%</title>
+    <script src="%UNITY_WEBGL_LOADER_URL%"></script>
+    <script>
+      function UnityProgress(gameInstance, progress) {
+        var container = document.getElementById('gameContainer');
+        container.style.display = "none";
+        if (!gameInstance.Module) {
+           return;
+        }
+        if (progress === "complete") {
+          document.getElementById("bgBar").style.display = "none";
+          document.getElementById("progressBar").style.display = "none";
+          document.getElementById("loadingInfo").innerHTML = "";
+          container.style.display = "block";
+        }
+        else if (progress > 0) {
+          document.getElementById("bgBar").style.display = "block";
+          document.getElementById("progressBar").style.display = "inherit";
+          document.getElementById("progressBar").style.width = 300 * progress + "px"
+          document.getElementById("loadingInfo").innerHTML = Math.round(progress * 100) + "%";
+        }
+      }
+      var gameInstance = UnityLoader.instantiate("gameContainer", "%UNITY_WEBGL_BUILD_URL%", {
+        onProgress: UnityProgress,
+        Module: {
+          onRuntimeInitialized: function() { UnityProgress(gameInstance, "complete") }
+        }
+      });
+    </script>
+	<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+		<script>
+		  // Initialize Firebase
+		  var config = {
+			apiKey: "AIzaSyDvLnAFbkFDqs_Q5SguyF5weOhTingpjH8",
+			authDomain: "tavad-game-e22f0.firebaseapp.com",
+			databaseURL: "https://tavad-game-e22f0.firebaseio.com",
+			projectId: "tavad-game-e22f0",
+			storageBucket: "tavad-game-e22f0.appspot.com",
+			messagingSenderId: "986188944410"
+		  };
+		  firebase.initializeApp(config);
+	</script>
+    <style>
+      body {
+        padding: 0px;
+        margin: 0px;
+      }
+      #gameContainer {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        overflow: hidden;
+        display: block;
+      }
+      html {
+		background: url("http://tavad.xen-tech.com/images/splashscreen.jpg") no-repeat center center fixed;
+        background-size: cover;
+      }
+      div#loadingBox {
+        width: 100%;
+        height: 0px;
+        position: absolute;
+        top: 50%;
+        margin-top: 190px;
+        text-align: center;
+      }
+      div#bgBar {
+        display: none;
+        position: absolute;
+        width: 300px;
+        margin-left: -150px;
+        left: 50%;
+        height: 18px;
+        background-color: #e7af64ff;
+        box-shadow: 1px 1px 5px #111;
+      }
+      div#progressBar {
+        display: none;
+        left: 50%;
+        position: absolute;
+        margin-left: -150px;
+        width: 0px;
+        height: 18px;
+        background-color: #e19631ff;
+      }
+      p#loadingInfo {
+        color: #fff;
+        letter-spacing: 1px;
+        position: absolute;
+        width: 100%;
+        font-family: sans-serif;
+        text-align: center;
+        top: 50%;
+        font-size: 11px;
+        font-weight: 500;
+        margin-top: 193px;
+        text-shadow: 0px 0px 5px #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loadingBox">
+      <div id="bgBar"></div>
+      <div id="progressBar"></div>
+    </div>
+    <p id="loadingInfo"></p>
+    <div id="gameContainer"></div>
+  </body>
+</html>

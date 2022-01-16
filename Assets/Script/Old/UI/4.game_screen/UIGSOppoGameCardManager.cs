@@ -1,0 +1,237 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using SimpleJson;
+using System;
+using DG.Tweening;
+
+public class UIGSOppoGameCardManager : MonoBehaviour
+{
+    public UIGSCardObject[] oppoCardsList;
+    public GameObject hiddenCard;
+    public List<Vector3> defPos;
+    public List<Vector3> defRot;
+    public List<Vector3> twoCardPos;
+    public List<Vector3> twoCardRot;
+    public Vector3 oneCardPos;
+    public Vector3 oneCardRot;
+    public void InitGameCards()
+    {
+        defPos = new List<Vector3>();
+        defRot = new List<Vector3>();
+        for(int i = 0; i < oppoCardsList.Length; i ++)
+        {
+            defPos.Add(oppoCardsList[i].gameObject.transform.localPosition);
+            defRot.Add(oppoCardsList[i].gameObject.transform.localRotation.eulerAngles);
+            oppoCardsList[i].transform.localPosition = new Vector3(defPos[i].x, defPos[i].y + 300, defPos[i].z);
+            oppoCardsList[i].InitCardInfo(Engine.share.oppoPlayer.battleCards[i]);
+        }
+        defPos.Add(hiddenCard.gameObject.transform.localPosition);
+        defRot.Add(hiddenCard.gameObject.transform.localRotation.eulerAngles);
+        hiddenCard.transform.localPosition = new Vector3(defPos[2].x, defPos[2].y + 300, defPos[2].z);
+        hiddenCard.gameObject.SetActive(true);
+
+        StartCoroutine(IEInitGameCards());
+    }
+
+    public void OnDisable()
+    {
+        if(defPos != null && defPos.Count == 3)
+        {
+            for (int i = 0; i < oppoCardsList.Length; i++)
+            {
+                oppoCardsList[i].transform.localPosition = defPos[i];
+                Quaternion rot = oppoCardsList[i].transform.localRotation;
+                rot.eulerAngles = defRot[i];
+                oppoCardsList[i].transform.localRotation = rot;
+            }
+
+            hiddenCard.transform.localPosition = defPos[2];
+            Quaternion rothd = hiddenCard.transform.localRotation;
+            rothd.eulerAngles = defRot[2];
+            hiddenCard.transform.localRotation = rothd;
+        }
+    }
+
+    public IEnumerator IEInitGameCards()
+    {
+        yield return new WaitForSeconds(0.35f);
+        for (int i = 0; i < oppoCardsList.Length; i ++)
+        {
+            oppoCardsList[i].transform.DOLocalMove(defPos[i], 0.3f);
+            oppoCardsList[i].transform.DOLocalRotate(defRot[i], 0.3f);
+            oppoCardsList[i].GetComponent<AudioSource>().clip = SoundManager.share.GetSoundEffect(EFX_SOUND.EFXS_DECK_APPEAR);
+            oppoCardsList[i].GetComponent<AudioSource>().Play();
+            yield return new WaitForSeconds(0.15f);
+        }
+        hiddenCard.transform.DOLocalMove(defPos[2], 0.3f);
+        hiddenCard.transform.DOLocalRotate(defRot[2], 0.3f);
+    }
+
+    public void UpdateGameCard(int cardIdx)
+    {
+        for (int i = 0; i < oppoCardsList.Length; i++)
+        {
+            if (oppoCardsList[i].cardData.cardIdx != Engine.share.oppoPlayer.battleCards[i].cardIdx)
+            {
+                oppoCardsList[i].InitCardInfo(Engine.share.oppoPlayer.battleCards[i]);
+            }
+        }
+    }
+
+    public void UpdateCardStates()
+    {
+        for (int i = 0; i < oppoCardsList.Length; i++)
+        {
+            oppoCardsList[i].UpdateCardState(Engine.share.oppoPlayer.battleCards[i]);
+        }
+    }
+
+    public void OppoCardSelected()
+    {
+
+    }
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public int GetActiveCount()
+    {
+        int cnt = 0;
+        for(int i = 0; i < Engine.share.oppoPlayer.battleCards.Count; i ++)
+        {
+            if(Engine.share.oppoPlayer.battleCards[i].isUsable)
+            {
+                cnt++;
+            }
+        }
+
+        return cnt;
+    }
+
+    public void UpdateCardSelectionState()
+    {
+        int activeCount = GetActiveCount();
+        for (int i = 0; i < oppoCardsList.Length; i++)
+        {
+            //if (CheckIfActiveCard(oppoCardsList[i].cardData.cardIdx))
+            //{
+            //    //activeCount++;
+            //    oppoCardsList[i].SetState(true);
+            //}
+            //else
+            //{
+            //    oppoCardsList[i].SetState(false);
+            //}
+
+            for(int j = 0; j < Engine.share.oppoPlayer.battleCards.Count; j ++)
+            {
+                if(oppoCardsList[i].cardData.cardIdx == Engine.share.oppoPlayer.battleCards[j].cardIdx)
+                {
+                    if(Engine.share.oppoPlayer.battleCards[j].isUsable)
+                    {
+                        oppoCardsList[i].SetState(true);
+                    }
+                    else
+                    {
+                        oppoCardsList[i].SetState(false);
+                    }
+                }
+            }
+        }
+
+        if (activeCount == 1)
+        {
+            int cnt = 0;
+            for (int i = 0; i < oppoCardsList.Length; i++)
+            {
+                if (oppoCardsList[i].detailObj.activeSelf)
+                {
+                    oppoCardsList[i].transform.DOLocalMove(oneCardPos, 0.15f);
+                    oppoCardsList[i].transform.DOLocalRotate(oneCardRot, 0.15f);
+                    cnt++;
+                }
+            }
+
+            if(cnt == 1)
+            {
+                hiddenCard.gameObject.SetActive(false);
+            }
+            else
+            {
+                hiddenCard.gameObject.SetActive(true);
+                hiddenCard.gameObject.transform.DOLocalMove(oneCardPos, 0.15f);
+                hiddenCard.gameObject.transform.DOLocalRotate(oneCardRot, 0.15f);
+            }
+        }
+        else if (activeCount == 2)
+        {
+            int cnt = 0;
+            for (int i = 0; i < oppoCardsList.Length; i++)
+            {
+                if (oppoCardsList[i].detailObj.activeSelf)
+                {
+                    oppoCardsList[i].transform.DOLocalMove(twoCardPos[cnt], 0.15f);
+                    oppoCardsList[i].transform.DOLocalRotate(twoCardRot[cnt], 0.15f);
+                    cnt++;
+                }
+            }
+
+            if(cnt == 2)
+            {
+                hiddenCard.gameObject.SetActive(false);
+            }
+            else
+            {
+                hiddenCard.gameObject.SetActive(true);
+                hiddenCard.transform.DOLocalMove(twoCardPos[1], 0.15f);
+                hiddenCard.transform.DOLocalRotate(twoCardRot[1], 0.15f);
+            }
+        }
+        else if (activeCount == 3)
+        {
+            int cnt = 0;
+            for (int i = 0; i < oppoCardsList.Length; i++)
+            {
+                oppoCardsList[i].transform.DOLocalMove(defPos[i], 0.15f);
+                oppoCardsList[i].transform.DOLocalRotate(defRot[i], 0.15f);
+                cnt++;
+            }
+
+            //if (cnt != 3)
+            //{
+            hiddenCard.gameObject.SetActive(true);
+            hiddenCard.transform.DOLocalMove(defPos[2], 0.15f);
+            hiddenCard.transform.DOLocalRotate(defRot[2], 0.15f);
+            //}
+        }
+    }
+
+    public bool CheckIfActiveCard(int cardIdx)
+    {
+        for (int i = 0; i < Engine.share.oppoPlayer.battleCards.Count; i++)
+        {
+            if (cardIdx == Engine.share.oppoPlayer.battleCards[i].cardIdx && !Engine.share.oppoPlayer.battleCards[i].isUsable)
+            {
+                return false;
+            }
+        }
+
+        if (cardIdx == Engine.share.oppoPlayer.curBattleCard)
+        {
+            return false;
+        }
+
+        return true;
+    }
+}
