@@ -56,6 +56,10 @@ public class AllInfo : MonoBehaviour
     public class GamePirate : AllGameInfo
     {
         public PirateInfo pirateBase;
+        public int Health;
+        public int Armour;
+        public int AttackSpeed;
+        public int Speed;
         public int Rank;
         public int Level;
         public float Experience;
