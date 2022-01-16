@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 590880175}
   - component: {fileID: 590880174}
   m_Layer: 5
-  m_Name: Backround
+  m_Name: 3v3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -355,7 +355,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b2b6885b73d9a2b47a1b8f5edc108a4e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0bd2d675daadc7c4792606ac6c8a86b3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -742,7 +742,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f71a0283d8c485e41bcf173d20a1207d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 62ce22dab85986941b62c42927ec9d82, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
