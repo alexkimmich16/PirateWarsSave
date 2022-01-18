@@ -4,25 +4,42 @@ using UnityEngine;
 
 public class InventoryHelp : MonoBehaviour
 {
-    public Inventory inventory;
 	public InventorySlot[] slots;
 	void Start()
     {
-        inventory = Inventory.instance;
+        //inventory = Inventory.instance;
 
-        inventory.onItemChangedCallback += UpdateUI;
-    }
+        //inventory.onItemChangedCallback += UpdateUI;
+		UpdateUI();
 
-	public void UpdateUI()
+	}
+
+    private void Update()
+    {
+		UpdateUI();
+	}
+
+    public void UpdateUI()
 	{
 		slots = GetComponentsInChildren<InventorySlot>();
-
+		for (int i = 0; i < slots.Length; i++)
+		{
+			slots[i].ClearSlot();
+		}
 		for (int i = 0; i < slots.Length; i++)
 		{
 			//count is smaller than the amount of items in inventory
-			if (i < inventory.items.Count)
+			if (i < AllInfo.instance.GameWeapons.Count + AllInfo.instance.GameArmours.Count)
 			{
-				slots[i].AddItem(inventory.items[i]);
+				if (i < AllInfo.instance.GameWeapons.Count)
+				{
+					slots[i].AddWeapon(AllInfo.instance.GameWeapons[i]);
+				}
+				else
+				{
+					slots[i].AddArmor(AllInfo.instance.GameArmours[i - AllInfo.instance.GameWeapons.Count]);
+				}
+
 				//Debug.Log("addItemUi");
 			}
 			//count is larger than the amount of items in inventory

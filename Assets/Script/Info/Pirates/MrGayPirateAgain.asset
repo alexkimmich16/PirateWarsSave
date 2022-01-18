@@ -13,10 +13,6 @@ MonoBehaviour:
   m_Name: MrGayPirateAgain
   m_EditorClassIdentifier: 
   Name: pirateman
-  Health: 65
-  Armour: 44
-  AttackSpeed: 51
-  Speed: 65
   element: 0
   Class: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 8b7fe549357421d4c9870a9043fc3485, type: 3}

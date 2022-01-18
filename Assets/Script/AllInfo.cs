@@ -30,22 +30,12 @@ public enum Rarity
 #endregion
 public class AllInfo : MonoBehaviour
 {
-    [Header("Currency")]
-    public int Gold;
-    public int Diamonds;
-    public int ARG;
+    #region Singleton
+    public static AllInfo instance;
+    void Awake(){instance = this;}
+    #endregion
 
-    [Header("StaticData")]
-    public List<PirateInfo> Pirates;
-    public List<WeaponInfo> Weapons;
-    public List<ArmourInfo> Armour;
-
-    [Header("GameData")]
-    public List<GamePirate> GamePirates;
-    public List<GameWeapon> GameWeapons;
-    public List<GameArmour> GameArmours;
-
-    //applies to all 4 data types for simplicities sake
+    #region Classes
     [System.Serializable]
     public class AllGameInfo
     {
@@ -63,20 +53,54 @@ public class AllInfo : MonoBehaviour
         public int Rank;
         public int Level;
         public float Experience;
+        public GameArmour Hat;
+        public GameArmour Armor;
+        public GameArmour Bracelet;
+        public GameArmour Ring;
+        public GameWeapon Weapon;
     }
     [System.Serializable]
     public class GameWeapon : AllGameInfo
     {
-        public int Num;
-        public int MinLevel;
+        public WeaponInfo WeaponInfo;
+        //public int Num;
     }
     [System.Serializable]
     public class GameArmour : AllGameInfo
     {
-        public int Num;
-        public int MinLevel;
+        public ArmourInfo ArmorInfo;
+        //public int Num;
     }
+    #endregion
+    [Header("Currency")]
+    public int Gold;
+    public int Diamonds;
+    public int ARG;
 
+    [Header("StaticData")]
+    public List<PirateInfo> Pirates;
+    public List<WeaponInfo> Weapons;
+    public List<ArmourInfo> Armour;
+
+
+
+    [Header("GameData")]
+    public List<GamePirate> GamePirates;
+    public List<GameWeapon> GameWeapons;
+    public List<GameArmour> GameArmours;
+    public int Total;
+
+
+    public void CalculateTotal()
+    {
+        Total = GameWeapons.Count + GameArmours.Count;
+    }
+    //applies to all 4 data types for simplicities sake
+    
+    private void Start()
+    {
+        Total = GamePirates.Count + GameWeapons.Count + GameArmours.Count;
+    }
     public float ElementBonus(GamePirate Attack, GamePirate Defense)
     {
         bool IncreaseDamage = false;

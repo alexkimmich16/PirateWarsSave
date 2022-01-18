@@ -5,67 +5,108 @@ using UnityEngine.EventSystems;
 
 /* Sits on all InventorySlots. */
 
-public class InventorySlot : MonoBehaviour, IDropHandler
+public class InventorySlot : MonoBehaviour
 {
 	public Image icon;
 	public Button removeButton;
 
-	public Item item;
+	//public ScriptableObject item;
 
-	public ItemDrag itemDrag;
-	// Current item in the slot
-							 // Add item to the slot
-	public void OnDrop(PointerEventData eventData)
+	public AllInfo.GameArmour gameArmor;
+	public AllInfo.GameWeapon gameWeapon;
+
+	public void AddArmor(AllInfo.GameArmour newItem)
 	{
-		itemDrag = eventData.pointerDrag.GetComponent<ItemDrag>();
-		if (itemDrag != null)
-        {
-			Item item = itemDrag.GetItem();
-			Inventory.instance.Add(item);
-
-			//ObjectManager.instance.EquipSail(item);
-			//DESTROY
-			itemDrag.ItemToNull();
-
-		}
-	}
-
-
-	public void AddItem(Item newItem)
-	{
-		item = newItem;
-
-		icon.sprite = item.icon;
+		gameArmor = newItem;
+		icon.sprite = newItem.ArmorInfo.icon;
 		icon.enabled = true;
-		removeButton.interactable = true;
+		//removeButton.interactable = true;
+	}
+	public void AddWeapon(AllInfo.GameWeapon newItem)
+	{
+		gameWeapon = newItem;
+		icon.sprite = newItem.WeaponInfo.icon;
+		icon.enabled = true;
+		//removeButton.interactable = true;
 	}
 
-	// Clear the slot
+	public bool Occupied()
+    {
+		if (gameWeapon != null)
+        {
+            if (gameWeapon.WeaponInfo != null)
+            {
+				return true;
+			}
+        }
+
+		if (gameArmor != null)
+		{
+			if (gameArmor.ArmorInfo != null)
+			{
+				return true;
+			}
+            else
+            {
+				return false;
+            }
+		}
+		else
+			return false;
+    }
+
+	public Sprite GetIcon(ScriptableObject newItem)
+    {
+		if(newItem is PirateInfo)
+        {
+			PirateInfo pirateInfo = newItem as PirateInfo;
+			return pirateInfo.icon;
+		}
+		else if (newItem is WeaponInfo)
+		{
+			WeaponInfo weaponInfo = newItem as WeaponInfo;
+			return weaponInfo.icon;
+		}
+		else if (newItem is ArmourInfo)
+		{
+			ArmourInfo armourInfo = newItem as ArmourInfo;
+			return armourInfo.icon;
+		}
+        else
+        {
+			Debug.Log("error");
+			return null;
+        }
+	}
+
 	public void ClearSlot()
 	{
-		//Debug.Log("ClearSlotInv");
-		item = null;
+		gameArmor = null;
+		gameWeapon = null;
 		icon.sprite = null;
 		icon.enabled = false;
-		removeButton.interactable = false;
-
-	}
-
-	// If the remove button is pressed, this function will be called.
-	public void RemoveItemFromInventory()
-	{
-		//Debug.Log("RemoveInv");
-		Inventory.instance.Remove(item);
 	}
 
 	// Use the item
 	public void UseItem()
 	{
-		if (item != null)
-		{
-			
-			item.Use();
+        if (gameArmor != null)
+        {
+			if (gameArmor.ArmorInfo != null)
+			{
+				//Debug.Log("pt2");
+				Selected.instance.EquipArmor(gameArmor);
+			}
 		}
+        if (gameWeapon != null)
+        {
+			if (gameWeapon.WeaponInfo != null)
+			{
+				//Debug.Log("pt1");
+				Selected.instance.EquipWeapon(gameWeapon);
+			}
+		}
+		
 	}
 
 }

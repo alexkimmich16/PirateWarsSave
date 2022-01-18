@@ -19,7 +19,8 @@ public class InfoGen : MonoBehaviour
 
     public void GenerateRandomPirate(int Level)
     {
-
+        //generate random template
+        //generate random 
     }
 
 

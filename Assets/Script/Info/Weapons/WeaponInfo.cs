@@ -9,4 +9,5 @@ public class WeaponInfo : ScriptableObject
     public string Name;
     public int DamageIncrease;
     public Sprite icon;
+    public int MinLevel;
 }
