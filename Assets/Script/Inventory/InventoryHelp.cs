@@ -7,16 +7,12 @@ public class InventoryHelp : MonoBehaviour
 	public InventorySlot[] slots;
 	void Start()
     {
-        //inventory = Inventory.instance;
-
-        //inventory.onItemChangedCallback += UpdateUI;
 		UpdateUI();
-
 	}
 
     private void Update()
     {
-		UpdateUI();
+		//UpdateUI();
 	}
 
     public void UpdateUI()

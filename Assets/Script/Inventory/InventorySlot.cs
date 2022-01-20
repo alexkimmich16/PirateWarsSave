@@ -15,6 +15,8 @@ public class InventorySlot : MonoBehaviour
 	public void AddEquipment(AllInfo.GameEquipment newItem)
 	{
 		gameEquipment = newItem;
+		//Debug.Log(newItem);
+		//Debug.Log(newItem.equipmentInfo.icon);
 		icon.sprite = newItem.equipmentInfo.icon;
 		icon.enabled = true;
 	}
@@ -69,6 +71,7 @@ public class InventorySlot : MonoBehaviour
 			{
 				//Debug.Log("pt2");
 				Selected.instance.SetEquipment(gameEquipment);
+				Selected.instance.help.UpdateUI();
 			}
 		}
 		

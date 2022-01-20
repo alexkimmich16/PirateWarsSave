@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -616,7 +616,7 @@ MonoBehaviour:
       rarity: 0
     - equipmentInfo: {fileID: 0}
       rarity: 0
-    rarity: 0
+    rarity: 1
   - Name: joe
     pirateBase: {fileID: 11400000, guid: 871407bb65a4c3d49bd14949b20b8c8d, type: 2}
     Health: 0
@@ -637,7 +637,7 @@ MonoBehaviour:
       rarity: 0
     - equipmentInfo: {fileID: 0}
       rarity: 0
-    rarity: 0
+    rarity: 2
   - Name: joe
     pirateBase: {fileID: 11400000, guid: 871407bb65a4c3d49bd14949b20b8c8d, type: 2}
     Health: 0
@@ -658,7 +658,7 @@ MonoBehaviour:
       rarity: 0
     - equipmentInfo: {fileID: 0}
       rarity: 0
-    rarity: 0
+    rarity: 3
   GameEquipments:
   - equipmentInfo: {fileID: 11400000, guid: bb1fd186421ef294684ac5f027bc4fdc, type: 2}
     rarity: 0
@@ -7543,12 +7543,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1160505946}
-        m_MethodName: RemoveWeapon
-        m_Mode: 1
+        m_MethodName: ButtonConvertRemoveArmor
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

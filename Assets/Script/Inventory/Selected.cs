@@ -55,21 +55,8 @@ public class Selected : MonoBehaviour
         int Equipment = (int)EquipmentType;
         Images[Equipment].sprite = null;
         Images[Equipment].enabled = false;
-        for (int i = 0; i < Images.Count; i++)
-        {
-            Images[i].sprite = null;
-            Images[i].enabled = false;
-
-            EquipmentType type = (EquipmentType)i;
-            if (HasEquipment(type) == true)
-            {
-                Images[i].sprite = Currentpirate.gameEquipment[i].equipmentInfo.icon;
-                Images[i].enabled = true;
-            }
-            AllInfo.instance.GameEquipments.Add(Currentpirate.gameEquipment[i]);
-            Currentpirate.gameEquipment[i] = null;
-        }
-        Currentpirate.gameEquipment = null;
+        AllInfo.instance.GameEquipments.Add(Currentpirate.gameEquipment[Equipment]);
+        Currentpirate.gameEquipment[Equipment] = null;
         help.UpdateUI();
     }
     public void SetEquipment(AllInfo.GameEquipment equipment)
@@ -77,8 +64,8 @@ public class Selected : MonoBehaviour
         if (HasEquipment(equipment.equipmentInfo.type) == true)
             RemoveEquipment(equipment.equipmentInfo.type);
         int Equipment = (int)equipment.equipmentInfo.type;
-        Images[Equipment].sprite = null;
-        Images[Equipment].enabled = false;
+        Images[Equipment].sprite = equipment.equipmentInfo.icon;
+        Images[Equipment].enabled = true;
         Currentpirate.gameEquipment[Equipment] = equipment;
         AllInfo.instance.GameEquipments.Remove(equipment);
         help.UpdateUI();
@@ -96,11 +83,16 @@ public class Selected : MonoBehaviour
     public bool HasEquipment(EquipmentType type)
     {
         int Num = (int)type;
-        if (Currentpirate.gameEquipment[Num] != null)
+        if (Num < Currentpirate.gameEquipment.Count)
         {
-            if (Currentpirate.gameEquipment[Num].equipmentInfo != null)
+            if (Currentpirate.gameEquipment[Num] != null)
             {
-                return true;
+                if (Currentpirate.gameEquipment[Num].equipmentInfo != null)
+                {
+                    return true;
+                }
+                else
+                    return false;
             }
             else
                 return false;

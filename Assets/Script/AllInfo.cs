@@ -71,8 +71,6 @@ public class AllInfo : MonoBehaviour
     public List<PirateInfo> Pirates;
     public List<EquipmentInfo> Equipment;
 
-
-
     [Header("GameData")]
     public List<GamePirate> GamePirates;
     public List<GameEquipment> GameEquipments;
