@@ -13,165 +13,100 @@ public class Selected : MonoBehaviour
     public List<ScriptableObject> Active = new List<ScriptableObject>();
     public AllInfo.GamePirate Currentpirate;
 
-    public Image Hat;
-    public Image Armor;
-    public Image Bracelet;
-    public Image Ring;
-    public Image Weapon;
+    public List<Image> Images = new List<Image>();
 
-    public InventoryHelp help;  
+    public InventoryHelp help;
+
+    public int CurrentCharacter;
     private void Start()
     {
-        Currentpirate = AllInfo.instance.GamePirates[0];
+        Currentpirate = AllInfo.instance.GamePirates[CurrentCharacter];
+        SetNewPirate();
+    }
+    public void SetPirateNum(int Num)
+    {
+        CurrentCharacter = Num;
+        Currentpirate = AllInfo.instance.GamePirates[Num];
         SetNewPirate();
     }
     public void ButtonConvertRemoveArmor(int SlotNum)
     {
-        RemoveArmor((ArmorType)SlotNum);
+        RemoveEquipment((EquipmentType)SlotNum);
     }
+
     public void SetNewPirate()
     {
-        Hat.sprite = null;
-        Armor.sprite = null;
-        Bracelet.sprite = null;
-        Ring.sprite = null;
-        Weapon.sprite = null;
-        if (Currentpirate.Hat != null)
+        for(int i = 0; i < Images.Count; i++)
         {
-            Hat.sprite = Currentpirate.Hat.ArmorInfo.icon;
-        }
-        if (Currentpirate.Armor != null)
-        {
-            Armor.sprite = Currentpirate.Armor.ArmorInfo.icon;
-        }
-        if (Currentpirate.Bracelet != null)
-        {
-            Bracelet.sprite = Currentpirate.Bracelet.ArmorInfo.icon;
-        }
-        if (Currentpirate.Ring != null)
-        {
-            Ring.sprite = Currentpirate.Ring.ArmorInfo.icon;
-        }
-        if (Currentpirate.Weapon != null)
-        {
-            Weapon.sprite = Currentpirate.Weapon.WeaponInfo.icon;
+            Images[i].sprite = null;
+            Images[i].enabled = false;
+            EquipmentType type = (EquipmentType)i;
+            if (HasEquipment(type) == true)
+            {
+                Images[i].sprite = Currentpirate.gameEquipment[i].equipmentInfo.icon;
+                Images[i].enabled = true;
+            }
         }
         help.UpdateUI();
     }
 
-    //armor enum
-    public void RemoveArmor(ArmorType armorType)
+    public void RemoveEquipment(EquipmentType EquipmentType)
     {
-        if(armorType == ArmorType.Armor)
+        int Equipment = (int)EquipmentType;
+        Images[Equipment].sprite = null;
+        Images[Equipment].enabled = false;
+        for (int i = 0; i < Images.Count; i++)
         {
-            Armor.sprite = null;
-            Armor.enabled = false;
-            AllInfo.instance.GameArmours.Add(Currentpirate.Armor);
-            Currentpirate.Armor = null;
+            Images[i].sprite = null;
+            Images[i].enabled = false;
+
+            EquipmentType type = (EquipmentType)i;
+            if (HasEquipment(type) == true)
+            {
+                Images[i].sprite = Currentpirate.gameEquipment[i].equipmentInfo.icon;
+                Images[i].enabled = true;
+            }
+            AllInfo.instance.GameEquipments.Add(Currentpirate.gameEquipment[i]);
+            Currentpirate.gameEquipment[i] = null;
         }
-        else if (armorType == ArmorType.Bracelet)
-        {
-            Bracelet.sprite = null;
-            Bracelet.enabled = false;
-            AllInfo.instance.GameArmours.Add(Currentpirate.Bracelet);
-            Currentpirate.Bracelet = null;
-        }
-        else if (armorType == ArmorType.Hat)
-        {
-            Hat.sprite = null;
-            Hat.enabled = false;
-            AllInfo.instance.GameArmours.Add(Currentpirate.Hat);
-            Currentpirate.Hat = null;
-        }
-        else if (armorType == ArmorType.Ring)
-        {
-            Ring.sprite = null;
-            Ring.enabled = false;
-            AllInfo.instance.GameArmours.Add(Currentpirate.Ring);
-            Currentpirate.Ring = null;
-        }
+        Currentpirate.gameEquipment = null;
         help.UpdateUI();
     }
-    public void RemoveWeapon()
+    public void SetEquipment(AllInfo.GameEquipment equipment)
     {
-        Weapon.sprite = null;
-        Weapon.enabled = false;
-        AllInfo.instance.GameWeapons.Add(Currentpirate.Weapon);
-        Currentpirate.Weapon = null;
+        if (HasEquipment(equipment.equipmentInfo.type) == true)
+            RemoveEquipment(equipment.equipmentInfo.type);
+        int Equipment = (int)equipment.equipmentInfo.type;
+        Images[Equipment].sprite = null;
+        Images[Equipment].enabled = false;
+        Currentpirate.gameEquipment[Equipment] = equipment;
+        AllInfo.instance.GameEquipments.Remove(equipment);
         help.UpdateUI();
-    }
-    public void EquipArmor(AllInfo.GameArmour armor)
-    {
-        if (armor.ArmorInfo.Armor == ArmorType.Armor)
-        {
-            if (Currentpirate.Armor != null)
-            {
-                if (Currentpirate.Armor.ArmorInfo != null)
-                {
-                    RemoveArmor(armor.ArmorInfo.Armor);
-                }
-            } 
-            Armor.enabled = true;
-            Armor.sprite = armor.ArmorInfo.icon;
-            Currentpirate.Armor = armor;
-        }
-        else if(armor.ArmorInfo.Armor == ArmorType.Bracelet)
-        {
-            if (Currentpirate.Bracelet != null)
-            {
-                if (Currentpirate.Bracelet.ArmorInfo != null)
-                {
-                    RemoveArmor(armor.ArmorInfo.Armor);
-                }
-            }
-            Bracelet.enabled = true;
-            Bracelet.sprite = armor.ArmorInfo.icon;
-            Currentpirate.Bracelet = armor;
-        }
-        else if(armor.ArmorInfo.Armor == ArmorType.Hat)
-        {
-            if (Currentpirate.Hat != null)
-            {
-                if (Currentpirate.Hat.ArmorInfo != null)
-                {
-                    RemoveArmor(armor.ArmorInfo.Armor);
-                }
-            }
-            
-            Hat.enabled = true;
-            Hat.sprite = armor.ArmorInfo.icon;
-            Currentpirate.Hat = armor;
-        }
-        else if(armor.ArmorInfo.Armor == ArmorType.Ring)
-        {
-            if (Currentpirate.Ring != null)
-            {
-                if (Currentpirate.Ring.ArmorInfo != null)
-                {
-                    RemoveArmor(armor.ArmorInfo.Armor);
-                }
-            }
-                
-            Ring.enabled = true;
-            Ring.sprite = armor.ArmorInfo.icon;
-            Currentpirate.Ring = armor;
-        }
-        AllInfo.instance.GameArmours.Remove(armor);
     }
 
-    public void EquipWeapon(AllInfo.GameWeapon weapon)
+    public void AddStats()
     {
-        if(Currentpirate.Weapon != null)
+
+    }
+    public void SubtractStats()
+    {
+
+    }
+
+    public bool HasEquipment(EquipmentType type)
+    {
+        int Num = (int)type;
+        if (Currentpirate.gameEquipment[Num] != null)
         {
-            if (Currentpirate.Weapon.WeaponInfo != null)
+            if (Currentpirate.gameEquipment[Num].equipmentInfo != null)
             {
-                RemoveWeapon();
+                return true;
             }
+            else
+                return false;
         }
-        Weapon.enabled = true;
-        Weapon.sprite = weapon.WeaponInfo.icon;
-        AllInfo.instance.GameWeapons.Remove(weapon);
-        Currentpirate.Weapon = weapon;
+        else
+            return false;
     }
     public void AddAtActive(int Count, ScriptableObject ToAdd)
     {
@@ -181,13 +116,11 @@ public class Selected : MonoBehaviour
     public void SetCurrentPirate(AllInfo.GamePirate Pirate)
     {
         Currentpirate = Pirate;
-        Hat.sprite = Pirate.Hat.ArmorInfo.icon;
-        Armor.sprite = Pirate.Armor.ArmorInfo.icon;
-        Bracelet.sprite = Pirate.Bracelet.ArmorInfo.icon;
-        Ring.sprite = Pirate.Ring.ArmorInfo.icon;
-        Weapon.sprite = Pirate.Weapon.WeaponInfo.icon;
+        for (int i = 0; i < Images.Count; i++)
+        {
+            Images[i].sprite = Pirate.gameEquipment[i].equipmentInfo.icon;
+        } 
     }
-
     public void AddToActive(ScriptableObject ToAdd)
     {
         for (int i = 0; i < Active.Count; i++)

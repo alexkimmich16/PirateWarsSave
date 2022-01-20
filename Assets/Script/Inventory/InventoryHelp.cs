@@ -29,20 +29,10 @@ public class InventoryHelp : MonoBehaviour
 		for (int i = 0; i < slots.Length; i++)
 		{
 			//count is smaller than the amount of items in inventory
-			if (i < AllInfo.instance.GameWeapons.Count + AllInfo.instance.GameArmours.Count)
+			if (i < AllInfo.instance.GameEquipments.Count)
 			{
-				if (i < AllInfo.instance.GameWeapons.Count)
-				{
-					slots[i].AddWeapon(AllInfo.instance.GameWeapons[i]);
-				}
-				else
-				{
-					slots[i].AddArmor(AllInfo.instance.GameArmours[i - AllInfo.instance.GameWeapons.Count]);
-				}
-
-				//Debug.Log("addItemUi");
+				slots[i].AddEquipment(AllInfo.instance.GameEquipments[i]);
 			}
-			//count is larger than the amount of items in inventory
 			else
 			{
 				slots[i].ClearSlot();

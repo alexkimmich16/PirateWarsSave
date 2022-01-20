@@ -10,46 +10,25 @@ public class InventorySlot : MonoBehaviour
 	public Image icon;
 	public Button removeButton;
 
-	//public ScriptableObject item;
+	public AllInfo.GameEquipment gameEquipment;
 
-	public AllInfo.GameArmour gameArmor;
-	public AllInfo.GameWeapon gameWeapon;
-
-	public void AddArmor(AllInfo.GameArmour newItem)
+	public void AddEquipment(AllInfo.GameEquipment newItem)
 	{
-		gameArmor = newItem;
-		icon.sprite = newItem.ArmorInfo.icon;
+		gameEquipment = newItem;
+		icon.sprite = newItem.equipmentInfo.icon;
 		icon.enabled = true;
-		//removeButton.interactable = true;
-	}
-	public void AddWeapon(AllInfo.GameWeapon newItem)
-	{
-		gameWeapon = newItem;
-		icon.sprite = newItem.WeaponInfo.icon;
-		icon.enabled = true;
-		//removeButton.interactable = true;
 	}
 
 	public bool Occupied()
     {
-		if (gameWeapon != null)
-        {
-            if (gameWeapon.WeaponInfo != null)
-            {
-				return true;
-			}
-        }
-
-		if (gameArmor != null)
+		if (gameEquipment != null)
 		{
-			if (gameArmor.ArmorInfo != null)
+			if (gameEquipment.equipmentInfo != null)
 			{
 				return true;
 			}
-            else
-            {
+			else
 				return false;
-            }
 		}
 		else
 			return false;
@@ -62,15 +41,10 @@ public class InventorySlot : MonoBehaviour
 			PirateInfo pirateInfo = newItem as PirateInfo;
 			return pirateInfo.icon;
 		}
-		else if (newItem is WeaponInfo)
+		else if (newItem is EquipmentInfo)
 		{
-			WeaponInfo weaponInfo = newItem as WeaponInfo;
-			return weaponInfo.icon;
-		}
-		else if (newItem is ArmourInfo)
-		{
-			ArmourInfo armourInfo = newItem as ArmourInfo;
-			return armourInfo.icon;
+			EquipmentInfo equipmentInfo = newItem as EquipmentInfo;
+			return equipmentInfo.icon;
 		}
         else
         {
@@ -81,8 +55,7 @@ public class InventorySlot : MonoBehaviour
 
 	public void ClearSlot()
 	{
-		gameArmor = null;
-		gameWeapon = null;
+		gameEquipment = null;
 		icon.sprite = null;
 		icon.enabled = false;
 	}
@@ -90,20 +63,12 @@ public class InventorySlot : MonoBehaviour
 	// Use the item
 	public void UseItem()
 	{
-        if (gameArmor != null)
+        if (gameEquipment != null)
         {
-			if (gameArmor.ArmorInfo != null)
+			if (gameEquipment.equipmentInfo != null)
 			{
 				//Debug.Log("pt2");
-				Selected.instance.EquipArmor(gameArmor);
-			}
-		}
-        if (gameWeapon != null)
-        {
-			if (gameWeapon.WeaponInfo != null)
-			{
-				//Debug.Log("pt1");
-				Selected.instance.EquipWeapon(gameWeapon);
+				Selected.instance.SetEquipment(gameEquipment);
 			}
 		}
 		

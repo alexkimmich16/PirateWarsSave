@@ -5,6 +5,7 @@ using UnityEngine;
 public class InfoGen : MonoBehaviour
 {
     public List<float> ElementalDamage;
+    public List<float> RarityMultiplier;
     public static InfoGen instance;
     private void Awake()
     {
