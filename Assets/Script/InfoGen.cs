@@ -5,6 +5,7 @@ using UnityEngine;
 public class InfoGen : MonoBehaviour
 {
     public List<float> ElementalDamage;
+    public List<float> RarityMultiplier;
     public static InfoGen instance;
     private void Awake()
     {
@@ -19,7 +20,8 @@ public class InfoGen : MonoBehaviour
 
     public void GenerateRandomPirate(int Level)
     {
-
+        //generate random template
+        //generate random 
     }
 
 

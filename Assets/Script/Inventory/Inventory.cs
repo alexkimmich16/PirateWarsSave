@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-
 	#region Singleton
 
 	public static Inventory instance;
@@ -15,17 +14,35 @@ public class Inventory : MonoBehaviour
 	}
 
 	#endregion
-
+	
 	public delegate void OnItemChanged();
 	public OnItemChanged onItemChangedCallback;
 
 	public int space = 10;  // Amount of item spaces
 
-	// Our current list of items in the inventory
-	public List<Item> items = new List<Item>();
+    // Our current list of items in the inventory
+    //public List<AllInfo.AllGameInfo> AllItems = new List<AllInfo.AllGameInfo>();
+    private void Start()
+    {
+		/*
+		for (int i = 0; i < AllInfo.instance.GamePirates.Count; i++)
+        {
+			AllItems.Add(AllInfo.instance.GamePirates[i]);
+		}
+		for (int i = 0; i < AllInfo.instance.GameWeapons.Count; i++)
+		{
+			AllItems.Add(AllInfo.instance.GameWeapons[i]);
+		}
+		for (int i = 0; i < AllInfo.instance.GameArmours.Count; i++)
+		{
+			AllItems.Add(AllInfo.instance.GameArmours[i]);
+		}
+		*/
+	}
 
-	// Add a new item if enough room
-	public void Add(Item item)
+	/*
+    // Add a new item if enough room
+    public void Add(Item item)
 	{
 		if (item.showInInventory)
 		{
@@ -55,5 +72,5 @@ public class Inventory : MonoBehaviour
 		}
 			
 	}
-
+	*/
 }

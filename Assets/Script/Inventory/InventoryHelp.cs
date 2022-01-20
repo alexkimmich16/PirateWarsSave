@@ -4,28 +4,31 @@ using UnityEngine;
 
 public class InventoryHelp : MonoBehaviour
 {
-    public Inventory inventory;
 	public InventorySlot[] slots;
 	void Start()
     {
-        inventory = Inventory.instance;
+		UpdateUI();
+	}
 
-        inventory.onItemChangedCallback += UpdateUI;
-    }
+    private void Update()
+    {
+		//UpdateUI();
+	}
 
-	public void UpdateUI()
+    public void UpdateUI()
 	{
 		slots = GetComponentsInChildren<InventorySlot>();
-
+		for (int i = 0; i < slots.Length; i++)
+		{
+			slots[i].ClearSlot();
+		}
 		for (int i = 0; i < slots.Length; i++)
 		{
 			//count is smaller than the amount of items in inventory
-			if (i < inventory.items.Count)
+			if (i < AllInfo.instance.GameEquipments.Count)
 			{
-				slots[i].AddItem(inventory.items[i]);
-				//Debug.Log("addItemUi");
+				slots[i].AddEquipment(AllInfo.instance.GameEquipments[i]);
 			}
-			//count is larger than the amount of items in inventory
 			else
 			{
 				slots[i].ClearSlot();

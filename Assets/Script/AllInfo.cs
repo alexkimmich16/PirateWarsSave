@@ -30,31 +30,18 @@ public enum Rarity
 #endregion
 public class AllInfo : MonoBehaviour
 {
-    [Header("Currency")]
-    public int Gold;
-    public int Diamonds;
-    public int ARG;
+    #region Singleton
+    public static AllInfo instance;
+    void Awake(){instance = this;}
+    #endregion
 
-    [Header("StaticData")]
-    public List<PirateInfo> Pirates;
-    public List<WeaponInfo> Weapons;
-    public List<ArmourInfo> Armour;
-
-    [Header("GameData")]
-    public List<GamePirate> GamePirates;
-    public List<GameWeapon> GameWeapons;
-    public List<GameArmour> GameArmours;
-
-    //applies to all 4 data types for simplicities sake
-    [System.Serializable]
-    public class AllGameInfo
-    {
-        public Rarity rarity;
-    }
+    #region Classes
+    //[System.Serializable]
 
     [System.Serializable]
-    public class GamePirate : AllGameInfo
+    public class GamePirate
     {
+        public string Name;
         public PirateInfo pirateBase;
         public int Health;
         public int Armour;
@@ -63,20 +50,33 @@ public class AllInfo : MonoBehaviour
         public int Rank;
         public int Level;
         public float Experience;
-    }
-    [System.Serializable]
-    public class GameWeapon : AllGameInfo
-    {
-        public int Num;
-        public int MinLevel;
-    }
-    [System.Serializable]
-    public class GameArmour : AllGameInfo
-    {
-        public int Num;
-        public int MinLevel;
-    }
+        public List<GameEquipment> gameEquipment = new List<GameEquipment>();
 
+        public Rarity rarity;
+    }
+    [System.Serializable]
+    public class GameEquipment
+    {
+        public EquipmentInfo equipmentInfo;
+        public Rarity rarity;
+        //public int Num;
+    }
+    #endregion
+    [Header("Currency")]
+    public int Gold;
+    public int Diamonds;
+    public int ARG;
+
+    [Header("StaticData")]
+    public List<PirateInfo> Pirates;
+    public List<EquipmentInfo> Equipment;
+
+    [Header("GameData")]
+    public List<GamePirate> GamePirates;
+    public List<GameEquipment> GameEquipments;
+
+    //applies to all 4 data types for simplicities sake
+    
     public float ElementBonus(GamePirate Attack, GamePirate Defense)
     {
         bool IncreaseDamage = false;

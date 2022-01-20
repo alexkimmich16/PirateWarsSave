@@ -5,67 +5,76 @@ using UnityEngine.EventSystems;
 
 /* Sits on all InventorySlots. */
 
-public class InventorySlot : MonoBehaviour, IDropHandler
+public class InventorySlot : MonoBehaviour
 {
 	public Image icon;
 	public Button removeButton;
 
-	public Item item;
+	public AllInfo.GameEquipment gameEquipment;
 
-	public ItemDrag itemDrag;
-	// Current item in the slot
-							 // Add item to the slot
-	public void OnDrop(PointerEventData eventData)
+	public void AddEquipment(AllInfo.GameEquipment newItem)
 	{
-		itemDrag = eventData.pointerDrag.GetComponent<ItemDrag>();
-		if (itemDrag != null)
-        {
-			Item item = itemDrag.GetItem();
-			Inventory.instance.Add(item);
-
-			//ObjectManager.instance.EquipSail(item);
-			//DESTROY
-			itemDrag.ItemToNull();
-
-		}
-	}
-
-
-	public void AddItem(Item newItem)
-	{
-		item = newItem;
-
-		icon.sprite = item.icon;
+		gameEquipment = newItem;
+		//Debug.Log(newItem);
+		//Debug.Log(newItem.equipmentInfo.icon);
+		icon.sprite = newItem.equipmentInfo.icon;
 		icon.enabled = true;
-		removeButton.interactable = true;
 	}
 
-	// Clear the slot
+	public bool Occupied()
+    {
+		if (gameEquipment != null)
+		{
+			if (gameEquipment.equipmentInfo != null)
+			{
+				return true;
+			}
+			else
+				return false;
+		}
+		else
+			return false;
+    }
+
+	public Sprite GetIcon(ScriptableObject newItem)
+    {
+		if(newItem is PirateInfo)
+        {
+			PirateInfo pirateInfo = newItem as PirateInfo;
+			return pirateInfo.icon;
+		}
+		else if (newItem is EquipmentInfo)
+		{
+			EquipmentInfo equipmentInfo = newItem as EquipmentInfo;
+			return equipmentInfo.icon;
+		}
+        else
+        {
+			Debug.Log("error");
+			return null;
+        }
+	}
+
 	public void ClearSlot()
 	{
-		//Debug.Log("ClearSlotInv");
-		item = null;
+		gameEquipment = null;
 		icon.sprite = null;
 		icon.enabled = false;
-		removeButton.interactable = false;
-
-	}
-
-	// If the remove button is pressed, this function will be called.
-	public void RemoveItemFromInventory()
-	{
-		//Debug.Log("RemoveInv");
-		Inventory.instance.Remove(item);
 	}
 
 	// Use the item
 	public void UseItem()
 	{
-		if (item != null)
-		{
-			
-			item.Use();
+        if (gameEquipment != null)
+        {
+			if (gameEquipment.equipmentInfo != null)
+			{
+				//Debug.Log("pt2");
+				Selected.instance.SetEquipment(gameEquipment);
+				Selected.instance.help.UpdateUI();
+			}
 		}
+		
 	}
 
 }
