@@ -596,69 +596,18 @@ MonoBehaviour:
   Pirates: []
   Equipment: []
   GamePirates:
-  - Name: joe
+  - Name: 
     pirateBase: {fileID: 11400000, guid: 871407bb65a4c3d49bd14949b20b8c8d, type: 2}
-    Health: 0
-    Armour: 0
-    AttackSpeed: 0
-    Speed: 0
-    Rank: 0
-    Level: 0
-    Experience: 0
-    gameEquipment:
-    - equipmentInfo: {fileID: 0}
-      rarity: 0
-    - equipmentInfo: {fileID: 0}
-      rarity: 0
-    - equipmentInfo: {fileID: 0}
-      rarity: 0
-    - equipmentInfo: {fileID: 0}
-      rarity: 0
-    - equipmentInfo: {fileID: 0}
-      rarity: 0
-    rarity: 1
-  - Name: joe
-    pirateBase: {fileID: 11400000, guid: 871407bb65a4c3d49bd14949b20b8c8d, type: 2}
-    Health: 0
-    Armour: 0
-    AttackSpeed: 0
-    Speed: 0
-    Rank: 0
-    Level: 0
-    Experience: 0
-    gameEquipment:
-    - equipmentInfo: {fileID: 0}
-      rarity: 0
-    - equipmentInfo: {fileID: 0}
-      rarity: 0
-    - equipmentInfo: {fileID: 0}
-      rarity: 0
-    - equipmentInfo: {fileID: 0}
-      rarity: 0
-    - equipmentInfo: {fileID: 0}
-      rarity: 0
-    rarity: 2
-  - Name: joe
-    pirateBase: {fileID: 11400000, guid: 871407bb65a4c3d49bd14949b20b8c8d, type: 2}
-    Health: 0
-    Armour: 0
-    AttackSpeed: 0
-    Speed: 0
-    Rank: 0
-    Level: 0
-    Experience: 0
-    gameEquipment:
-    - equipmentInfo: {fileID: 0}
-      rarity: 0
-    - equipmentInfo: {fileID: 0}
-      rarity: 0
-    - equipmentInfo: {fileID: 0}
-      rarity: 0
-    - equipmentInfo: {fileID: 0}
-      rarity: 0
-    - equipmentInfo: {fileID: 0}
-      rarity: 0
-    rarity: 3
+    gameEquipment: []
+    rarity: 0
+  - Name: 
+    pirateBase: {fileID: 11400000, guid: 54a62f3eba4e0a9469c0418435328553, type: 2}
+    gameEquipment: []
+    rarity: 0
+  - Name: 
+    pirateBase: {fileID: 11400000, guid: a78220edbe2762a4f90354c6bc73daea, type: 2}
+    gameEquipment: []
+    rarity: 0
   GameEquipments:
   - equipmentInfo: {fileID: 11400000, guid: bb1fd186421ef294684ac5f027bc4fdc, type: 2}
     rarity: 0
@@ -3929,13 +3878,6 @@ MonoBehaviour:
   Currentpirate:
     Name: 
     pirateBase: {fileID: 0}
-    Health: 0
-    Armour: 0
-    AttackSpeed: 0
-    Speed: 0
-    Rank: 0
-    Level: 0
-    Experience: 0
     gameEquipment: []
     rarity: 0
   Images:

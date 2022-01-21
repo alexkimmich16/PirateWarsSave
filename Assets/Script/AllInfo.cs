@@ -2,15 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 #region Enums
-public enum Element
-{
-    Air = 0,
-    Water = 1,
-    Fire = 2,
-    Ice = 3,
-    Light = 4,
-    Dark = 5,
-}
 public enum CharacterClass
 {
     MeleeDPS = 0,
@@ -43,13 +34,13 @@ public class AllInfo : MonoBehaviour
     {
         public string Name;
         public PirateInfo pirateBase;
-        public int Health;
-        public int Armour;
-        public int AttackSpeed;
-        public int Speed;
-        public int Rank;
-        public int Level;
-        public float Experience;
+        //public int Health;
+        //public int Armour;
+        //public int AttackSpeed;
+        //public int Speed;
+        //public int Rank;
+       // public int Level;
+        //public float Experience;
         public List<GameEquipment> gameEquipment = new List<GameEquipment>();
 
         public Rarity rarity;
@@ -75,8 +66,9 @@ public class AllInfo : MonoBehaviour
     public List<GamePirate> GamePirates;
     public List<GameEquipment> GameEquipments;
 
+
     //applies to all 4 data types for simplicities sake
-    
+    /*
     public float ElementBonus(GamePirate Attack, GamePirate Defense)
     {
         bool IncreaseDamage = false;
@@ -92,5 +84,5 @@ public class AllInfo : MonoBehaviour
         else
             return 0f;
     }
-
+    */
 }
