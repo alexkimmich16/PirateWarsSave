@@ -6,7 +6,6 @@ using UnityEngine;
 public class PirateInfo : ScriptableObject
 {
     public string Name;
-    public Element element;
     public CharacterClass Class;
     public Sprite icon;
 }

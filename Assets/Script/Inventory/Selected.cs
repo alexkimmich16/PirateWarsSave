@@ -70,7 +70,7 @@ public class Selected : MonoBehaviour
         AllInfo.instance.GameEquipments.Remove(equipment);
         help.UpdateUI();
     }
-
+    /*
     public void AddStats()
     {
 
@@ -79,7 +79,7 @@ public class Selected : MonoBehaviour
     {
 
     }
-
+    */
     public bool HasEquipment(EquipmentType type)
     {
         int Num = (int)type;

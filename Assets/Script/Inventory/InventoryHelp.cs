@@ -32,7 +32,6 @@ public class InventoryHelp : MonoBehaviour
 			else
 			{
 				slots[i].ClearSlot();
-				//Debug.Log("ClearItemUi");
 			}
 		}
 	}
