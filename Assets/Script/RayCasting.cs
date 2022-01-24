@@ -14,8 +14,16 @@ public class RayCasting : MonoBehaviour {
         {
             if (hitInfo.transform.gameObject.GetComponent<InteractableType>())
             {
-                CameraMovement.instance.MoveTo(hitInfo.transform.gameObject.GetComponent<InteractableType>().type);
+                if (Input.GetMouseButtonDown(0))
+                {
+                    CameraMovement.instance.MoveTo(hitInfo.transform.gameObject.GetComponent<InteractableType>().type);
+                }
+                
             }
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            CameraMovement.instance.MoveTo(Interactable.Main);
         }
     }
 }

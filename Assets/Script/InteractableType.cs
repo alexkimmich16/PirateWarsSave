@@ -6,7 +6,7 @@ public enum Interactable
     Main = 0,
     Shop = 1,
     Trident = 2,
-
+    Battle = 3,
 }
 public class InteractableType : MonoBehaviour
 {
