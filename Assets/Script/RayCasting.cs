@@ -10,20 +10,11 @@ public class RayCasting : MonoBehaviour {
     void Update() {
 
         Ray ray = gameCamera.ScreenPointToRay(Input.mousePosition);
-        //RaycastHit hitInfo;
-
-
-        //Debug.Log("number1");
         if (Physics.Raycast(ray, out RaycastHit hitInfo))
         {
-            //Debug.Log("number2");
-            //Debug.Log(hitInfo.transform.gameObject.tag);
-            if (hitInfo.transform.gameObject.tag == "Interactable")
+            if (hitInfo.transform.gameObject.GetComponent<InteractableType>())
             {
-               // Debug.Log("number3");
-
-
-                Destroy(hitInfo.transform.gameObject);
+                CameraMovement.instance.MoveTo(hitInfo.transform.gameObject.GetComponent<InteractableType>().type);
             }
         }
     }
