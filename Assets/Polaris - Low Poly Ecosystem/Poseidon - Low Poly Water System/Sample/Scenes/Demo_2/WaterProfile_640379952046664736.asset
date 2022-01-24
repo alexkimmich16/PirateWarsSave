@@ -37,12 +37,12 @@ MonoBehaviour:
   rippleSpeed: 2.17
   rippleNoiseScale: 2.3
   enableWave: 1
-  waveDirection: 241
-  waveSpeed: 3
-  waveHeight: 1.09
-  waveLength: 17.48
-  waveSteepness: 0.176
-  waveDeform: 0.873
+  waveDirection: 234
+  waveSpeed: 1.6
+  waveHeight: 1.35
+  waveLength: 21.77
+  waveSteepness: 0.008
+  waveDeform: 0
   fresnelStrength: 0.62
   fresnelBias: 0
   enableReflection: 1
