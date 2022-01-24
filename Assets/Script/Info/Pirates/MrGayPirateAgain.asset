@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: MrGayPirateAgain
   m_EditorClassIdentifier: 
   Name: pirateman
-  element: 0
-  Class: 0
+  Class: 3
   icon: {fileID: 21300000, guid: 8b7fe549357421d4c9870a9043fc3485, type: 3}
