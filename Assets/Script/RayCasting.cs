@@ -5,18 +5,26 @@ using UnityEngine;
 public class RayCasting : MonoBehaviour {
 
     public Camera gameCamera;
-    public gameObject.tag.Interactable
 
     // Update is called once per frame
     void Update() {
 
         Ray ray = gameCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hitInfo;
+        //RaycastHit hitInfo;
 
-        if (Physics.Raycast (ray, out hitInfo, 100, gameObject.tag.Interactable, QueryTriggerInteraction.Ignore)) {
-            Destroy(hitInfo.transform.gameObject);
-            
 
+        //Debug.Log("number1");
+        if (Physics.Raycast(ray, out RaycastHit hitInfo))
+        {
+            //Debug.Log("number2");
+            //Debug.Log(hitInfo.transform.gameObject.tag);
+            if (hitInfo.transform.gameObject.tag == "Interactable")
+            {
+               // Debug.Log("number3");
+
+
+                Destroy(hitInfo.transform.gameObject);
+            }
         }
     }
 }
