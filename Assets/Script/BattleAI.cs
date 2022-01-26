@@ -11,7 +11,6 @@ public class BattleAI : MonoBehaviour
     public BattleController BC;
     public BattleAI Target;
 
-
     public float MinDistanceObjective = 0.3f;
 
     public float AttackTimer;
@@ -23,17 +22,22 @@ public class BattleAI : MonoBehaviour
     public int CurrentHealth;
 
     public float RotationSpeed;
-
     public float Distance;
-
     public float TurnRotation;
-
     private bool FoundLongPosition = false;
+    private Vector3 ObjectivePoint;
+
+    [Header("Animation")]
+    public Animator animator;
+    public string AttackString;
+    public string DeathString;
+    public float DeathTime;
+    private float DeathTimer = 0f;
+    public bool Dying = false;
 
     private void Start()
     {
         CurrentHealth = MaxHealth;
-        //navMeshAgent.updateRotation = false;
         SetStats();
     }
     public void SetStats()
@@ -56,23 +60,7 @@ public class BattleAI : MonoBehaviour
         }
     }
 
-    public void Attack()
-    {
-        Target.Damage(AttackDamage);
-    }
-
-    public void Damage(int DamageDone)
-    {
-        CurrentHealth -= DamageDone;
-        if (CurrentHealth < 1)
-        {
-            Death();
-        }
-    }
-    public void Death()
-    {
-        Destroy(gameObject);
-    }
+    
     public void TurnTowards(Transform Objective)
     {
         Vector3 direction = (Objective.position - transform.position).normalized;
@@ -80,108 +68,93 @@ public class BattleAI : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * TurnRotation);
     }
 
-
-
-    public void MeleeActions()
+    public Vector3 FindDistancePoint(Vector3 center, float range)
     {
-        if (Target != null)
+        for (int i = 0; i < 500; i++)
         {
-            Distance = Vector3.Distance(transform.position, Target.transform.position);
-            if (Distance > MinDistanceObjective)
-            {
-                // too far
-                Target = FindTarget();
-                navMeshAgent.SetDestination(Target.transform.position);
-            }
-            else
-            {
-                // close
-                navMeshAgent.SetDestination(transform.position);
-                Target = FindTarget();
-                TurnTowards(Target.transform);
-                AttackCount();
-            }
-        }
-    }
+            Vector3 randomPoint = center + Random.insideUnitSphere * 15;
+            Vector3 RandomAdjusted = new Vector3(randomPoint.x, 0, randomPoint.z);
 
-    public void RangedActions()
-    {
-        if (Target != null)
-        {
-            if (FoundLongPosition == false)
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(RandomAdjusted, out hit, 1.0f, NavMesh.AllAreas))
             {
-                //find reasonable far position and stay
-                
-                Vector3 Objective = FindDistancePoint(BattleController.instance.Center, MinDistanceObjective);
-                Debug.Log(Objective);
-                navMeshAgent.SetDestination(Objective);
-                Target = FindTarget();
-                FoundLongPosition = true;
-            }
-            Distance = Vector3.Distance(transform.position, Target.transform.position);
-            if (Distance < MinDistanceObjective)
-            {
-                TurnTowards(Target.transform);
-                AttackCount();
-            }
-        }
-
-        Vector3 FindDistancePoint(Vector3 center, float range)
-        {
-            for (int i = 0; i < 500; i++)
-            {
-                Vector3 randomPoint = center + Random.insideUnitSphere * 15;
-                Vector3 RandomAdjusted = new Vector3(randomPoint.x, 0, randomPoint.z);
-
-                NavMeshHit hit;
-                if (NavMesh.SamplePosition(RandomAdjusted, out hit, 1.0f, NavMesh.AllAreas))
+                if (Vector3.Distance(RandomAdjusted, Target.transform.position) > MinDistanceObjective)
                 {
-                    if (Vector3.Distance(RandomAdjusted, Target.transform.position) > MinDistanceObjective)
-                    {
-                        return hit.position;
-                    }
+                    return hit.position;
                 }
             }
-            return Vector3.zero;
         }
+        return Vector3.zero;
     }
+    
 
     void Update()
     {
-        if (Target == null)
+        if (DeathTimer > DeathTime)
+        {
+            Destroy(gameObject);
+        }
+        else if (Dying == true)
+        {
+            DeathTimer += Time.deltaTime;
+        }
+        else if (Target != null && Target.Dying == false)
+        {
+            //distance smaller than whatever
+            if (Vector3.Distance(transform.position, ObjectivePoint) < 2f)
+            {
+                animator.SetBool("Moving", false);
+            }
+            else
+            {
+                animator.SetBool("Moving", true);
+            }
+
+            if (Melee(pirate.pirateBase.Class) == true)
+            {
+                Distance = Vector3.Distance(transform.position, Target.transform.position);
+                if (Distance > MinDistanceObjective)
+                {
+                    // too far
+                    Target = FindTarget();
+                    ObjectivePoint = Target.transform.position;
+                    navMeshAgent.SetDestination(Target.transform.position);
+                }
+                else
+                {
+                    // close
+                    navMeshAgent.SetDestination(transform.position);
+                    Target = FindTarget();
+                    TurnTowards(Target.transform);
+                    AttackCount();
+                }
+            }
+            else if (Melee(pirate.pirateBase.Class) == false)
+            {
+                //ranged
+                if (FoundLongPosition == false)
+                {
+                    //find reasonable far position and stay
+                    ObjectivePoint = FindDistancePoint(BattleController.instance.Center, MinDistanceObjective);
+                    navMeshAgent.SetDestination(ObjectivePoint);
+                    Target = FindTarget();
+                    FoundLongPosition = true;
+                }
+                Distance = Vector3.Distance(transform.position, ObjectivePoint);
+
+                //found position
+                if (Distance < 0.1f)
+                {
+                    TurnTowards(Target.transform);
+                    AttackCount();
+                }
+                //find point and stay, if transform moves out of distance chase, if comes toward me, stay and shoot
+            }
+        }
+        else if (Target == null)
         {
             Target = FindTarget();
-            //navMeshAgent.SetDestination(Target.transform.position);
         }
-
-        
-        if (pirate.pirateBase.Class == CharacterClass.Captain)
-        {
-            MeleeActions();
-        }
-        else if (pirate.pirateBase.Class == CharacterClass.MeleeDPS)
-        {
-            MeleeActions();
-        }
-        else if (pirate.pirateBase.Class == CharacterClass.QuarterMaster)
-        {
-            MeleeActions();
-        }
-        else if (pirate.pirateBase.Class == CharacterClass.RangeDPS)
-        {
-            RangedActions();
-            //find point and stay, if transform moves out of distance chase, if comes toward me, stay and shoot
-        }
-        else if (pirate.pirateBase.Class == CharacterClass.Support)
-        {
-            RangedActions();
-        }
-
-        
-
-        
-
-        //LookDirection();
     }
     BattleAI FindTarget()
     {
@@ -216,5 +189,39 @@ public class BattleAI : MonoBehaviour
             return BC.Enemy[Num];
         }
         
+    }
+
+    public void Attack()
+    {
+        animator.Play(AttackString);
+        Target.Damage(AttackDamage);
+    }
+
+
+    public void Death()
+    {
+        Dying = true;
+        animator.Play(DeathString);
+    }
+
+    public bool Melee(CharacterClass Class)
+    {
+        if (Class == CharacterClass.Captain || Class == CharacterClass.MeleeDPS || Class == CharacterClass.QuarterMaster)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void Damage(int DamageDone)
+    {
+        CurrentHealth -= DamageDone;
+        if (CurrentHealth < 1)
+        {
+            Death();
+        }
     }
 }
