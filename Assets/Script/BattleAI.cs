@@ -39,6 +39,17 @@ public class BattleAI : MonoBehaviour
     {
         CurrentHealth = MaxHealth;
         SetStats();
+        BC = BattleController.instance;
+        if (Friendly == true)
+        {
+            BC.Friend.Add(this);
+        }
+        else
+        {
+            BC.Enemy.Add(this);
+        }
+
+
     }
     public void SetStats()
     {
@@ -135,7 +146,7 @@ public class BattleAI : MonoBehaviour
                 if (FoundLongPosition == false)
                 {
                     //find reasonable far position and stay
-                    ObjectivePoint = FindDistancePoint(BattleController.instance.Center, MinDistanceObjective);
+                    ObjectivePoint = FindDistancePoint(BattleController.instance.transform.position, MinDistanceObjective);
                     navMeshAgent.SetDestination(ObjectivePoint);
                     Target = FindTarget();
                     FoundLongPosition = true;
@@ -158,35 +169,48 @@ public class BattleAI : MonoBehaviour
     }
     BattleAI FindTarget()
     {
+        
         if (Friendly == false)
         {
-            float Distance = 1000f;
-            int Num = 0;
-            for (int i = 0; i < BC.Friend.Count; i++)
+            if (BC.Friend.Count > 0)
             {
-                if (Vector3.Distance(transform.position, BC.Friend[i].transform.position) < Distance)
+                float Distance = 1000f;
+                int Num = 0;
+                for (int i = 0; i < BC.Friend.Count; i++)
                 {
-                    Num = i;
-                    Distance = Vector3.Distance(transform.position, BC.Friend[i].transform.position);
+                    if (Vector3.Distance(transform.position, BC.Friend[i].transform.position) < Distance)
+                    {
+                        Num = i;
+                        Distance = Vector3.Distance(transform.position, BC.Friend[i].transform.position);
+                    }
+
                 }
-                
+                return BC.Friend[Num];
             }
-            return BC.Friend[Num];
+            else
+                return null;
+
+            
         }
         else
         {
-            float Distance = 1000f;
-            int Num = 0;
-            for (int i = 0; i < BC.Enemy.Count; i++)
+            if (BC.Enemy.Count > 0)
             {
-                if (Vector3.Distance(transform.position, BC.Enemy[i].transform.position) < Distance)
+                float Distance = 1000f;
+                int Num = 0;
+                for (int i = 0; i < BC.Enemy.Count; i++)
                 {
-                    Num = i;
-                    Distance = Vector3.Distance(transform.position, BC.Enemy[i].transform.position);
-                }
+                    if (Vector3.Distance(transform.position, BC.Enemy[i].transform.position) < Distance)
+                    {
+                        Num = i;
+                        Distance = Vector3.Distance(transform.position, BC.Enemy[i].transform.position);
+                    }
 
+                }
+                return BC.Enemy[Num];
             }
-            return BC.Enemy[Num];
+            else
+                return null;
         }
         
     }
@@ -202,6 +226,17 @@ public class BattleAI : MonoBehaviour
     {
         Dying = true;
         animator.Play(DeathString);
+
+        if (Friendly == true)
+        {
+            BC.Friend.Remove(this);
+        }
+        else
+        {
+            BC.Enemy.Remove(this);
+        }
+
+        BC.CheckResults();
     }
 
     public bool Melee(CharacterClass Class)

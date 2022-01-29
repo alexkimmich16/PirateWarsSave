@@ -13,8 +13,6 @@ public class BattleController : MonoBehaviour
     public List<BattleAI> Enemy;
 
     public float ChangeTargetTime = 2f;
-
-    public Vector3 Center;
     void Start()
     {
         
@@ -23,5 +21,25 @@ public class BattleController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void CheckResults()
+    {
+        if (Friend.Count == 0)
+        {
+            OnLose();
+        }
+        else if (Enemy.Count == 0)
+        {
+            OnWin();
+        }
+    }
+    public void OnLose()
+    {
+
+    }
+    public void OnWin()
+    {
+
     }
 }
