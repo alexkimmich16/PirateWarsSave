@@ -14,40 +14,28 @@ public class SceneLoader : MonoBehaviour
     public class SceneStats
     {
         public string Name;
-        public Scene scene;
+        public string SceneName;
     }
     #endregion
 
-    public static List<SceneStats> Scenes;
+    public float FadeTime;
 
-    public Animator transitionMenu;
+    public List<SceneStats> Scenes;
+    
+    private float Timer;
 
-    void Start()
+    public bool ClickActive;
+    private void Update()
     {
-        /*
-        if (UpgradeScript.Level != 0 && UpgradeScript.Level != 1)
+        Timer += Time.deltaTime;
+        if (Timer > FadeTime)
         {
-            ADManager.Instance.ShowInterstitial();
+            ClickActive = true;
         }
-
-        if (UpgradeScript.First == true)
+        else
         {
-            MusicStatic = Music;
-
-            if (UpgradeScript.ShouldSave == true)
-            {
-                SaveSystem.LoadGameLarge();
-            }
-
+            ClickActive = false;
         }
-        VideoButton = GameObject.Find("WatchVideo");
-        ADManager.Instance.Video = VideoButton;
-        if (ADManager.Instance.IntersitialAdTime < ADManager.Instance.InterstitialTime)
-        {
-            ADManager.Instance.InterstitialTime = 0;
-        }
-        ADManager.Instance.ShowBanner();
-        */
     }
     public void LoadScene(string text)
     {
@@ -66,28 +54,16 @@ public class SceneLoader : MonoBehaviour
 
     IEnumerator LoadTime(SceneStats sceneStats)
     {
-        /*
-        if (Level == 0 || Level == 1)
+        if (TransitionManager.instance.transitionMenu != null)
         {
-            Time.timeScale = 1f;
-
+            TransitionManager.instance.transitionMenu.SetTrigger("Start");
+            yield return new WaitForSeconds(FadeTime);
+            //yield return new WaitForSeconds(10f);
         }
-        
-        if (Bools[Level] == true)
-        {
-            //transitionMenu.SetTrigger("Start");
-        }
-        */
 
-        if (transitionMenu != null)
-        {
-            transitionMenu.SetTrigger("Start");
-            yield return new WaitForSeconds(.8f);
-        }
-        //don't destroy on loads
-        //DontDestroyOnLoad(MusicStatic);
-
-        SceneManager.LoadScene(sceneStats.Name);
+        DontDestroyOnLoad(gameObject);
+        Timer = 0;
+        SceneManager.LoadScene(sceneStats.SceneName);
         //Time.timeScale = 1f;
     }
 }

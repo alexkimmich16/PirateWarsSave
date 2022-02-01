@@ -33,31 +33,22 @@ public class CameraMovement : MonoBehaviour
         if (Vector3.Distance(transform.position, cameraTransforms[TypeNum].position) < MinMenuDistance && Arrived == false)
         {
             Arrived = true;
-            ResetAllMenu();
             if (currentPlace == Interactable.Main)
             {
-                MenuUiManager.instance.StartMenu(true);
+                //SceneLoader.instance.LoadScene();
             }
             else if (currentPlace == Interactable.Shop)
             {
-                MenuUiManager.instance.ShopMenu(true);
+                SceneLoader.instance.LoadScene("Shop");
             }
             else if (currentPlace == Interactable.Trident)
             {
-                MenuUiManager.instance.TridentMenu(true);
+                SceneLoader.instance.LoadScene("Trident");
             }
             else if (currentPlace == Interactable.Battle)
             {
-                MenuUiManager.instance.BattleMenu(true);
+                SceneLoader.instance.LoadScene("Battle");
             }
         }
-    }
-
-    public void ResetAllMenu()
-    {
-        MenuUiManager.instance.TridentMenu(false);
-        MenuUiManager.instance.StartMenu(false);
-        MenuUiManager.instance.ShopMenu(false);
-        MenuUiManager.instance.BattleMenu(false);
     }
 }
