@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efd47ef5aeebcf5419491dc8326d723b, type: 3}
   m_Name: Armor
   m_EditorClassIdentifier: 
-  Name: 
   ArmourIncrease: 0
   DamageIncrease: 0
   icon: {fileID: 21300000, guid: 989518b8746a84da8a894e177a896b86, type: 3}
-  type: 1
+  type: 2
   MinLevel: 0

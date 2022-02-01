@@ -8,4 +8,5 @@ public class PirateInfo : ScriptableObject
     public string Name;
     public CharacterClass Class;
     public Sprite icon;
+    public GameObject Prefab;
 }

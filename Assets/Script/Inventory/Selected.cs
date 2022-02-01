@@ -66,6 +66,7 @@ public class Selected : MonoBehaviour
         int Equipment = (int)equipment.equipmentInfo.type;
         Images[Equipment].sprite = equipment.equipmentInfo.icon;
         Images[Equipment].enabled = true;
+        //Debug.Log(Equipment);
         Currentpirate.gameEquipment[Equipment] = equipment;
         AllInfo.instance.GameEquipments.Remove(equipment);
         help.UpdateUI();

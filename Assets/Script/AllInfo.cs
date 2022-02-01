@@ -66,7 +66,18 @@ public class AllInfo : MonoBehaviour
     public List<GamePirate> GamePirates;
     public List<GameEquipment> GameEquipments;
 
+    public void RecieveCurrency(int gold, int diamonds, int arg)
+    {
+        Gold = gold;
+        Diamonds = diamonds;
+        ARG = arg;
+    }
 
+    public void RecieveGameData(List<GamePirate> gamePirates, List<GameEquipment> gameEquipments)
+    {
+        GamePirates = gamePirates;
+        GameEquipments = gameEquipments;
+    }
     //applies to all 4 data types for simplicities sake
     /*
     public float ElementBonus(GamePirate Attack, GamePirate Defense)

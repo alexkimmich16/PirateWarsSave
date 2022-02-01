@@ -4,5 +4,23 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/3D Battle Scene.unity
+    guid: ba69a2b88d998f448ae52f1e016f03ba
+  - enabled: 1
+    path: Assets/Scenes/CharacterScreen.unity
+    guid: 3e7dfd766ee84cd41b624fac027598f0
+  - enabled: 1
+    path: Assets/Scenes/CombatScene.unity
+    guid: 01ac64693286e6e4baa4cc535d913364
+  - enabled: 1
+    path: Assets/Scenes/LoginScene.unity
+    guid: 3e96f41aea5d21347a9fad40a2c6448f
+  - enabled: 1
+    path: Assets/Scenes/Roster.unity
+    guid: 8778b0624fb367e498863e27290d776f
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
