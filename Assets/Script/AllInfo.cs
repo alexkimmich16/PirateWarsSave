@@ -23,7 +23,12 @@ public class AllInfo : MonoBehaviour
 {
     #region Singleton
     public static AllInfo instance;
-    void Awake(){instance = this;}
+    void Awake()
+    {
+        instance = this;
+        
+            
+    }
     #endregion
 
     #region Classes
@@ -34,16 +39,23 @@ public class AllInfo : MonoBehaviour
     {
         public string Name;
         public PirateInfo pirateBase;
-        //public int Health;
-        //public int Armour;
-        //public int AttackSpeed;
-        //public int Speed;
-        //public int Rank;
-       // public int Level;
-        //public float Experience;
+
+        public int Health;
+        public int Damage;
+        public int Armour;
+        public int CritPercent;
+        public int CritDamage;
+        public int IntEueCt;
+        public int Dexterity;
+
+        public int Rank;
+        public int Level;
+        public float Experience;
         public List<GameEquipment> gameEquipment = new List<GameEquipment>();
 
         public Rarity rarity;
+
+        public int NumInList;
     }
     [System.Serializable]
     public class GameEquipment
@@ -66,6 +78,7 @@ public class AllInfo : MonoBehaviour
     public List<GamePirate> GamePirates;
     public List<GameEquipment> GameEquipments;
 
+    
     public void RecieveCurrency(int gold, int diamonds, int arg)
     {
         Gold = gold;
@@ -78,6 +91,16 @@ public class AllInfo : MonoBehaviour
         GamePirates = gamePirates;
         GameEquipments = gameEquipments;
     }
+
+    private void Start()
+    {
+        for (int i = 0; i < GamePirates.Count; i++)
+        {
+            GamePirates[i].NumInList = i;
+        }
+    }
+
+
     //applies to all 4 data types for simplicities sake
     /*
     public float ElementBonus(GamePirate Attack, GamePirate Defense)

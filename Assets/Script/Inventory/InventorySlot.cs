@@ -12,11 +12,20 @@ public class InventorySlot : MonoBehaviour
 
 	public AllInfo.GameEquipment gameEquipment;
 
+	private bool ActivePirate = false;
+	public AllInfo.GamePirate pirate;
+
+	public void AddCharacter(AllInfo.GamePirate NewPirate)
+    {
+		pirate = NewPirate;
+		ActivePirate = true;
+		icon.sprite = NewPirate.pirateBase.icon;
+		icon.enabled = true;
+	}
+
 	public void AddEquipment(AllInfo.GameEquipment newItem)
 	{
 		gameEquipment = newItem;
-		//Debug.Log(newItem);
-		//Debug.Log(newItem.equipmentInfo.icon);
 		icon.sprite = newItem.equipmentInfo.icon;
 		icon.enabled = true;
 	}
@@ -58,23 +67,37 @@ public class InventorySlot : MonoBehaviour
 	public void ClearSlot()
 	{
 		gameEquipment = null;
+		pirate = null;
 		icon.sprite = null;
 		icon.enabled = false;
+		ActivePirate = false;
 	}
 
 	// Use the item
 	public void UseItem()
 	{
-        if (gameEquipment != null)
+		if (gameEquipment != null)
         {
 			if (gameEquipment.equipmentInfo != null)
 			{
-				//Debug.Log("pt2");
-				Selected.instance.SetEquipment(gameEquipment);
-				Selected.instance.help.UpdateUI();
+                if (SelectionMenu.instance.CharacterHolders[0].Active == true)
+                {
+					Selected.instance.SetEquipment(gameEquipment);
+					Selected.instance.HelpAll();
+				}
+                else
+                {
+					//Debug.LogError("No where to set eqiptment to");
+                }
 			}
 		}
-		
+		if (ActivePirate == true)
+		{
+			SelectionMenu.instance.SetCurrentPirate(pirate.NumInList);
+			ActivePirate = false;
+			Selected.instance.HelpAll();
+		}
+
 	}
 
 }

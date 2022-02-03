@@ -10,14 +10,22 @@ public class Selected : MonoBehaviour
     void Awake() { instance = this; }
     #endregion
 
-    public List<ScriptableObject> Active = new List<ScriptableObject>();
+    //public List<ScriptableObject> Active = new List<ScriptableObject>();
     public AllInfo.GamePirate Currentpirate;
 
     public List<Image> Images = new List<Image>();
 
-    public InventoryHelp help;
+    public InventoryHelp Inventoryhelp;
+    public InventoryHelp Characterhelp;
 
     public int CurrentCharacter;
+
+    public void HelpAll()
+    {
+        Inventoryhelp.UpdateUI();
+        Characterhelp.UpdateUI();
+    }
+
     private void Start()
     {
         Currentpirate = AllInfo.instance.GamePirates[CurrentCharacter];
@@ -47,7 +55,7 @@ public class Selected : MonoBehaviour
                 Images[i].enabled = true;
             }
         }
-        help.UpdateUI();
+        Inventoryhelp.UpdateUI();
     }
 
     public void RemoveEquipment(EquipmentType EquipmentType)
@@ -57,7 +65,7 @@ public class Selected : MonoBehaviour
         Images[Equipment].enabled = false;
         AllInfo.instance.GameEquipments.Add(Currentpirate.gameEquipment[Equipment]);
         Currentpirate.gameEquipment[Equipment] = null;
-        help.UpdateUI();
+        Inventoryhelp.UpdateUI();
     }
     public void SetEquipment(AllInfo.GameEquipment equipment)
     {
@@ -69,7 +77,7 @@ public class Selected : MonoBehaviour
         //Debug.Log(Equipment);
         Currentpirate.gameEquipment[Equipment] = equipment;
         AllInfo.instance.GameEquipments.Remove(equipment);
-        help.UpdateUI();
+        Inventoryhelp.UpdateUI();
     }
     /*
     public void AddStats()
@@ -101,11 +109,7 @@ public class Selected : MonoBehaviour
         else
             return false;
     }
-    public void AddAtActive(int Count, ScriptableObject ToAdd)
-    {
-        Active[Count] = ToAdd;
-        return;
-    }
+
     public void SetCurrentPirate(AllInfo.GamePirate Pirate)
     {
         Currentpirate = Pirate;
@@ -114,6 +118,15 @@ public class Selected : MonoBehaviour
             Images[i].sprite = Pirate.gameEquipment[i].equipmentInfo.icon;
         } 
     }
+
+    public void DisplayNoEquiptment()
+    {
+        for (int i = 0; i < Images.Count; i++)
+        {
+            Images[i].enabled = false;
+        }
+    }
+    /*
     public void AddToActive(ScriptableObject ToAdd)
     {
         for (int i = 0; i < Active.Count; i++)
@@ -125,4 +138,5 @@ public class Selected : MonoBehaviour
             }
         }
     }
+    */
 }

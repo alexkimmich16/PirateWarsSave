@@ -8,7 +8,19 @@ public class SceneLoader : MonoBehaviour
 {
     #region Singleton
     public static SceneLoader instance;
-    void Awake() { instance = this; }
+    void Awake()
+    {
+        if (Current > HighestPriority)
+        {
+            HighestPriority = Current;
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+            
+    }
 
     [System.Serializable]
     public class SceneStats
@@ -25,6 +37,9 @@ public class SceneLoader : MonoBehaviour
     private float Timer;
 
     public bool ClickActive;
+
+    private static int HighestPriority = 0;
+    public int Current = 1;
     private void Update()
     {
         Timer += Time.deltaTime;
@@ -45,6 +60,7 @@ public class SceneLoader : MonoBehaviour
             if (text == Scenes[i].Name)
             {
                 StartCoroutine(LoadTime(Scenes[i]));
+
                 return;
             }
         }
@@ -60,8 +76,9 @@ public class SceneLoader : MonoBehaviour
             yield return new WaitForSeconds(FadeTime);
             //yield return new WaitForSeconds(10f);
         }
-
+        Current += 1;
         DontDestroyOnLoad(gameObject);
+        
         Timer = 0;
         SceneManager.LoadScene(sceneStats.SceneName);
         //Time.timeScale = 1f;

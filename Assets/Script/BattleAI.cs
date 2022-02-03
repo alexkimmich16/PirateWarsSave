@@ -48,8 +48,6 @@ public class BattleAI : MonoBehaviour
         {
             BC.Enemy.Add(this);
         }
-
-
     }
     public void SetStats()
     {
@@ -70,8 +68,6 @@ public class BattleAI : MonoBehaviour
             AttackTimer = 0f;
         }
     }
-
-    
     public void TurnTowards(Transform Objective)
     {
         Vector3 direction = (Objective.position - transform.position).normalized;
@@ -97,8 +93,6 @@ public class BattleAI : MonoBehaviour
         }
         return Vector3.zero;
     }
-    
-
     void Update()
     {
         if (DeathTimer > DeathTime)
@@ -214,14 +208,11 @@ public class BattleAI : MonoBehaviour
         }
         
     }
-
     public void Attack()
     {
         animator.Play(AttackString);
         Target.Damage(AttackDamage);
     }
-
-
     public void Death()
     {
         Dying = true;
