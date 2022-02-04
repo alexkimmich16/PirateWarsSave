@@ -47,7 +47,7 @@ public class CameraMovement : MonoBehaviour
             }
             else if (currentPlace == Interactable.Battle)
             {
-                SceneLoader.instance.LoadScene("Battle");
+                SceneLoader.instance.LoadScene("CharacterSelection");
             }
         }
     }

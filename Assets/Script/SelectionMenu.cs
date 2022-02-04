@@ -160,7 +160,16 @@ public class SelectionMenu : MonoBehaviour
 
     public void Next()
     {
-        //do this
-        //SceneLoader.instance.LoadScene("");
+        List<AllInfo.GamePirate> pirates = new List<AllInfo.GamePirate>();
+        for (int i = 0; i < CharacterHolders.Count; i++)
+        {
+            if (CharacterHolders[i].Active == true)
+            {
+                int num = CharacterHolders[i].NumInList;
+                pirates.Add(AllInfo.instance.GamePirates[num]);
+            }
+        }
+        MapLevels.instance.SetActivePirates(pirates);
+        SceneLoader.instance.LoadScene("Map");
     }
 }

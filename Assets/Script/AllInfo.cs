@@ -23,12 +23,7 @@ public class AllInfo : MonoBehaviour
 {
     #region Singleton
     public static AllInfo instance;
-    void Awake()
-    {
-        instance = this;
-        
-            
-    }
+    void Awake(){instance = this;}
     #endregion
 
     #region Classes
@@ -78,7 +73,6 @@ public class AllInfo : MonoBehaviour
     public List<GamePirate> GamePirates;
     public List<GameEquipment> GameEquipments;
 
-    
     public void RecieveCurrency(int gold, int diamonds, int arg)
     {
         Gold = gold;

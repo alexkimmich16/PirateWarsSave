@@ -40,14 +40,6 @@ public class BattleAI : MonoBehaviour
         CurrentHealth = MaxHealth;
         SetStats();
         BC = BattleController.instance;
-        if (Friendly == true)
-        {
-            BC.Friend.Add(this);
-        }
-        else
-        {
-            BC.Enemy.Add(this);
-        }
     }
     public void SetStats()
     {
@@ -163,7 +155,6 @@ public class BattleAI : MonoBehaviour
     }
     BattleAI FindTarget()
     {
-        
         if (Friendly == false)
         {
             if (BC.Friend.Count > 0)
@@ -211,7 +202,21 @@ public class BattleAI : MonoBehaviour
     public void Attack()
     {
         animator.Play(AttackString);
-        Target.Damage(AttackDamage);
+        //bool Crit = IsCrit(pirate.CritPercent);
+        int TotalDamage = AttackDamage + AddCrit();
+        Target.Damage(TotalDamage);
+        int AddCrit()
+        {
+            int Roll = Random.Range(0, 100);
+            if(Roll < pirate.CritPercent)
+            {
+                return pirate.CritDamage;
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
     public void Death()
     {
@@ -244,7 +249,8 @@ public class BattleAI : MonoBehaviour
 
     public void Damage(int DamageDone)
     {
-        CurrentHealth -= DamageDone;
+        int ActualDamage = DamageDone / (1 + pirate.Armour / DamageDone);
+        CurrentHealth -= ActualDamage;
         if (CurrentHealth < 1)
         {
             Death();

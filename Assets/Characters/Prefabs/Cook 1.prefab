@@ -96,9 +96,20 @@ MonoBehaviour:
   pirate:
     Name: 
     pirateBase: {fileID: 11400000, guid: 54a62f3eba4e0a9469c0418435328553, type: 2}
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    IntEueCt: 0
+    Dexterity: 0
+    Rank: 0
+    Level: 0
+    Experience: 0
     gameEquipment: []
     rarity: 0
-  Friendly: 1
+    NumInList: 0
+  Friendly: 0
   BC: {fileID: 0}
   Target: {fileID: 0}
   MinDistanceObjective: 1.5

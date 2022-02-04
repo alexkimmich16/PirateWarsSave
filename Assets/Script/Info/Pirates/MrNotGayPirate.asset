@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MrNotGayPirate
   m_EditorClassIdentifier: 
   Name: pirateman
-  element: 0
   Class: 0
   icon: {fileID: 21300000, guid: dba863cf7af15cd49bf45859a9a66a99, type: 3}
+  Prefab: {fileID: 56837282954894108, guid: a38dd4d525446ee46bcf1ad86313a8f6, type: 3}

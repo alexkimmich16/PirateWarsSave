@@ -12,7 +12,8 @@ public class BattleController : MonoBehaviour
     public List<BattleAI> Friend;
     public List<BattleAI> Enemy;
 
-    public List<Transform> Spawns;
+    public List<Transform> EnemySpawns;
+    public List<Transform> FriendlySpawns;
 
     public float ChangeTargetTime = 2f;
 
@@ -37,15 +38,29 @@ public class BattleController : MonoBehaviour
     }
     private void Start()
     {
-        //SpawnFriendly(AllInfo.instance.);
+        SpawnFriendly(MapLevels.instance.MyActivePirates);
+        SpawnEnemy(MapLevels.instance.Levels[MapLevels.instance.levelNum].Pirates);
     }
+
     public void SpawnFriendly(List<AllInfo.GamePirate> pirates)
     {
-        //int SpawnNum = 0;
         for (int i = 0; i < pirates.Count; i++)
         {
-            GameObject Spawned = Instantiate(pirates[i].pirateBase.Prefab, Spawns[i].position, Spawns[i].rotation);
+            GameObject Spawned = Instantiate(pirates[i].pirateBase.Prefab, FriendlySpawns[i].position, FriendlySpawns[i].rotation);
+            Spawned.name = pirates[i].Name;
             Spawned.GetComponent<BattleAI>().Friendly = true;
+            Friend.Add(Spawned.GetComponent<BattleAI>());
+        }
+    }
+
+    public void SpawnEnemy(List<AllInfo.GamePirate> pirates)
+    {
+        for (int i = 0; i < pirates.Count; i++)
+        {
+            GameObject Spawned = Instantiate(pirates[i].pirateBase.Prefab, EnemySpawns[i].position, EnemySpawns[i].rotation);
+            Spawned.name = pirates[i].Name;
+            Spawned.GetComponent<BattleAI>().Friendly = false;
+            Enemy.Add(Spawned.GetComponent<BattleAI>());
         }
     }
 }

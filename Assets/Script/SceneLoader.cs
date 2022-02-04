@@ -60,7 +60,6 @@ public class SceneLoader : MonoBehaviour
             if (text == Scenes[i].Name)
             {
                 StartCoroutine(LoadTime(Scenes[i]));
-
                 return;
             }
         }
