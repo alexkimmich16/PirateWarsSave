@@ -202,8 +202,13 @@ public class BattleAI : MonoBehaviour
     public void Attack()
     {
         animator.Play(AttackString);
-        //bool Crit = IsCrit(pirate.CritPercent);
-        int TotalDamage = AttackDamage + AddCrit();
+        int CritAdd = AddCrit();
+        int TotalDamage = AttackDamage + CritAdd;
+        if (CritAdd != 0)
+            PopupManager.instance.CreatePopup(transform.position, TotalDamage, true);
+        else
+            PopupManager.instance.CreatePopup(transform.position, TotalDamage, false);
+
         Target.Damage(TotalDamage);
         int AddCrit()
         {
@@ -249,8 +254,11 @@ public class BattleAI : MonoBehaviour
 
     public void Damage(int DamageDone)
     {
+        
+
         int ActualDamage = DamageDone / (1 + pirate.Armour / DamageDone);
         CurrentHealth -= ActualDamage;
+
         if (CurrentHealth < 1)
         {
             Death();
