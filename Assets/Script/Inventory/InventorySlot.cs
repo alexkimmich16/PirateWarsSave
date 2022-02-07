@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
 
 /* Sits on all InventorySlots. */
 
@@ -12,7 +10,7 @@ public class InventorySlot : MonoBehaviour
 
 	public AllInfo.GameEquipment gameEquipment;
 
-	private bool ActivePirate = false;
+	public bool ActivePirate = false;
 	public AllInfo.GamePirate pirate;
 
 	public void AddCharacter(AllInfo.GamePirate NewPirate)
@@ -76,28 +74,46 @@ public class InventorySlot : MonoBehaviour
 	// Use the item
 	public void UseItem()
 	{
-		if (gameEquipment != null)
+        if (SelectionMenu.instance != null)
         {
-			if (gameEquipment.equipmentInfo != null)
+			if (gameEquipment != null)
 			{
-                if (SelectionMenu.instance.CharacterHolders[0].Active == true)
-                {
-					Selected.instance.SetEquipment(gameEquipment);
-					Selected.instance.HelpAll();
+				if (gameEquipment.equipmentInfo != null)
+				{
+					if (SelectionMenu.instance.CharacterHolders[0].Active == true)
+					{
+						Selected.instance.SetEquipment(gameEquipment);
+						Selected.instance.HelpAll();
+					}
+					else
+					{
+						//Debug.LogError("No where to set eqiptment to");
+					}
 				}
-                else
-                {
-					//Debug.LogError("No where to set eqiptment to");
-                }
+			}
+			if (ActivePirate == true)
+			{
+				SelectionMenu.instance.SetCurrentPirate(pirate.NumInList);
+				ActivePirate = false;
+				Selected.instance.HelpAll();
 			}
 		}
-		if (ActivePirate == true)
-		{
-			SelectionMenu.instance.SetCurrentPirate(pirate.NumInList);
-			ActivePirate = false;
-			Selected.instance.HelpAll();
+		else if (FusionManager.instance != null)
+        {
+			FusionManager FM = FusionManager.instance;
+			if (gameEquipment != null)
+			{
+				if (gameEquipment.equipmentInfo != null)
+				{
+					//slot empty
+					FusionManager.instance.AddEquipment(gameEquipment);
+				}
+			}
+			if (ActivePirate == true)
+			{
+				FusionManager.instance.AddPirate(pirate.NumInList);
+				ActivePirate = false;
+			}
 		}
-
 	}
-
 }

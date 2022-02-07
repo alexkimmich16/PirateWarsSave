@@ -20,46 +20,118 @@ public class InventoryHelp : MonoBehaviour
 		{
 			slots[i].ClearSlot();
 		}
-		if(Character == true)
+        if (SelectionMenu.instance != null)
         {
-			//get all in inventory
-			List<AllInfo.GamePirate> InventoryPirates = new List<AllInfo.GamePirate>(AllInfo.instance.GamePirates);
-			for (int i = 0; i < SelectionMenu.instance.CharacterHolders.Count; i++)
+			if (Character == true)
 			{
-				if (SelectionMenu.instance.CharacterHolders[i].Active == true)
+				//get all in inventory
+				List<AllInfo.GamePirate> InventoryPirates = new List<AllInfo.GamePirate>(AllInfo.instance.GamePirates);
+				for (int i = 0; i < SelectionMenu.instance.CharacterHolders.Count; i++)
 				{
-					int Num = SelectionMenu.instance.CharacterHolders[i].NumInList;
-					InventoryPirates.Remove(AllInfo.instance.GamePirates[Num]);
+					if (SelectionMenu.instance.CharacterHolders[i].Active == true)
+					{
+						int Num = SelectionMenu.instance.CharacterHolders[i].NumInList;
+						InventoryPirates.Remove(AllInfo.instance.GamePirates[Num]);
+					}
+				}
+
+				for (int i = 0; i < slots.Length; i++)
+				{
+					//count is smaller than the amount of items in inventory
+					if (i < InventoryPirates.Count)
+					{
+						slots[i].AddCharacter(InventoryPirates[i]);
+					}
+					else
+					{
+						slots[i].ClearSlot();
+					}
+				}
+			}
+			else
+			{
+				for (int i = 0; i < slots.Length; i++)
+				{
+					//count is smaller than the amount of items in inventory
+					if (i < AllInfo.instance.GameEquipments.Count)
+					{
+						slots[i].AddEquipment(AllInfo.instance.GameEquipments[i]);
+					}
+					else
+					{
+						slots[i].ClearSlot();
+					}
+				}
+			}
+		}
+        else if(FusionManager.instance != null)
+        {
+			for (int i = 0; i < slots.Length; i++)
+			{
+				slots[i].ClearSlot();
+			}
+			FusionManager FM = FusionManager.instance;
+			
+			List<AllInfo.GamePirate> InventoryPirates = new List<AllInfo.GamePirate>(AllInfo.instance.GamePirates);
+			int InsideCount = 0;
+			if (FM.sort == SortType.Pirates || FM.sort == SortType.Both)
+            {
+				InsideCount = InventoryPirates.Count;
+				for (int i = 0; i < AllInfo.instance.GamePirates.Count; i++)
+				{
+					if (FM.Slots[0].PirateActive == true && FM.Slots[0].InventoryNum == i)
+                    {
+						InventoryPirates.Remove(AllInfo.instance.GamePirates[i]);
+						InsideCount -= 1;
+					}
+					else if(FM.Slots[1].PirateActive == true && FM.Slots[1].InventoryNum == i)
+                    {
+						InventoryPirates.Remove(AllInfo.instance.GamePirates[i]);
+						InsideCount -= 1;
+					}
+				}
+
+				for (int i = 0; i < slots.Length; i++)
+				{
+					//count is smaller than the amount of items in inventory
+					if (i < InventoryPirates.Count)
+					{
+						slots[i].AddCharacter(InventoryPirates[i]);
+						
+					}
+					else
+					{
+						slots[i].ClearSlot();
+					}
 				}
 			}
 
-			for (int i = 0; i < slots.Length; i++)
-			{
-				//count is smaller than the amount of items in inventory
-				if (i < InventoryPirates.Count)
-				{
-					slots[i].AddCharacter(InventoryPirates[i]);
+			List<AllInfo.GameEquipment> InventoryEquipments = new List<AllInfo.GameEquipment>(AllInfo.instance.GameEquipments);
+			if (FM.sort == SortType.Weapons || FM.sort == SortType.Both)
+            {
+				for (int i = 0; i < AllInfo.instance.GameEquipments.Count; i++)
+                {
+					if (FM.Slots[0].EquipmentActive == true && FM.Slots[0].Equipment == AllInfo.instance.GameEquipments[i] ||
+						FM.Slots[1].EquipmentActive == true && FM.Slots[1].Equipment == AllInfo.instance.GameEquipments[i])
+					{
+						InventoryEquipments.Remove(AllInfo.instance.GameEquipments[i]);
+					}
 				}
-				else
+
+				for (int i = 0; i < slots.Length; i++)
 				{
-					slots[i].ClearSlot();
-				}
-			}
-		}
-        else
-        {
-			for (int i = 0; i < slots.Length; i++)
-			{
-                //count is smaller than the amount of items in inventory
-				if (i < AllInfo.instance.GameEquipments.Count)
-				{
-					slots[i].AddEquipment(AllInfo.instance.GameEquipments[i]);
-				}
-				else
-				{
-					slots[i].ClearSlot();
+					//bool First = i < InventoryEquipments.Count + InsideCount;
+					//bool Second = i > InsideCount - 1;
+					//Debug.Log("Num: " + i + "  First: " + First + "  Second: " + Second);
+					//Debug.Log(InventoryEquipments[i - InsideCount].equipmentInfo.name);
+					if (i < InventoryEquipments.Count + InsideCount && i > InsideCount - 1)
+					{
+						
+						slots[i].AddEquipment(InventoryEquipments[i - InsideCount]);
+					}
 				}
 			}
-		}
+        }
+		
 	}
 }

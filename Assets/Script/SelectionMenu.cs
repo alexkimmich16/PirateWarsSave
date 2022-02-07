@@ -20,11 +20,14 @@ public class SelectionMenu : MonoBehaviour
         public string Name;
         public bool Active;
         public int NumInList;
-        public Sprite icon;
+        public GameObject Character;
     }
     public List<CharacterHolder> CharacterHolders;
+    public List<Transform> Positions;
+    public List<GameObject> Characters;
+
     public List<Image> Images;
-    
+
     public Image Character;
     public Image Inventory;
 
@@ -37,14 +40,13 @@ public class SelectionMenu : MonoBehaviour
     public void ButtonRemovePirate(int Num)
     {
         CharacterHolders[Num].Active = false;
-        Images[Num].enabled = false;
-        Images[Num].sprite = null;
+        Destroy(Characters[Num]);
         UpdatePirate();
     }
     public void SetCurrentPirate(int Listnum)
     {
         CharacterHolders[0].NumInList = Listnum;
-        CharacterHolders[0].icon = AllInfo.instance.GamePirates[Listnum].pirateBase.icon;
+        CharacterHolders[0].Character = AllInfo.instance.GamePirates[Listnum].pirateBase.Prefab;
         CharacterHolders[0].Active = true;
         UpdatePirate();
     }
@@ -58,15 +60,23 @@ public class SelectionMenu : MonoBehaviour
         Selected.instance.HelpAll();
         for (int i = 0; i < CharacterHolders.Count; i++)
         {
+            Destroy(Characters[i]);
+            Characters[i] = null;
             if (CharacterHolders[i].Active == true)
             {
-                Images[i].enabled = true;
-                Images[i].sprite = CharacterHolders[i].icon;
-            }
-            else
-            {
-                Images[i].enabled = false;
-                Images[i].sprite = null;
+                int Num = CharacterHolders[i].NumInList;
+                GameObject Spawned = Instantiate(AllInfo.instance.GamePirates[Num].pirateBase.Prefab, Positions[i].position, Positions[i].rotation);
+                Destroy(Spawned.GetComponent<BattleAI>());
+                Destroy(Spawned.GetComponent<Rigidbody>());
+                Destroy(Spawned.GetComponent<BattleAI>());
+                float Size = 9f;
+                Spawned.transform.rotation = Quaternion.Euler(0,180,0);
+                Spawned.transform.localScale = new Vector3(Size, Size, Size);
+                if (Spawned.GetComponent<KnifeControl>() != null)
+                {
+                    Destroy(Spawned.GetComponent<KnifeControl>());
+                }
+                Characters[i] = Spawned;
             }
         }
 
@@ -128,9 +138,9 @@ public class SelectionMenu : MonoBehaviour
             InventoryAssets[i].SetActive(false);
         }
 
-        for (int i = 0; i < Images.Count; i++)
+        for (int i = 0; i < Characters.Count; i++)
         {
-            Images[i].gameObject.GetComponent<Button>().interactable = true;
+            //Images[i].gameObject.GetComponent<Button>().interactable = true;
         }
     }
     public void InventoryActive()
@@ -145,12 +155,12 @@ public class SelectionMenu : MonoBehaviour
         {
             InventoryAssets[i].SetActive(true);
         }
-
+        /*
         for (int i = 0; i < Images.Count; i++)
         {
             Images[i].gameObject.GetComponent<Button>().interactable = false;
         }
-        
+        */
     }
 
     public void Back()

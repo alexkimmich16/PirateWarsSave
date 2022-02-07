@@ -51,7 +51,8 @@ public class CameraMovement : MonoBehaviour
             }
             else if (currentPlace == Interactable.Statue)
             {
-                //SceneLoader.instance.LoadScene("CharacterSelection");
+                
+                SceneLoader.instance.LoadScene("Fusion");
             }
         }
     }
