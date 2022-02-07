@@ -35,11 +35,10 @@ public class CameraMovement : MonoBehaviour
             Arrived = true;
             if (currentPlace == Interactable.Main)
             {
-                //SceneLoader.instance.LoadScene();
             }
             else if (currentPlace == Interactable.Shop)
             {
-                SceneLoader.instance.LoadScene("Shop");
+                Application.OpenURL("http://unity3d.com/");
             }
             else if (currentPlace == Interactable.Trident)
             {

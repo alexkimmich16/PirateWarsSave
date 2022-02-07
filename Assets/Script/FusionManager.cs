@@ -93,29 +93,6 @@ public class FusionManager : MonoBehaviour
         }
         helpUI.UpdateUI();
     }
-        /*
-        public void ReSort()
-        {
-            Equipments = AllInfo.instance.GameEquipments;
-            Pirates = AllInfo.instance.GamePirates;
-
-            if (sort == SortType.Both || sort == SortType.Weapons)
-            {
-                for (int i = 0; i < Equipments.Count; i++)
-                {
-
-                }
-            }
-
-            if (sort == SortType.Both || sort == SortType.Pirates)
-            {
-                for (int i = 0; i < Pirates.Count; i++)
-                {
-
-                }
-            }
-        }
-        */
     public void SetWeaponType()
     {
         if (sort == SortType.Both || sort == SortType.Weapons)

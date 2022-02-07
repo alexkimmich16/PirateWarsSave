@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -150,6 +150,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -158,7 +166,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -588,6 +596,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -596,7 +612,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -1005,6 +1021,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -1013,7 +1037,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -1143,6 +1167,9 @@ RectTransform:
   - {fileID: 1451384423}
   - {fileID: 750966256}
   - {fileID: 2128822537}
+  - {fileID: 1349084706}
+  - {fileID: 1469015967}
+  - {fileID: 387478970}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1246,6 +1273,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -1254,7 +1289,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -1291,6 +1326,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -1299,7 +1342,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -1307,6 +1350,84 @@ MonoBehaviour:
     gameEquipment: []
     rarity: 0
     NumInList: 0
+--- !u!1 &202836500
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 202836501}
+  - component: {fileID: 202836503}
+  - component: {fileID: 202836502}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &202836501
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202836500}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1349084706}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &202836502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202836500}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Button
+--- !u!222 &202836503
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202836500}
+  m_CullTransparentMesh: 0
 --- !u!1 &209359978 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1111927605866039029, guid: cea688923c7531648a99f27505edacf3,
@@ -2066,7 +2187,7 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -2076,17 +2197,17 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -2126,12 +2247,12 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 57.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -348.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -2268,6 +2389,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -2276,7 +2405,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -2680,6 +2809,136 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 387135036}
+  m_CullTransparentMesh: 0
+--- !u!1 &387478969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 387478970}
+  - component: {fileID: 387478973}
+  - component: {fileID: 387478972}
+  - component: {fileID: 387478971}
+  m_Layer: 5
+  m_Name: rightButtton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &387478970
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387478969}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 519903199}
+  m_Father: {fileID: 145615953}
+  m_RootOrder: 32
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -70.6, y: -32.7}
+  m_SizeDelta: {x: 70, y: 110}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &387478971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387478969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 387478972}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 145615955}
+        m_MethodName: ButtonRemovePirate
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &387478972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387478969}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &387478973
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387478969}
   m_CullTransparentMesh: 0
 --- !u!1 &399789705
 GameObject:
@@ -3184,7 +3443,7 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -3194,17 +3453,17 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -3244,12 +3503,12 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 272.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -130.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -3417,6 +3676,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -3425,7 +3692,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -3469,6 +3736,84 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &519903198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 519903199}
+  - component: {fileID: 519903201}
+  - component: {fileID: 519903200}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &519903199
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519903198}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 387478970}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &519903200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519903198}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Button
+--- !u!222 &519903201
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519903198}
+  m_CullTransparentMesh: 0
 --- !u!1001 &530607955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3514,7 +3859,7 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -3524,17 +3869,17 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -3574,12 +3919,12 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 129.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -202.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -3862,6 +4207,84 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cea688923c7531648a99f27505edacf3, type: 3}
+--- !u!1 &560968618
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 560968619}
+  - component: {fileID: 560968621}
+  - component: {fileID: 560968620}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &560968619
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560968618}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1469015967}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &560968620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560968618}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Button
+--- !u!222 &560968621
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560968618}
+  m_CullTransparentMesh: 0
 --- !u!1 &580100988 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1111927605866039029, guid: cea688923c7531648a99f27505edacf3,
@@ -4222,7 +4645,7 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -4232,17 +4655,17 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -4282,12 +4705,12 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 200.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -348.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -4381,6 +4804,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -4389,7 +4820,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -4687,6 +5118,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -4695,7 +5134,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -5257,6 +5696,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -5265,7 +5712,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -5996,6 +6443,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -6004,7 +6459,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -6100,7 +6555,7 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -6110,17 +6565,17 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -6160,12 +6615,12 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 200.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -202.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -6259,6 +6714,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -6267,7 +6730,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -6568,7 +7031,7 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -6578,17 +7041,17 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -6628,12 +7091,12 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 200.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -275.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -6727,6 +7190,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -6735,7 +7206,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -6920,6 +7391,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -6928,7 +7407,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -6965,6 +7444,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -6973,7 +7460,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -7010,6 +7497,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -7018,7 +7513,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -7055,6 +7550,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -7063,7 +7566,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -7361,6 +7864,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -7369,7 +7880,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -7406,6 +7917,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -7414,7 +7933,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -7451,6 +7970,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -7459,7 +7986,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -7496,6 +8023,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -7504,7 +8039,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -7616,6 +8151,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -7624,7 +8167,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -7669,7 +8212,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -7745,7 +8288,7 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -7755,17 +8298,17 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -7805,12 +8348,12 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 129.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -57.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -8297,7 +8840,7 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -8307,17 +8850,17 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -8357,12 +8900,12 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 272.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -202.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -8701,7 +9244,7 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -8711,17 +9254,17 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -8761,12 +9304,12 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 272.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -275.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -8903,6 +9446,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -8911,7 +9462,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -9007,7 +9558,7 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -9017,17 +9568,17 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -9067,12 +9618,12 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 129.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -130.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -9400,7 +9951,7 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -9410,17 +9961,17 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -9460,12 +10011,12 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 272.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -57.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -9530,6 +10081,136 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cea688923c7531648a99f27505edacf3, type: 3}
+--- !u!1 &1349084705
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1349084706}
+  - component: {fileID: 1349084709}
+  - component: {fileID: 1349084708}
+  - component: {fileID: 1349084707}
+  m_Layer: 5
+  m_Name: FrontButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1349084706
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349084705}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 202836501}
+  m_Father: {fileID: 145615953}
+  m_RootOrder: 30
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -206, y: -87}
+  m_SizeDelta: {x: 70, y: 110}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1349084707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349084705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1349084708}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 145615955}
+        m_MethodName: ButtonRemovePirate
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1349084708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349084705}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1349084709
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349084705}
+  m_CullTransparentMesh: 0
 --- !u!1 &1358190662
 GameObject:
   m_ObjectHideFlags: 0
@@ -9648,7 +10329,7 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -9658,17 +10339,17 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -9708,12 +10389,12 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 129.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -275.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -9807,6 +10488,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -9815,7 +10504,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -10055,6 +10744,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -10063,7 +10760,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -10116,7 +10813,7 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -10126,17 +10823,17 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -10176,12 +10873,12 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 57.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -57.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -10275,6 +10972,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -10283,7 +10988,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -10493,6 +11198,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -10501,7 +11214,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -10932,7 +11645,7 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -10942,17 +11655,17 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -10992,12 +11705,12 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 57.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -130.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -11062,6 +11775,136 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cea688923c7531648a99f27505edacf3, type: 3}
+--- !u!1 &1469015966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1469015967}
+  - component: {fileID: 1469015970}
+  - component: {fileID: 1469015969}
+  - component: {fileID: 1469015968}
+  m_Layer: 5
+  m_Name: LeftButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1469015967
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469015966}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 560968619}
+  m_Father: {fileID: 145615953}
+  m_RootOrder: 31
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -326, y: -30}
+  m_SizeDelta: {x: 70, y: 110}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1469015968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469015966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1469015969}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 145615955}
+        m_MethodName: ButtonRemovePirate
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1469015969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469015966}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1469015970
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469015966}
+  m_CullTransparentMesh: 0
 --- !u!1 &1479808163 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6956415753334596541, guid: cea688923c7531648a99f27505edacf3,
@@ -11091,6 +11934,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -11099,7 +11950,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -11152,7 +12003,7 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -11162,17 +12013,17 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -11212,12 +12063,12 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 57.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -275.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -11861,7 +12712,7 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -11871,17 +12722,17 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -11921,12 +12772,12 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 200.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -57.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -12577,6 +13428,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -12585,7 +13444,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -12622,6 +13481,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -12630,7 +13497,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -12842,6 +13709,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -12850,7 +13725,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -12946,7 +13821,7 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -12956,17 +13831,17 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -13006,12 +13881,12 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 200.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -130.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -13105,6 +13980,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -13113,7 +13996,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -13150,6 +14033,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -13158,7 +14049,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -13428,6 +14319,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -13436,7 +14335,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -13688,6 +14587,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -13696,7 +14603,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -14037,7 +14944,7 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -14047,17 +14954,17 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -14097,12 +15004,12 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 272.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -348.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -14212,7 +15119,7 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -14222,17 +15129,17 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -14272,12 +15179,12 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 57.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -202.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -15091,6 +15998,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -15099,7 +16014,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -15130,6 +16045,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -15138,7 +16061,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -15218,6 +16141,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -15226,7 +16157,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -15279,7 +16210,7 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -15289,17 +16220,17 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 115
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -15339,12 +16270,12 @@ PrefabInstance:
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 129.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -348.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891925586012151872, guid: cea688923c7531648a99f27505edacf3,
         type: 3}
@@ -15438,6 +16369,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -15446,7 +16385,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -15483,6 +16422,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -15491,7 +16438,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0

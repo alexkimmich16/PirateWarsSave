@@ -40,7 +40,7 @@ public class AllInfo : MonoBehaviour
         public int Armour;
         public int CritPercent;
         public int CritDamage;
-        public int IntEueCt;
+        public int Intellect;
         public int Dexterity;
 
         public int Rank;
@@ -57,7 +57,25 @@ public class AllInfo : MonoBehaviour
     {
         public EquipmentInfo equipmentInfo;
         public Rarity rarity;
-        //public int Num;
+        public int Health;
+        public int Damage;
+        public int Armour;
+        public int CritPercent;
+        public int CritDamage;
+        public int Intellect;
+        public int Dexterity;
+    }
+    [System.Serializable]
+    public class StatMultiplier
+    {
+        public string Name;
+        public float Health;
+        public float Damage;
+        public float Armour;
+        public float CritPercent;
+        public float CritDamage;
+        public float Intellect;
+        public float Dexterity;
     }
     #endregion
     [Header("Currency")]
@@ -72,6 +90,7 @@ public class AllInfo : MonoBehaviour
     [Header("GameData")]
     public List<GamePirate> GamePirates;
     public List<GameEquipment> GameEquipments;
+    public List<StatMultiplier> StatMultipliers;
 
     public void RecieveCurrency(int gold, int diamonds, int arg)
     {
@@ -79,13 +98,11 @@ public class AllInfo : MonoBehaviour
         Diamonds = diamonds;
         ARG = arg;
     }
-
     public void RecieveGameData(List<GamePirate> gamePirates, List<GameEquipment> gameEquipments)
     {
         GamePirates = gamePirates;
         GameEquipments = gameEquipments;
     }
-
     private void Start()
     {
         for (int i = 0; i < GamePirates.Count; i++)
@@ -93,8 +110,6 @@ public class AllInfo : MonoBehaviour
             GamePirates[i].NumInList = i;
         }
     }
-
-
     //applies to all 4 data types for simplicities sake
     /*
     public float ElementBonus(GamePirate Attack, GamePirate Defense)

@@ -43,19 +43,8 @@ public class BattleAI : MonoBehaviour
     private void Start()
     {
         CurrentHealth = MaxHealth;
-        SetStats();
         BC = BattleController.instance;
     }
-    public void SetStats()
-    {
-        //health
-        //max health
-        //speed
-        //attack
-        //damage
-        //armor
-    }
-
     public void AttackCount()
     {
         AttackTimer += Time.deltaTime;
@@ -71,7 +60,6 @@ public class BattleAI : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * TurnRotation);
     }
-
     public Vector3 FindDistancePoint(Vector3 center, float range)
     {
         for (int i = 0; i < 500; i++)
@@ -221,15 +209,36 @@ public class BattleAI : MonoBehaviour
     }
     public void DoDamage()
     {
-        int CritAdd = AddCrit();
-        int TotalDamage = AttackDamage + CritAdd;
+        float CritAdd = AddCrit() / 100;
+        float CritDamage = AttackDamage * CritAdd;
+        float TrueDamageFloat = (CritDamage - ArmorReduce(CritDamage)) * Dodge();
+        int TrueDamage = (int)TrueDamageFloat;
+
         if (CritAdd != 0)
-            PopupManager.instance.CreatePopup(Target.transform.position, TotalDamage, true);
+            PopupManager.instance.CreatePopup(Target.transform.position, TrueDamage, true);
         else
-            PopupManager.instance.CreatePopup(Target.transform.position, TotalDamage, false);
-
-        Target.Damage(TotalDamage);
-
+            PopupManager.instance.CreatePopup(Target.transform.position, TrueDamage, false);
+        Target.Damage(TrueDamage);
+        int Dodge()
+        {
+            int Roll = Random.Range(0, 100);
+            if (Roll < Target.pirate.Dexterity)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        int ArmorReduce(float Damage)
+        {
+            int Armor = Target.pirate.Armour;
+            float ArmorMultiplier = Armor / 100;
+            float InverseDamage = 1 - ArmorMultiplier;
+            float RealDamage = Damage * InverseDamage;
+            return (int)RealDamage;
+        }
         int AddCrit()
         {
             int Roll = Random.Range(0, 100);
@@ -265,7 +274,6 @@ public class BattleAI : MonoBehaviour
 
         BC.CheckResults();
     }
-
     public bool Melee(CharacterClass Class)
     {
         if (Class == CharacterClass.Captain || Class == CharacterClass.MeleeDPS || Class == CharacterClass.QuarterMaster)
@@ -277,14 +285,9 @@ public class BattleAI : MonoBehaviour
             return false;
         }
     }
-
     public void Damage(int DamageDone)
     {
-        
-
-        int ActualDamage = DamageDone / (1 + pirate.Armour / DamageDone);
-        CurrentHealth -= ActualDamage;
-
+        CurrentHealth -= DamageDone;
         if (CurrentHealth < 1)
         {
             Death();
