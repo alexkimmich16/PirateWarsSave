@@ -51,6 +51,12 @@ public class AllInfo : MonoBehaviour
         public Rarity rarity;
 
         public int NumInList;
+
+        public void AddExperience(int ExperienceAdd)
+        {
+            Experience += ExperienceAdd;
+            //if crosses threshold
+        }
     }
     [System.Serializable]
     public class GameEquipment
@@ -64,6 +70,15 @@ public class AllInfo : MonoBehaviour
         public int CritDamage;
         public int Intellect;
         public int Dexterity;
+
+        public int Rank;
+        public int Level;
+        public float Experience;
+        public void AddExperience(int ExperienceAdd)
+        {
+            Experience += ExperienceAdd;
+            //if crosses threshold
+        }
     }
     [System.Serializable]
     public class StatMultiplier
@@ -109,6 +124,30 @@ public class AllInfo : MonoBehaviour
         {
             GamePirates[i].NumInList = i;
         }
+    }
+
+    public int EquipmentNum(GameEquipment Equipment)
+    {
+        for (int i = 0; i < GameEquipments.Count; i++)
+        {
+            if (GameEquipments[i] == Equipment)
+            {
+                return i;
+            }
+        }
+        return 1000;
+    }
+
+    public int PirateNum(GamePirate Pirate)
+    {
+        for (int i = 0; i < GamePirates.Count; i++)
+        {
+            if (GamePirates[i] == Pirate)
+            {
+                return i;
+            }
+        }
+        return 1000;
     }
     //applies to all 4 data types for simplicities sake
     /*

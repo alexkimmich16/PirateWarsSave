@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -279,6 +279,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -287,7 +295,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -623,6 +631,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -631,7 +647,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -858,6 +874,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -866,7 +890,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -1126,6 +1150,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -1134,7 +1166,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -1334,7 +1366,7 @@ GameObject:
   - component: {fileID: 361048713}
   - component: {fileID: 361048715}
   m_Layer: 5
-  m_Name: yesButton
+  m_Name: waitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1437,7 +1469,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1968608248}
-        m_MethodName: Proceed
+        m_MethodName: DontProceed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1558,6 +1590,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -1566,7 +1606,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -1695,7 +1735,7 @@ GameObject:
   - component: {fileID: 472472111}
   - component: {fileID: 472472113}
   m_Layer: 5
-  m_Name: waitButton
+  m_Name: 'yesButton '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1798,7 +1838,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1968608248}
-        m_MethodName: DontProceed
+        m_MethodName: Proceed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2124,6 +2164,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -2132,7 +2180,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -2321,6 +2369,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -2329,7 +2385,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -2740,6 +2796,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -2748,7 +2812,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -3037,6 +3101,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -3045,7 +3117,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -3490,6 +3562,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -3498,7 +3578,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -4097,6 +4177,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -4105,7 +4193,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -4459,6 +4547,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -4467,7 +4563,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -4694,6 +4790,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -4702,7 +4806,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -4855,6 +4959,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -4863,7 +4975,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -5144,6 +5256,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -5152,7 +5272,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -5399,6 +5519,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -5407,7 +5535,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -5834,6 +5962,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -5842,7 +5978,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -6308,6 +6444,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -6316,7 +6460,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -7203,6 +7347,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -7211,7 +7363,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -7471,6 +7623,14 @@ MonoBehaviour:
   gameEquipment:
     equipmentInfo: {fileID: 0}
     rarity: 0
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0
+  ActivePirate: 0
   pirate:
     Name: 
     pirateBase: {fileID: 0}
@@ -7479,7 +7639,7 @@ MonoBehaviour:
     Armour: 0
     CritPercent: 0
     CritDamage: 0
-    IntEueCt: 0
+    Intellect: 0
     Dexterity: 0
     Rank: 0
     Level: 0
@@ -7738,6 +7898,13 @@ MonoBehaviour:
     Equipment:
       equipmentInfo: {fileID: 0}
       rarity: 0
+      Health: 0
+      Damage: 0
+      Armour: 0
+      CritPercent: 0
+      CritDamage: 0
+      Intellect: 0
+      Dexterity: 0
     image: {fileID: 1855334259}
   - SlotName: Sacrifice
     InventoryNum: 0
@@ -7746,6 +7913,13 @@ MonoBehaviour:
     Equipment:
       equipmentInfo: {fileID: 0}
       rarity: 0
+      Health: 0
+      Damage: 0
+      Armour: 0
+      CritPercent: 0
+      CritDamage: 0
+      Intellect: 0
+      Dexterity: 0
     image: {fileID: 1735785136}
   helpUI: {fileID: 550445028}
 --- !u!114 &1968608249

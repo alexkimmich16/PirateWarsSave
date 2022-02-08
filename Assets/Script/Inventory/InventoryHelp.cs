@@ -7,7 +7,9 @@ public class InventoryHelp : MonoBehaviour
 	public InventorySlot[] slots;
 	public bool Character;
 
-
+	/// <summary>
+	/// slot being cleared randomly
+	/// </summary>
 	void Start()
     {
 		UpdateUI();

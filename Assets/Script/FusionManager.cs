@@ -39,8 +39,7 @@ public class FusionManager : MonoBehaviour
     public GameObject AreYouSureMenu;
     public GameObject BaseMenu;
     public SortType sort;
-    //public List<AllInfo.GameEquipment> Equipments;
-    //public List<AllInfo.GamePirate> Pirates;
+    
     public List<FuseSlots> Slots;
 
     public InventoryHelp helpUI;
@@ -71,7 +70,7 @@ public class FusionManager : MonoBehaviour
             Slots[1].image.enabled = true;
             Slots[1].image.sprite = AllInfo.instance.GamePirates[InventoryNum].pirateBase.icon;
         }
-        Debug.Log("pirate");
+        //Debug.Log("pirate");
         helpUI.UpdateUI();
     }
     public void AddEquipment(AllInfo.GameEquipment NewEquiptment)
@@ -122,15 +121,72 @@ public class FusionManager : MonoBehaviour
         AreYouSureMenu.SetActive(true);
         BaseMenu.SetActive(false);
     }
-
     public void Proceed()
     {
-        Fuse();
+        List<AllInfo.GamePirate> Pirates = new List<AllInfo.GamePirate>();
+        Pirates.Add(new AllInfo.GamePirate());
+        Pirates.Add(new AllInfo.GamePirate());
+        List<AllInfo.GameEquipment> Equipment = new List<AllInfo.GameEquipment>();
+        Equipment.Add(new AllInfo.GameEquipment());
+        Equipment.Add(new AllInfo.GameEquipment());
+
+        if (Slots[0].PirateActive == true)
+            Pirates[0] = AllInfo.instance.GamePirates[Slots[0].InventoryNum];
+        else if (Slots[0].EquipmentActive == true)
+            Equipment[0] = Slots[0].Equipment;
+        else
+            return;
+
+        if (Slots[1].PirateActive == true)
+            Pirates[1] = AllInfo.instance.GamePirates[Slots[1].InventoryNum];
+        else if (Slots[1].EquipmentActive == true)
+            Equipment[1] = Slots[1].Equipment;
+        else
+            return;
+
+        Fuse(Pirates, Equipment);
     }
 
-    public void Fuse()
+    public void Fuse(List<AllInfo.GamePirate> Pirates, List<AllInfo.GameEquipment> Equipment)
     {
-
+        float RankMultiplier = 100f;
+        float LevelMultiplier = 10f;
+        if (Pirates[0].pirateBase != null)
+        {
+            int FirstPirateNum = AllInfo.instance.PirateNum(Pirates[0]);
+            if (Pirates[1].pirateBase != null)
+            {
+                float IncreaseFloat = (Pirates[1].Level * LevelMultiplier) + (RankMultiplier * Pirates[1].Rank);
+                int Increase = (int)IncreaseFloat;
+                AllInfo.instance.GamePirates[FirstPirateNum].AddExperience(Increase);
+                AllInfo.instance.GamePirates.Remove(AllInfo.instance.GamePirates[1]);
+            }
+            else if (Equipment[1].equipmentInfo != null)
+            {
+                float IncreaseFloat = (Equipment[1].Level * LevelMultiplier) + RankMultiplier * Equipment[1].Rank;
+                int Increase = (int)IncreaseFloat;
+                AllInfo.instance.GamePirates[FirstPirateNum].AddExperience(Increase);
+                AllInfo.instance.GameEquipments.Remove(AllInfo.instance.GameEquipments[1]);
+            }
+        }
+        else if (Equipment[0].equipmentInfo != null)
+        {
+            int FirstEquipmentNum = AllInfo.instance.EquipmentNum(Equipment[0]);
+            if (Pirates[1].pirateBase != null)
+            {
+                float IncreaseFloat = (Pirates[1].Level * LevelMultiplier) + (RankMultiplier * Pirates[1].Rank);
+                int Increase = (int)IncreaseFloat;
+                AllInfo.instance.GameEquipments[FirstEquipmentNum].AddExperience(Increase);
+                AllInfo.instance.GamePirates.Remove(AllInfo.instance.GamePirates[1]);
+            }
+            else if (Equipment[1].equipmentInfo != null)
+            {
+                float IncreaseFloat = (Equipment[1].Level * LevelMultiplier) + RankMultiplier * Equipment[1].Rank;
+                int Increase = (int)IncreaseFloat;
+                AllInfo.instance.GameEquipments[FirstEquipmentNum].AddExperience(Increase);
+                AllInfo.instance.GameEquipments.Remove(AllInfo.instance.GameEquipments[1]);
+            }
+        }
     }
     public void DontProceed()
     {
