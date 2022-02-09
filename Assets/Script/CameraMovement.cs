@@ -40,7 +40,7 @@ public class CameraMovement : MonoBehaviour
                 }
                 else if (currentPlace == Interactable.Shop)
                 {
-                    Application.OpenURL("http://unity3d.com/");
+                    //Application.OpenURL("http://unity3d.com/");
                 }
                 else if (currentPlace == Interactable.Trident)
                 {
@@ -52,7 +52,6 @@ public class CameraMovement : MonoBehaviour
                 }
                 else if (currentPlace == Interactable.Statue)
                 {
-
                     SceneLoader.instance.LoadScene("Fusion");
                 }
             }

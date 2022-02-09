@@ -53,7 +53,6 @@ public class FusionManager : MonoBehaviour
         Slots[Slot].image.enabled = false;
         helpUI.UpdateUI();
     }
-
     public void AddPirate(int InventoryNum)
     {
         if (Slots[0].Full() == false)
@@ -157,7 +156,6 @@ public class FusionManager : MonoBehaviour
 
         SceneLoader.instance.LoadScene("Upgraded");
     }
-
     public void Fuse(List<AllInfo.GamePirate> Pirates, List<AllInfo.GameEquipment> Equipment)
     {
         float RankMultiplier = 100f;

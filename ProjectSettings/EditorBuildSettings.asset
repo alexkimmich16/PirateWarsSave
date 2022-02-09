@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fusion.unity
     guid: 78c77e8092a45d64daaec5ffc155ecfb
+  - enabled: 1
+    path: Assets/Scenes/Trident.unity
+    guid: 72ccfc4808bf0fc46a10dbdedf34bc42
   m_configObjects: {}

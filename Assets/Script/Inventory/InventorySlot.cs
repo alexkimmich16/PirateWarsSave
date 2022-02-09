@@ -112,5 +112,19 @@ public class InventorySlot : MonoBehaviour
 				FusionManager.instance.AddPirate(pirate.NumInList);
 			}
 		}
+		else if (UpgradeManager.instance != null)
+		{
+			if (gameEquipment != null)
+			{
+				if (gameEquipment.equipmentInfo != null)
+				{
+					UpgradeManager.instance.AddEquipment(gameEquipment);
+				}
+			}
+			if (ActivePirate == true)
+			{
+				UpgradeManager.instance.AddPirate(pirate.NumInList);
+			}
+		}
 	}
 }

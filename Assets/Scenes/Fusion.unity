@@ -286,6 +286,9 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
+    Rank: 0
+    Level: 0
+    Experience: 0
   ActivePirate: 0
   pirate:
     Name: 
@@ -638,6 +641,9 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
+    Rank: 0
+    Level: 0
+    Experience: 0
   ActivePirate: 0
   pirate:
     Name: 
@@ -881,6 +887,9 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
+    Rank: 0
+    Level: 0
+    Experience: 0
   ActivePirate: 0
   pirate:
     Name: 
@@ -1157,6 +1166,9 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
+    Rank: 0
+    Level: 0
+    Experience: 0
   ActivePirate: 0
   pirate:
     Name: 
@@ -1597,6 +1609,9 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
+    Rank: 0
+    Level: 0
+    Experience: 0
   ActivePirate: 0
   pirate:
     Name: 
@@ -2171,6 +2186,9 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
+    Rank: 0
+    Level: 0
+    Experience: 0
   ActivePirate: 0
   pirate:
     Name: 
@@ -2376,6 +2394,9 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
+    Rank: 0
+    Level: 0
+    Experience: 0
   ActivePirate: 0
   pirate:
     Name: 
@@ -2803,6 +2824,9 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
+    Rank: 0
+    Level: 0
+    Experience: 0
   ActivePirate: 0
   pirate:
     Name: 
@@ -3108,6 +3132,9 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
+    Rank: 0
+    Level: 0
+    Experience: 0
   ActivePirate: 0
   pirate:
     Name: 
@@ -3569,6 +3596,9 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
+    Rank: 0
+    Level: 0
+    Experience: 0
   ActivePirate: 0
   pirate:
     Name: 
@@ -4184,6 +4214,9 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
+    Rank: 0
+    Level: 0
+    Experience: 0
   ActivePirate: 0
   pirate:
     Name: 
@@ -4554,6 +4587,9 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
+    Rank: 0
+    Level: 0
+    Experience: 0
   ActivePirate: 0
   pirate:
     Name: 
@@ -4797,6 +4833,9 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
+    Rank: 0
+    Level: 0
+    Experience: 0
   ActivePirate: 0
   pirate:
     Name: 
@@ -4966,6 +5005,9 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
+    Rank: 0
+    Level: 0
+    Experience: 0
   ActivePirate: 0
   pirate:
     Name: 
@@ -5263,6 +5305,9 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
+    Rank: 0
+    Level: 0
+    Experience: 0
   ActivePirate: 0
   pirate:
     Name: 
@@ -5526,6 +5571,9 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
+    Rank: 0
+    Level: 0
+    Experience: 0
   ActivePirate: 0
   pirate:
     Name: 
@@ -5969,6 +6017,9 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
+    Rank: 0
+    Level: 0
+    Experience: 0
   ActivePirate: 0
   pirate:
     Name: 
@@ -6451,6 +6502,9 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
+    Rank: 0
+    Level: 0
+    Experience: 0
   ActivePirate: 0
   pirate:
     Name: 
@@ -7354,6 +7408,9 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
+    Rank: 0
+    Level: 0
+    Experience: 0
   ActivePirate: 0
   pirate:
     Name: 
@@ -7630,6 +7687,9 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
+    Rank: 0
+    Level: 0
+    Experience: 0
   ActivePirate: 0
   pirate:
     Name: 
@@ -7905,6 +7965,9 @@ MonoBehaviour:
       CritDamage: 0
       Intellect: 0
       Dexterity: 0
+      Rank: 0
+      Level: 0
+      Experience: 0
     image: {fileID: 1855334259}
   - SlotName: Sacrifice
     InventoryNum: 0
@@ -7920,6 +7983,9 @@ MonoBehaviour:
       CritDamage: 0
       Intellect: 0
       Dexterity: 0
+      Rank: 0
+      Level: 0
+      Experience: 0
     image: {fileID: 1735785136}
   helpUI: {fileID: 550445028}
 --- !u!114 &1968608249

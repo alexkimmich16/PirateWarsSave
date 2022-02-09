@@ -28,7 +28,7 @@ public class AllInfo : MonoBehaviour
 
     #region Classes
     //[System.Serializable]
-
+    
     [System.Serializable]
     public class GamePirate
     {
@@ -65,14 +65,42 @@ public class AllInfo : MonoBehaviour
         {
             if (Experience >= AllInfo.instance.LevelCaps[Rank].Max[Level])
             {
+                
                 Experience -= AllInfo.instance.LevelCaps[Rank].Max[Level];
                 Level += 1;
                 if (Level > AllInfo.instance.LevelCaps[Rank].Max.Count - 1)
                 {
                     Rank += 1;
                     Level = 0;
+                    Rankup();
+                }
+                else
+                {
+                    Levelup();
                 }
             }
+        }
+        public void Levelup()
+        {
+            float Multiplier = 100f;
+            Health += (int)Multiplier;
+            Damage += (int)Multiplier;
+            Armour += (int)Multiplier;
+            CritPercent += (int)Multiplier;
+            CritDamage += (int)Multiplier;
+            Intellect += (int)Multiplier;
+            Dexterity += (int)Multiplier;
+        }
+        public void Rankup()
+        {
+            float Multiplier = 2f;
+            Health += (int)Multiplier;
+            Damage += (int)Multiplier;
+            Armour += (int)Multiplier;
+            CritPercent += (int)Multiplier;
+            CritDamage += (int)Multiplier;
+            Intellect += (int)Multiplier;
+            Dexterity += (int)Multiplier;
         }
     }
     [System.Serializable]
@@ -101,13 +129,13 @@ public class AllInfo : MonoBehaviour
     public class StatMultiplier
     {
         public string Name;
-        public float Health;
-        public float Damage;
-        public float Armour;
-        public float CritPercent;
-        public float CritDamage;
-        public float Intellect;
-        public float Dexterity;
+        public int Health;
+        public int Damage;
+        public int Armour;
+        public int CritPercent;
+        public int CritDamage;
+        public int Intellect;
+        public int Dexterity;
     }
 
     [System.Serializable]
@@ -134,8 +162,6 @@ public class AllInfo : MonoBehaviour
 
     [Header("LevelData")]
     public List<Rank> LevelCaps;
-
-
     public void AddToCharacter(int Num)
     {
         GamePirates[0].AddExperience(Num);

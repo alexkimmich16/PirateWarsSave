@@ -122,10 +122,6 @@ public class InventoryHelp : MonoBehaviour
 
 				for (int i = 0; i < slots.Length; i++)
 				{
-					//bool First = i < InventoryEquipments.Count + InsideCount;
-					//bool Second = i > InsideCount - 1;
-					//Debug.Log("Num: " + i + "  First: " + First + "  Second: " + Second);
-					//Debug.Log(InventoryEquipments[i - InsideCount].equipmentInfo.name);
 					if (i < InventoryEquipments.Count + InsideCount && i > InsideCount - 1)
 					{
 						
@@ -134,6 +130,52 @@ public class InventoryHelp : MonoBehaviour
 				}
 			}
         }
-		
+		else if (UpgradeManager.instance != null)
+        {
+			for (int i = 0; i < slots.Length; i++)
+			{
+				slots[i].ClearSlot();
+			}
+			UpgradeManager UM = UpgradeManager.instance;
+
+			List<AllInfo.GamePirate> InventoryPirates = new List<AllInfo.GamePirate>(AllInfo.instance.GamePirates);
+			int InsideCount = 0;
+			InsideCount = InventoryPirates.Count;
+			for (int i = 0; i < AllInfo.instance.GamePirates.Count; i++)
+			{
+				if (UM.pirateActive == true && UM.pirateNum == i)
+				{
+					InventoryPirates.Remove(AllInfo.instance.GamePirates[i]);
+					InsideCount -= 1;
+				}
+			}
+			for (int i = 0; i < slots.Length; i++)
+			{
+				//count is smaller than the amount of items in inventory
+				if (i < InventoryPirates.Count)
+					slots[i].AddCharacter(InventoryPirates[i]);
+				else
+					slots[i].ClearSlot();
+			}
+
+			List<AllInfo.GameEquipment> InventoryEquipments = new List<AllInfo.GameEquipment>(AllInfo.instance.GameEquipments);
+			for (int i = 0; i < AllInfo.instance.GameEquipments.Count; i++)
+			{
+				if (UM.equipmentActive == true && UM.equipment == AllInfo.instance.GameEquipments[i])
+				{
+					InventoryEquipments.Remove(AllInfo.instance.GameEquipments[i]);
+				}
+			}
+
+			for (int i = 0; i < slots.Length; i++)
+			{
+				if (i < InventoryEquipments.Count + InsideCount && i > InsideCount - 1)
+				{
+					slots[i].AddEquipment(InventoryEquipments[i - InsideCount]);
+				}
+			}
+		}
+
+
 	}
 }

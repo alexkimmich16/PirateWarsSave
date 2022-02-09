@@ -47,6 +47,10 @@ public class SceneLoader : MonoBehaviour
     public AllInfo.StatMultiplier Before;
     public AllInfo.StatMultiplier Added;
 
+    //trident
+    public bool DisplayCharacter;
+    public int DisplayNum;
+    
     private void Update()
     {
         Timer += Time.deltaTime;
@@ -72,6 +76,21 @@ public class SceneLoader : MonoBehaviour
         }
         Debug.LogError("could not find scene of name:" + text);
         
+    }
+    public void LoadSceneWithoutFade(string text)
+    {
+        for (int i = 0; i < Scenes.Count; i++)
+        {
+            if (text == Scenes[i].Name)
+            {
+                Current += 1;
+                DontDestroyOnLoad(gameObject);
+                SceneManager.LoadScene(text);
+                return;
+            }
+        }
+        Debug.LogError("could not find scene of name:" + text);
+
     }
     IEnumerator LoadTime(SceneStats sceneStats)
     {
