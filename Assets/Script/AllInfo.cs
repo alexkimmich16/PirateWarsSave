@@ -55,7 +55,24 @@ public class AllInfo : MonoBehaviour
         public void AddExperience(int ExperienceAdd)
         {
             Experience += ExperienceAdd;
+            CheckExperience();
+            
+            
+            
             //if crosses threshold
+        }
+        public void CheckExperience()
+        {
+            if (Experience >= AllInfo.instance.LevelCaps[Rank].Max[Level])
+            {
+                Experience -= AllInfo.instance.LevelCaps[Rank].Max[Level];
+                Level += 1;
+                if (Level > AllInfo.instance.LevelCaps[Rank].Max.Count - 1)
+                {
+                    Rank += 1;
+                    Level = 0;
+                }
+            }
         }
     }
     [System.Serializable]
@@ -92,6 +109,14 @@ public class AllInfo : MonoBehaviour
         public float Intellect;
         public float Dexterity;
     }
+
+    [System.Serializable]
+    public class Rank
+    {
+        public string RankName;
+        public int RankMultiplier;
+        public List<int> Max;
+    }
     #endregion
     [Header("Currency")]
     public int Gold;
@@ -106,6 +131,15 @@ public class AllInfo : MonoBehaviour
     public List<GamePirate> GamePirates;
     public List<GameEquipment> GameEquipments;
     public List<StatMultiplier> StatMultipliers;
+
+    [Header("LevelData")]
+    public List<Rank> LevelCaps;
+
+
+    public void AddToCharacter(int Num)
+    {
+        GamePirates[0].AddExperience(Num);
+    }
 
     public void RecieveCurrency(int gold, int diamonds, int arg)
     {
@@ -125,7 +159,6 @@ public class AllInfo : MonoBehaviour
             GamePirates[i].NumInList = i;
         }
     }
-
     public int EquipmentNum(GameEquipment Equipment)
     {
         for (int i = 0; i < GameEquipments.Count; i++)
@@ -137,7 +170,6 @@ public class AllInfo : MonoBehaviour
         }
         return 1000;
     }
-
     public int PirateNum(GamePirate Pirate)
     {
         for (int i = 0; i < GamePirates.Count; i++)
@@ -149,6 +181,8 @@ public class AllInfo : MonoBehaviour
         }
         return 1000;
     }
+
+
     //applies to all 4 data types for simplicities sake
     /*
     public float ElementBonus(GamePirate Attack, GamePirate Defense)
@@ -167,4 +201,6 @@ public class AllInfo : MonoBehaviour
             return 0f;
     }
     */
+
+
 }

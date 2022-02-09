@@ -124,7 +124,6 @@ public class SelectionMenu : MonoBehaviour
         }
         UpdatePirate();
     }
-
     public void CharacterActive()
     {
         Character.sprite = Active;
@@ -162,12 +161,10 @@ public class SelectionMenu : MonoBehaviour
         }
         */
     }
-
     public void Back()
     {
         SceneLoader.instance.LoadScene("Main");
     }
-
     public void Next()
     {
         List<AllInfo.GamePirate> pirates = new List<AllInfo.GamePirate>();

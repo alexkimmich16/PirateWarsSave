@@ -18,21 +18,33 @@ public class CharacterRevealControl : MonoBehaviour
     }
 
     public Transform Spawn;
-    public int CharacterNum;
+
+    public Image iconDisplay;
     private void Start()
     {
-        UpdateSliders(pirate);
-        GameObject Spawned = Instantiate(AllInfo.instance.GamePirates[CharacterNum].pirateBase.Prefab, Spawn.position, Spawn.rotation);
-        Destroy(Spawned.GetComponent<BattleAI>());
-        Destroy(Spawned.GetComponent<Rigidbody>());
-        Destroy(Spawned.GetComponent<BattleAI>());
-        float Size = 9f;
-        Spawned.transform.rotation = Quaternion.Euler(0, 156f, 0);
-        Spawned.transform.localScale = new Vector3(Size, Size, Size);
-        if (Spawned.GetComponent<KnifeControl>() != null)
+        int Num = SceneLoader.instance.TypeNumInList;
+        if (SceneLoader.instance.IsPirate == true)
         {
-            Destroy(Spawned.GetComponent<KnifeControl>());
+            UpdateSliders(pirate);
+            GameObject Spawned = Instantiate(AllInfo.instance.GamePirates[Num].pirateBase.Prefab, Spawn.position, Spawn.rotation);
+            Destroy(Spawned.GetComponent<BattleAI>());
+            Destroy(Spawned.GetComponent<Rigidbody>());
+            Destroy(Spawned.GetComponent<BattleAI>());
+            float Size = 9f;
+            Spawned.transform.rotation = Quaternion.Euler(0, 156f, 0);
+            Spawned.transform.localScale = new Vector3(Size, Size, Size);
+            if (Spawned.GetComponent<KnifeControl>() != null)
+            {
+                Destroy(Spawned.GetComponent<KnifeControl>());
+            }
         }
+        else if (SceneLoader.instance.IsPirate == false)
+        {
+            iconDisplay.enabled = true;
+            iconDisplay.sprite = AllInfo.instance.GameEquipments[Num].equipmentInfo.icon;
+        }
+        
+        
     }
     public void UpdateSliders(AllInfo.GamePirate pirateInfo)
     {

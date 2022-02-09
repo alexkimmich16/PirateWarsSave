@@ -131,7 +131,9 @@ public class FusionManager : MonoBehaviour
         Equipment.Add(new AllInfo.GameEquipment());
 
         if (Slots[0].PirateActive == true)
+        {
             Pirates[0] = AllInfo.instance.GamePirates[Slots[0].InventoryNum];
+        }
         else if (Slots[0].EquipmentActive == true)
             Equipment[0] = Slots[0].Equipment;
         else
@@ -144,7 +146,16 @@ public class FusionManager : MonoBehaviour
         else
             return;
 
+        AllInfo.StatMultiplier before = new AllInfo.StatMultiplier();
+
+        SceneLoader.instance.Before = new AllInfo.StatMultiplier();
+
         Fuse(Pirates, Equipment);
+
+        AreYouSureMenu.SetActive(false);
+        BaseMenu.SetActive(true);
+
+        SceneLoader.instance.LoadScene("Upgraded");
     }
 
     public void Fuse(List<AllInfo.GamePirate> Pirates, List<AllInfo.GameEquipment> Equipment)
@@ -154,38 +165,73 @@ public class FusionManager : MonoBehaviour
         if (Pirates[0].pirateBase != null)
         {
             int FirstPirateNum = AllInfo.instance.PirateNum(Pirates[0]);
+            SceneLoader.instance.IsPirate = true;
+            SceneLoader.instance.TypeNumInList = FirstPirateNum;
+            SceneLoader.instance.Before = GetPirateStats(FirstPirateNum);
             if (Pirates[1].pirateBase != null)
             {
+                int SecondNum = AllInfo.instance.PirateNum(Pirates[1]);
                 float IncreaseFloat = (Pirates[1].Level * LevelMultiplier) + (RankMultiplier * Pirates[1].Rank);
                 int Increase = (int)IncreaseFloat;
                 AllInfo.instance.GamePirates[FirstPirateNum].AddExperience(Increase);
-                AllInfo.instance.GamePirates.Remove(AllInfo.instance.GamePirates[1]);
+                AllInfo.instance.GamePirates.Remove(AllInfo.instance.GamePirates[SecondNum]);
             }
             else if (Equipment[1].equipmentInfo != null)
             {
+                int SecondNum = AllInfo.instance.EquipmentNum(Equipment[1]);
                 float IncreaseFloat = (Equipment[1].Level * LevelMultiplier) + RankMultiplier * Equipment[1].Rank;
                 int Increase = (int)IncreaseFloat;
                 AllInfo.instance.GamePirates[FirstPirateNum].AddExperience(Increase);
-                AllInfo.instance.GameEquipments.Remove(AllInfo.instance.GameEquipments[1]);
+                AllInfo.instance.GameEquipments.Remove(AllInfo.instance.GameEquipments[SecondNum]);
             }
+            SceneLoader.instance.Added = GetPirateStats(FirstPirateNum);
         }
         else if (Equipment[0].equipmentInfo != null)
         {
             int FirstEquipmentNum = AllInfo.instance.EquipmentNum(Equipment[0]);
+            SceneLoader.instance.IsPirate = false;
+            SceneLoader.instance.TypeNumInList = FirstEquipmentNum;
+            SceneLoader.instance.Before = GetEquipmentStats(FirstEquipmentNum);
             if (Pirates[1].pirateBase != null)
             {
+                int SecondNum = AllInfo.instance.PirateNum(Pirates[1]);
                 float IncreaseFloat = (Pirates[1].Level * LevelMultiplier) + (RankMultiplier * Pirates[1].Rank);
                 int Increase = (int)IncreaseFloat;
                 AllInfo.instance.GameEquipments[FirstEquipmentNum].AddExperience(Increase);
-                AllInfo.instance.GamePirates.Remove(AllInfo.instance.GamePirates[1]);
+                AllInfo.instance.GamePirates.Remove(AllInfo.instance.GamePirates[SecondNum]);
             }
             else if (Equipment[1].equipmentInfo != null)
             {
+                int SecondNum = AllInfo.instance.EquipmentNum(Equipment[1]);
                 float IncreaseFloat = (Equipment[1].Level * LevelMultiplier) + RankMultiplier * Equipment[1].Rank;
                 int Increase = (int)IncreaseFloat;
                 AllInfo.instance.GameEquipments[FirstEquipmentNum].AddExperience(Increase);
-                AllInfo.instance.GameEquipments.Remove(AllInfo.instance.GameEquipments[1]);
+                AllInfo.instance.GameEquipments.Remove(AllInfo.instance.GameEquipments[SecondNum]);
             }
+            SceneLoader.instance.Added = GetEquipmentStats(FirstEquipmentNum);
+        }
+
+        AllInfo.StatMultiplier GetPirateStats(int ListNum)
+        {
+            AllInfo.StatMultiplier stats = new AllInfo.StatMultiplier();
+            stats.Health = AllInfo.instance.GamePirates[ListNum].Health;
+            stats.Damage = AllInfo.instance.GamePirates[ListNum].Damage;
+            stats.Armour = AllInfo.instance.GamePirates[ListNum].Armour;
+            stats.CritPercent = AllInfo.instance.GamePirates[ListNum].CritPercent;
+            stats.Intellect = AllInfo.instance.GamePirates[ListNum].Intellect;
+            stats.Dexterity = AllInfo.instance.GamePirates[ListNum].Dexterity;
+            return stats;
+        }
+        AllInfo.StatMultiplier GetEquipmentStats(int ListNum)
+        {
+            AllInfo.StatMultiplier stats = new AllInfo.StatMultiplier();
+            stats.Health = AllInfo.instance.GameEquipments[ListNum].Health;
+            stats.Damage = AllInfo.instance.GameEquipments[ListNum].Damage;
+            stats.Armour = AllInfo.instance.GameEquipments[ListNum].Armour;
+            stats.CritPercent = AllInfo.instance.GameEquipments[ListNum].CritPercent;
+            stats.Intellect = AllInfo.instance.GameEquipments[ListNum].Intellect;
+            stats.Dexterity = AllInfo.instance.GameEquipments[ListNum].Dexterity;
+            return stats;
         }
     }
     public void DontProceed()
@@ -193,11 +239,8 @@ public class FusionManager : MonoBehaviour
         AreYouSureMenu.SetActive(false);
         BaseMenu.SetActive(true);
     }
-
     public void Back()
     {
         SceneLoader.instance.LoadScene("Main");
     }
-
-    
 }

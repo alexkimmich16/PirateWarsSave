@@ -94,7 +94,6 @@ public class InventorySlot : MonoBehaviour
 			if (ActivePirate == true)
 			{
 				SelectionMenu.instance.SetCurrentPirate(pirate.NumInList);
-				ActivePirate = false;
 				Selected.instance.HelpAll();
 			}
 		}
@@ -105,14 +104,12 @@ public class InventorySlot : MonoBehaviour
 			{
 				if (gameEquipment.equipmentInfo != null)
 				{
-					//slot empty
 					FusionManager.instance.AddEquipment(gameEquipment);
 				}
 			}
 			if (ActivePirate == true)
 			{
 				FusionManager.instance.AddPirate(pirate.NumInList);
-				ActivePirate = false;
 			}
 		}
 	}

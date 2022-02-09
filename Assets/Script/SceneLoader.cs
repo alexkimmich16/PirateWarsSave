@@ -40,6 +40,13 @@ public class SceneLoader : MonoBehaviour
 
     private static int HighestPriority = 0;
     public int Current = 1;
+
+    public bool IsPirate;
+    public int TypeNumInList;
+
+    public AllInfo.StatMultiplier Before;
+    public AllInfo.StatMultiplier Added;
+
     private void Update()
     {
         Timer += Time.deltaTime;
@@ -66,7 +73,6 @@ public class SceneLoader : MonoBehaviour
         Debug.LogError("could not find scene of name:" + text);
         
     }
-
     IEnumerator LoadTime(SceneStats sceneStats)
     {
         if (TransitionManager.instance.transitionMenu != null)

@@ -18,7 +18,7 @@ public class CameraMovement : MonoBehaviour
     public bool Arrived = false;
 
     public float MinMenuDistance;
-
+    public bool CancelMove = false;
     public void MoveTo(Interactable type)
     {
         currentPlace = type;
@@ -26,33 +26,37 @@ public class CameraMovement : MonoBehaviour
     }
     void Update()
     {
-        int TypeNum = (int)currentPlace;
-        transform.rotation = Quaternion.Lerp(transform.rotation, cameraTransforms[TypeNum].rotation, RotateSpeed * Time.deltaTime);
-        transform.position = Vector3.Lerp(transform.position, cameraTransforms[TypeNum].position, MoveSpeed * Time.deltaTime);
-
-        if (Vector3.Distance(transform.position, cameraTransforms[TypeNum].position) < MinMenuDistance && Arrived == false)
+        if(CancelMove == false)
         {
-            Arrived = true;
-            if (currentPlace == Interactable.Main)
+            int TypeNum = (int)currentPlace;
+            transform.rotation = Quaternion.Lerp(transform.rotation, cameraTransforms[TypeNum].rotation, RotateSpeed * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, cameraTransforms[TypeNum].position, MoveSpeed * Time.deltaTime);
+
+            if (Vector3.Distance(transform.position, cameraTransforms[TypeNum].position) < MinMenuDistance && Arrived == false)
             {
-            }
-            else if (currentPlace == Interactable.Shop)
-            {
-                Application.OpenURL("http://unity3d.com/");
-            }
-            else if (currentPlace == Interactable.Trident)
-            {
-                SceneLoader.instance.LoadScene("Trident");
-            }
-            else if (currentPlace == Interactable.Battle)
-            {
-                SceneLoader.instance.LoadScene("CharacterSelection");
-            }
-            else if (currentPlace == Interactable.Statue)
-            {
-                
-                SceneLoader.instance.LoadScene("Fusion");
+                Arrived = true;
+                if (currentPlace == Interactable.Main)
+                {
+                }
+                else if (currentPlace == Interactable.Shop)
+                {
+                    Application.OpenURL("http://unity3d.com/");
+                }
+                else if (currentPlace == Interactable.Trident)
+                {
+                    SceneLoader.instance.LoadScene("Trident");
+                }
+                else if (currentPlace == Interactable.Battle)
+                {
+                    SceneLoader.instance.LoadScene("CharacterSelection");
+                }
+                else if (currentPlace == Interactable.Statue)
+                {
+
+                    SceneLoader.instance.LoadScene("Fusion");
+                }
             }
         }
+        
     }
 }
