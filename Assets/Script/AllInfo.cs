@@ -139,29 +139,80 @@ public class AllInfo : MonoBehaviour
     }
 
     [System.Serializable]
+    public class StatMultiplierFloat
+    {
+        public string Name;
+        public float Health;
+        public float Damage;
+        public float Armour;
+        public float CritPercent;
+        public float CritDamage;
+        public float Intellect;
+        public float Dexterity;
+    }
+
+    [System.Serializable]
     public class Rank
     {
         public string RankName;
         public int RankMultiplier;
         public List<int> Max;
+        public List<MaxMin> Base;
+    }
+
+    [System.Serializable]
+    public class MaxMin
+    {
+        public int Max;
+        public int Min;
     }
     #endregion
+    [Header("Bases")]
+    public List<PirateInfo> PirateBases;
+
     [Header("Currency")]
     public int Gold;
     public int Diamonds;
     public int ARG;
-    /*
-    [Header("StaticData")]
-    public List<PirateInfo> Pirates;
-    public List<EquipmentInfo> Equipment;
-    */
+    public StatMultiplier Base;
+
+    
+
     [Header("GameData")]
     public List<GamePirate> GamePirates;
     public List<GameEquipment> GameEquipments;
-    public List<StatMultiplier> StatMultipliers;
+    
 
     [Header("LevelData")]
     public List<Rank> LevelCaps;
+    public List<StatMultiplierFloat> ClassMultiplier;
+    public List<StatMultiplierFloat> RankMultipliers;
+    public List<StatMultiplierFloat> RarityMultipliers;
+
+
+    public void GenerateRandomCharacter(int Chance)
+    {
+        GamePirate NewPirate = new GamePirate();
+        int RandomNum = Random.Range(0, PirateBases.Count);
+        NewPirate.pirateBase = PirateBases[RandomNum];
+
+
+        int RandomRarity = Random.Range(0, 5);
+        NewPirate.rarity = (Rarity)RandomRarity;
+
+        int Class = (int)NewPirate.pirateBase.Class;
+
+        NewPirate.Health = (int)(ClassMultiplier[Class].Health * RankMultipliers[0].Health * RarityMultipliers[RandomRarity].Health);
+        NewPirate.Damage = (int)(ClassMultiplier[Class].Damage * RankMultipliers[0].Damage * RarityMultipliers[RandomRarity].Damage);
+        NewPirate.Armour = (int)(ClassMultiplier[Class].Armour * RankMultipliers[0].Armour * RarityMultipliers[RandomRarity].Armour);
+        NewPirate.CritPercent = (int)(ClassMultiplier[Class].CritPercent * RankMultipliers[0].CritPercent * RarityMultipliers[RandomRarity].CritPercent);
+        NewPirate.CritDamage = (int)(ClassMultiplier[Class].CritDamage * RankMultipliers[0].CritDamage * RarityMultipliers[RandomRarity].CritDamage);
+        NewPirate.Intellect = (int)(ClassMultiplier[Class].Intellect * RankMultipliers[0].Intellect * RarityMultipliers[RandomRarity].Intellect);
+        NewPirate.Dexterity = (int)(ClassMultiplier[Class].Dexterity * RankMultipliers[0].Dexterity * RarityMultipliers[RandomRarity].Dexterity);
+
+    }
+
+
     public void AddToCharacter(int Num)
     {
         GamePirates[0].AddExperience(Num);
@@ -179,6 +230,11 @@ public class AllInfo : MonoBehaviour
         GameEquipments = gameEquipments;
     }
     private void Start()
+    {
+        SetListNum();
+    }
+
+    public void SetListNum()
     {
         for (int i = 0; i < GamePirates.Count; i++)
         {
@@ -208,6 +264,9 @@ public class AllInfo : MonoBehaviour
         return 1000;
     }
 
+
+
+    
 
     //applies to all 4 data types for simplicities sake
     /*
