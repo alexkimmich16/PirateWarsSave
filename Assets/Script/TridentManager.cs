@@ -35,7 +35,12 @@ public class TridentManager : MonoBehaviour
 
     }
 
-    
+    public void ReRoll()
+    {
+
+    }
+
+
 
     public void AddCharacterButton()
     {

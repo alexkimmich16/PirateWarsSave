@@ -150,11 +150,11 @@ public class AllInfo : MonoBehaviour
     public int Gold;
     public int Diamonds;
     public int ARG;
-
+    /*
     [Header("StaticData")]
     public List<PirateInfo> Pirates;
     public List<EquipmentInfo> Equipment;
-
+    */
     [Header("GameData")]
     public List<GamePirate> GamePirates;
     public List<GameEquipment> GameEquipments;

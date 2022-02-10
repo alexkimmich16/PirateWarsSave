@@ -157,7 +157,7 @@ public class InventoryHelp : MonoBehaviour
 				else
 					slots[i].ClearSlot();
 			}
-
+			/*
 			List<AllInfo.GameEquipment> InventoryEquipments = new List<AllInfo.GameEquipment>(AllInfo.instance.GameEquipments);
 			for (int i = 0; i < AllInfo.instance.GameEquipments.Count; i++)
 			{
@@ -174,6 +174,7 @@ public class InventoryHelp : MonoBehaviour
 					slots[i].AddEquipment(InventoryEquipments[i - InsideCount]);
 				}
 			}
+			*/
 		}
 
 

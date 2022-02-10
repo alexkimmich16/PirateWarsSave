@@ -83,9 +83,10 @@ public class SceneLoader : MonoBehaviour
         {
             if (text == Scenes[i].Name)
             {
+                
                 Current += 1;
                 DontDestroyOnLoad(gameObject);
-                SceneManager.LoadScene(text);
+                SceneManager.LoadScene(Scenes[i].SceneName);
                 return;
             }
         }
