@@ -57,31 +57,38 @@ public class AllInfo : MonoBehaviour
             Experience += ExperienceAdd;
             CheckExperience();
             
-            
-            
             //if crosses threshold
         }
         public void CheckExperience()
         {
-            if (Experience >= AllInfo.instance.LevelCaps[Rank].Max[Level])
+            bool Reached = false;
+            while(Reached == false)
             {
-                
-                Experience -= AllInfo.instance.LevelCaps[Rank].Max[Level];
-                Level += 1;
-                if (Level > AllInfo.instance.LevelCaps[Rank].Max.Count - 1)
+                Debug.Log(Level);
+                if (Experience >= AllInfo.instance.LevelCaps[Rank].Max[Level])
                 {
-                    Rank += 1;
-                    Level = 0;
-                    Rankup();
+                    Experience -= AllInfo.instance.LevelCaps[Rank].Max[Level];
+                    if (Level + 1 > AllInfo.instance.LevelCaps[Rank].Max.Count - 1)
+                    {
+                        Level = 0;
+                        Rankup();
+                    }
+                    else
+                    {
+                        Levelup();
+                    }
                 }
                 else
                 {
-                    Levelup();
+                    Reached = true;
                 }
             }
+            
         }
         public void Levelup()
         {
+            Level += 1;
+            Debug.Log("levelup");
             float Multiplier = 100f;
             Health += (int)Multiplier;
             Damage += (int)Multiplier;
@@ -93,6 +100,7 @@ public class AllInfo : MonoBehaviour
         }
         public void Rankup()
         {
+            Rank += 1;
             float Multiplier = 2f;
             Health += (int)Multiplier;
             Damage += (int)Multiplier;
@@ -101,6 +109,7 @@ public class AllInfo : MonoBehaviour
             CritDamage += (int)Multiplier;
             Intellect += (int)Multiplier;
             Dexterity += (int)Multiplier;
+            Debug.Log("rank");
         }
     }
     [System.Serializable]
@@ -188,14 +197,43 @@ public class AllInfo : MonoBehaviour
     public List<StatMultiplierFloat> ClassMultiplier;
     public List<StatMultiplierFloat> RankMultipliers;
     public List<StatMultiplierFloat> RarityMultipliers;
+    //public List<int> LevelFuseEXP;
+    [Range(0, 1)]
+    public float FusePercentAdd;
 
+    public int GetTotalEXP(bool IsPirate, int ListNum)
+    {
+        int Total = 0;
+        int TotalLevels;
+        if (IsPirate == true)
+        {
+            GamePirate pirate = GamePirates[ListNum];
+            TotalLevels = (pirate.Rank * 10) + pirate.Level;
+        }
+        else
+        {
+            GameEquipment pirate = GameEquipments[ListNum];
+            TotalLevels = (pirate.Rank * 10) + pirate.Level;
+        }
 
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                if ((i * 10) + j < TotalLevels)
+                {
+                    Total += LevelCaps[i].Max[j];
+                }
+            }
+        }
+        Debug.Log(Total);
+        return Total;
+    }
     public void GenerateRandomCharacter(int Chance)
     {
         GamePirate NewPirate = new GamePirate();
         int RandomNum = Random.Range(0, PirateBases.Count);
         NewPirate.pirateBase = PirateBases[RandomNum];
-
 
         int RandomRarity = Random.Range(0, 5);
         NewPirate.rarity = (Rarity)RandomRarity;
@@ -209,15 +247,11 @@ public class AllInfo : MonoBehaviour
         NewPirate.CritDamage = (int)(ClassMultiplier[Class].CritDamage * RankMultipliers[0].CritDamage * RarityMultipliers[RandomRarity].CritDamage);
         NewPirate.Intellect = (int)(ClassMultiplier[Class].Intellect * RankMultipliers[0].Intellect * RarityMultipliers[RandomRarity].Intellect);
         NewPirate.Dexterity = (int)(ClassMultiplier[Class].Dexterity * RankMultipliers[0].Dexterity * RarityMultipliers[RandomRarity].Dexterity);
-
     }
-
-
     public void AddToCharacter(int Num)
     {
         GamePirates[0].AddExperience(Num);
     }
-
     public void RecieveCurrency(int gold, int diamonds, int arg)
     {
         Gold = gold;
@@ -233,7 +267,6 @@ public class AllInfo : MonoBehaviour
     {
         SetListNum();
     }
-
     public void SetListNum()
     {
         for (int i = 0; i < GamePirates.Count; i++)
@@ -263,10 +296,6 @@ public class AllInfo : MonoBehaviour
         }
         return 1000;
     }
-
-
-
-    
 
     //applies to all 4 data types for simplicities sake
     /*

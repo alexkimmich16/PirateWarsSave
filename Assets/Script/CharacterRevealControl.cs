@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class CharacterRevealControl : MonoBehaviour
 {
-    public AllInfo.GamePirate pirate;
-    
     public List<SliderInfo> sliderInfos;
     [System.Serializable]
     public class SliderInfo

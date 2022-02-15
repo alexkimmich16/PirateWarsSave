@@ -158,18 +158,18 @@ public class FusionManager : MonoBehaviour
     }
     public void Fuse(List<AllInfo.GamePirate> Pirates, List<AllInfo.GameEquipment> Equipment)
     {
-        float RankMultiplier = 100f;
-        float LevelMultiplier = 10f;
+        AllInfo AI = AllInfo.instance;
         if (Pirates[0].pirateBase != null)
         {
             int FirstPirateNum = AllInfo.instance.PirateNum(Pirates[0]);
             SceneLoader.instance.IsPirate = true;
             SceneLoader.instance.TypeNumInList = FirstPirateNum;
             SceneLoader.instance.Before = GetPirateStats(FirstPirateNum);
+            
             if (Pirates[1].pirateBase != null)
             {
                 int SecondNum = AllInfo.instance.PirateNum(Pirates[1]);
-                float IncreaseFloat = (Pirates[1].Level * LevelMultiplier) + (RankMultiplier * Pirates[1].Rank);
+                float IncreaseFloat = AI.GetTotalEXP(true, SecondNum) * AI.FusePercentAdd;
                 int Increase = (int)IncreaseFloat;
                 AllInfo.instance.GamePirates[FirstPirateNum].AddExperience(Increase);
                 AllInfo.instance.GamePirates.Remove(AllInfo.instance.GamePirates[SecondNum]);
@@ -177,7 +177,8 @@ public class FusionManager : MonoBehaviour
             else if (Equipment[1].equipmentInfo != null)
             {
                 int SecondNum = AllInfo.instance.EquipmentNum(Equipment[1]);
-                float IncreaseFloat = (Equipment[1].Level * LevelMultiplier) + RankMultiplier * Equipment[1].Rank;
+
+                float IncreaseFloat = AI.GetTotalEXP(false, SecondNum) * AI.FusePercentAdd;
                 int Increase = (int)IncreaseFloat;
                 AllInfo.instance.GamePirates[FirstPirateNum].AddExperience(Increase);
                 AllInfo.instance.GameEquipments.Remove(AllInfo.instance.GameEquipments[SecondNum]);
@@ -193,7 +194,7 @@ public class FusionManager : MonoBehaviour
             if (Pirates[1].pirateBase != null)
             {
                 int SecondNum = AllInfo.instance.PirateNum(Pirates[1]);
-                float IncreaseFloat = (Pirates[1].Level * LevelMultiplier) + (RankMultiplier * Pirates[1].Rank);
+                float IncreaseFloat = AI.GetTotalEXP(true, SecondNum) * AI.FusePercentAdd;
                 int Increase = (int)IncreaseFloat;
                 AllInfo.instance.GameEquipments[FirstEquipmentNum].AddExperience(Increase);
                 AllInfo.instance.GamePirates.Remove(AllInfo.instance.GamePirates[SecondNum]);
@@ -201,7 +202,7 @@ public class FusionManager : MonoBehaviour
             else if (Equipment[1].equipmentInfo != null)
             {
                 int SecondNum = AllInfo.instance.EquipmentNum(Equipment[1]);
-                float IncreaseFloat = (Equipment[1].Level * LevelMultiplier) + RankMultiplier * Equipment[1].Rank;
+                float IncreaseFloat = AI.GetTotalEXP(false, SecondNum) * AI.FusePercentAdd;
                 int Increase = (int)IncreaseFloat;
                 AllInfo.instance.GameEquipments[FirstEquipmentNum].AddExperience(Increase);
                 AllInfo.instance.GameEquipments.Remove(AllInfo.instance.GameEquipments[SecondNum]);
