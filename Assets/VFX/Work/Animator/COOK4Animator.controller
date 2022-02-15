@@ -86,19 +86,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: skill
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: dead
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -114,7 +114,7 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
 --- !u!1102 &1378166377458980375
 AnimatorState:
-  serializedVersion: 6
+  serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -167,7 +167,7 @@ AnimatorStateTransition:
   m_CanTransitionToSelf: 1
 --- !u!1102 &3953735653395483610
 AnimatorState:
-  serializedVersion: 6
+  serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -196,7 +196,7 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &5956489844064147537
 AnimatorState:
-  serializedVersion: 6
+  serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -224,7 +224,7 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1107 &6616774994393487937
 AnimatorStateMachine:
-  serializedVersion: 6
+  serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -236,7 +236,7 @@ AnimatorStateMachine:
     m_Position: {x: 0, y: 20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5956489844064147537}
-    m_Position: {x: -80, y: -60, z: 0}
+    m_Position: {x: -60, y: -50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1378166377458980375}
     m_Position: {x: 150, y: -90, z: 0}
