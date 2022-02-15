@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Info", menuName = "ScriptableObjects/Pirate", order = 1)]
 public class PirateInfo : ScriptableObject
 {
-    public string Name;
+    //public string Name;
     public CharacterClass Class;
     public Sprite icon;
     public GameObject Prefab;
