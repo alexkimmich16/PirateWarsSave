@@ -26,8 +26,6 @@ public class SelectionMenu : MonoBehaviour
     public List<Transform> Positions;
     public List<GameObject> Characters;
 
-    public List<Image> Images;
-
     public Image Character;
     public Image Inventory;
 

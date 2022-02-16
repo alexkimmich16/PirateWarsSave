@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: a6bcf9a732348ad48a8659433f3f3d3b
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 3363947174608440873
+    second: armor.roster_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -109,7 +112,28 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: armor.roster_0
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 448
+        width: 133
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92e07b1e1242fae20800000000000000
+      internalID: 3363947174608440873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
