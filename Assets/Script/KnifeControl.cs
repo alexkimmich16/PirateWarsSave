@@ -28,6 +28,8 @@ public class KnifeControl : MonoBehaviour
     private float AfterThrowTimer;
     private bool AfterThrow;
 
+    public float YAdd;
+
     private void Start()
     {
         SetSpareState(false);
@@ -69,12 +71,12 @@ public class KnifeControl : MonoBehaviour
         
         if (CurrentState == State.Sending)
         {
-
-            SpareKnife.transform.LookAt(Objective.position);
+            Vector3 AdjustedPos = new Vector3(Objective.position.x, Objective.position.y + YAdd, Objective.position.z);
+            SpareKnife.transform.LookAt(AdjustedPos);
             SpareKnife.transform.rotation = Quaternion.Euler(SpareKnife.transform.rotation.x, SpareKnife.transform.rotation.y + 90, SpareKnife.transform.rotation.z);
-            Vector3 Direction = (Objective.position - SentPosition).normalized;
+            Vector3 Direction = (AdjustedPos - SentPosition).normalized;
             SpareKnife.transform.position = SpareKnife.transform.position + (Direction * (SendSpeed * Time.deltaTime));
-            if (Vector3.Distance(SpareKnife.transform.position, Objective.position) < MinDistance)
+            if (Vector3.Distance(SpareKnife.transform.position, AdjustedPos) < MinDistance)
             {
                 AI.DoDamage();
                 CurrentState = State.Returning;
@@ -82,9 +84,10 @@ public class KnifeControl : MonoBehaviour
         }
         else if(CurrentState == State.Returning)
         {
-            Vector3 Direction = -(Objective.position - SentPosition).normalized;
+            Vector3 AdjustedPos = new Vector3(Objective.position.x, Objective.position.y + YAdd, Objective.position.z);
+            Vector3 Direction = -(AdjustedPos - SentPosition).normalized;
             SpareKnife.transform.position = SpareKnife.transform.position + (Direction * (ReturnSpeed * Time.deltaTime));
-            if (Vector3.Distance(SpareKnife.transform.position, Objective.position) < MinDistance * 2)
+            if (Vector3.Distance(SpareKnife.transform.position, AdjustedPos) < MinDistance * 2)
             {
                 CurrentState = State.None;
                 AfterThrow = true;
@@ -97,7 +100,4 @@ public class KnifeControl : MonoBehaviour
             
         }
     }
-
-
-    ///
 }
