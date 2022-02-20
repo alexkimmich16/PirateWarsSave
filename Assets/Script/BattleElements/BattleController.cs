@@ -17,6 +17,9 @@ public class BattleController : MonoBehaviour
 
     public float ChangeTargetTime = 2f;
 
+    [Range(0, 1)]
+    public float ArmorEffect = 0.002f;
+
     public void CheckResults()
     {
         if (Friend.Count == 0)

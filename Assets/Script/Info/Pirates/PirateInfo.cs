@@ -9,4 +9,5 @@ public class PirateInfo : ScriptableObject
     public CharacterClass Class;
     public Sprite icon;
     public GameObject Prefab;
+    public AllInfo.StatMultiplierBar BaseStats;
 }

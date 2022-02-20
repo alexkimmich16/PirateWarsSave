@@ -27,8 +27,6 @@ public class AllInfo : MonoBehaviour
     #endregion
 
     #region Classes
-    //[System.Serializable]
-    
     [System.Serializable]
     public class GamePirate
     {
@@ -47,8 +45,6 @@ public class AllInfo : MonoBehaviour
         public int Level;
         public float Experience;
         public List<GameEquipment> gameEquipment = new List<GameEquipment>();
-
-        public Rarity rarity;
 
         public int NumInList;
 
@@ -71,11 +67,11 @@ public class AllInfo : MonoBehaviour
                     if (Level + 1 > AllInfo.instance.LevelCaps[Rank].Max.Count - 1)
                     {
                         Level = 0;
-                        Rankup();
+                        Rank += 1;
                     }
                     else
                     {
-                        Levelup();
+                        Level += 1;
                     }
                 }
                 else
@@ -83,33 +79,22 @@ public class AllInfo : MonoBehaviour
                     Reached = true;
                 }
             }
+            RecalculateStats();
+        }
+
+        public void RecalculateStats()
+        {
+            //check for gear
             
-        }
-        public void Levelup()
-        {
-            Level += 1;
-            Debug.Log("levelup");
-            float Multiplier = 100f;
-            Health += (int)Multiplier;
-            Damage += (int)Multiplier;
-            Armour += (int)Multiplier;
-            CritPercent += (int)Multiplier;
-            CritDamage += (int)Multiplier;
-            Intellect += (int)Multiplier;
-            Dexterity += (int)Multiplier;
-        }
-        public void Rankup()
-        {
-            Rank += 1;
-            float Multiplier = 2f;
-            Health += (int)Multiplier;
-            Damage += (int)Multiplier;
-            Armour += (int)Multiplier;
-            CritPercent += (int)Multiplier;
-            CritDamage += (int)Multiplier;
-            Intellect += (int)Multiplier;
-            Dexterity += (int)Multiplier;
-            Debug.Log("rank");
+            StatMultiplierFloat Mult = AllInfo.instance.StandardStatMultiplier;
+            float Multiplier = ((AllInfo.instance.PirateLevelPercentAdd * Level) / 100) + ((AllInfo.instance.PirateRankPercentAdd * Rank) / 100) + 1;
+            Health = (int)(pirateBase.BaseStats.Health * Multiplier * Mult.Health);
+            Damage = (int)(pirateBase.BaseStats.Damage * Multiplier * Mult.Damage);
+            Armour = (int)(pirateBase.BaseStats.Armour * Multiplier * Mult.Armour);
+            CritPercent = (int)(pirateBase.BaseStats.CritPercent * Multiplier * Mult.CritPercent);
+            CritDamage = (int)(pirateBase.BaseStats.CritDamage * Multiplier * Mult.CritDamage);
+            Intellect = (int)(pirateBase.BaseStats.Intellect * Multiplier * Mult.Intellect);
+            Dexterity = (int)(pirateBase.BaseStats.Dexterity * Multiplier * Mult.Dexterity);
         }
     }
     [System.Serializable]
@@ -125,56 +110,45 @@ public class AllInfo : MonoBehaviour
         public int Intellect;
         public int Dexterity;
 
-        public int Rank;
         public int Level;
         public float Experience;
+
         public void AddExperience(int ExperienceAdd)
         {
             Experience += ExperienceAdd;
-            //if crosses threshold
+            CheckExperience();
+        }
+
+        public void CheckExperience()
+        {
+            bool Reached = false;
+            while (Reached == false)
+            {
+                if (Experience >= AllInfo.instance.LevelCaps[0].Max[Level])
+                {
+                    Experience -= AllInfo.instance.LevelCaps[0].Max[Level];
+                    Level += 1;
+                }
+                else
+                    break;
+            }
+            RecalculateStats();
+        }
+        public void RecalculateStats()
+        {
+            StatMultiplierFloat Mult = AllInfo.instance.StandardStatMultiplier;
+            float Multiplier = ((AllInfo.instance.EquipmentLevelPercentAdd * Level) / 100) + ((AllInfo.instance.EquipmentRarityPercentAdd * (int)rarity) / 100) + 1;
+            
+            Health = (int)(equipmentInfo.BaseStats.Health * Multiplier * Mult.Health);
+            Damage = (int)(equipmentInfo.BaseStats.Damage * Multiplier * Mult.Damage);
+            Armour = (int)(equipmentInfo.BaseStats.Armour * Multiplier * Mult.Armour);
+            CritPercent = (int)(equipmentInfo.BaseStats.CritPercent * Multiplier * Mult.CritPercent);
+            CritDamage = (int)(equipmentInfo.BaseStats.CritDamage * Multiplier * Mult.CritDamage);
+            Intellect = (int)(equipmentInfo.BaseStats.Intellect * Multiplier * Mult.Intellect);
+            Dexterity = (int)(equipmentInfo.BaseStats.Dexterity * Multiplier * Mult.Dexterity);
         }
     }
-    [System.Serializable]
-    public class StatMultiplier
-    {
-        public string Name;
-        public int Health;
-        public int Damage;
-        public int Armour;
-        public int CritPercent;
-        public int CritDamage;
-        public int Intellect;
-        public int Dexterity;
-    }
 
-    [System.Serializable]
-    public class StatMultiplierFloat
-    {
-        public string Name;
-        public float Health;
-        public float Damage;
-        public float Armour;
-        public float CritPercent;
-        public float CritDamage;
-        public float Intellect;
-        public float Dexterity;
-    }
-
-    [System.Serializable]
-    public class Rank
-    {
-        public string RankName;
-        public int RankMultiplier;
-        public List<int> Max;
-        public List<MaxMin> Base;
-    }
-
-    [System.Serializable]
-    public class MaxMin
-    {
-        public int Max;
-        public int Min;
-    }
     #endregion
     [Header("Bases")]
     public List<PirateInfo> PirateBases;
@@ -185,8 +159,6 @@ public class AllInfo : MonoBehaviour
     public int ARG;
     public StatMultiplier Base;
 
-    
-
     [Header("GameData")]
     public List<GamePirate> GamePirates;
     public List<GameEquipment> GameEquipments;
@@ -194,12 +166,23 @@ public class AllInfo : MonoBehaviour
 
     [Header("LevelData")]
     public List<Rank> LevelCaps;
+    public StatMultiplierFloat StandardStatMultiplier;
     public List<StatMultiplierFloat> ClassMultiplier;
     public List<StatMultiplierFloat> RankMultipliers;
     public List<StatMultiplierFloat> RarityMultipliers;
+    
     //public List<int> LevelFuseEXP;
     [Range(0, 1)]
     public float FusePercentAdd;
+    [Range(0, 10)]
+    public float EquipmentLevelPercentAdd;
+    [Range(0, 10)]
+    public int EquipmentRarityPercentAdd;
+    [Range(0, 10)]
+    public float PirateLevelPercentAdd;
+    [Range(0, 25)]
+    public float PirateRankPercentAdd;
+
 
     public int GetTotalEXP(bool IsPirate, int ListNum)
     {
@@ -213,7 +196,7 @@ public class AllInfo : MonoBehaviour
         else
         {
             GameEquipment pirate = GameEquipments[ListNum];
-            TotalLevels = (pirate.Rank * 10) + pirate.Level;
+            TotalLevels = pirate.Level;
         }
 
         for (int i = 0; i < 4; i++)
@@ -236,7 +219,6 @@ public class AllInfo : MonoBehaviour
         NewPirate.pirateBase = PirateBases[RandomNum];
 
         int RandomRarity = Random.Range(0, 5);
-        NewPirate.rarity = (Rarity)RandomRarity;
 
         int Class = (int)NewPirate.pirateBase.Class;
 
@@ -316,5 +298,34 @@ public class AllInfo : MonoBehaviour
     }
     */
 
+    #region SubClasses
+    [System.Serializable]
+    public class StatMultiplier
+    {
+        public string Name;
+        public int Health, Damage, Armour, CritPercent, CritDamage, Intellect, Dexterity;
+    }
 
+    [System.Serializable]
+    public class StatMultiplierBar
+    {
+        [Range(0, 10)]
+        public int Health, Damage, Armour, CritPercent, CritDamage, Intellect, Dexterity;
+    }
+
+    [System.Serializable]
+    public class StatMultiplierFloat
+    {
+        public string Name;
+        public float Health, Damage, Armour, CritPercent, CritDamage, Intellect, Dexterity;
+    }
+
+    [System.Serializable]
+    public class Rank
+    {
+        public string RankName;
+        public int RankMultiplier;
+        public List<int> Max;
+    }
+    #endregion
 }

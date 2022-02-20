@@ -15,3 +15,11 @@ MonoBehaviour:
   Class: 0
   icon: {fileID: 0}
   Prefab: {fileID: 0}
+  BaseStats:
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0

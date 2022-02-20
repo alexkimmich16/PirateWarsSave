@@ -209,16 +209,17 @@ public class BattleAI : MonoBehaviour
     }
     public void DoDamage()
     {
-        float CritAdd = AddCrit() / 100;
+        float CritAdd = AddCrit(out bool Crit) / 100;
         float CritDamage = AttackDamage * CritAdd;
-        float TrueDamageFloat = (CritDamage - ArmorReduce(CritDamage)) * Dodge();
-        int TrueDamage = (int)TrueDamageFloat;
+        int FinalDMG = (int)(AttackDamage - (AttackDamage * BattleController.instance.ArmorEffect * Target.pirate.Armour)) * Dodge();
+        //float TrueDamageFloat = (CritDamage - ArmorReduce(CritDamage)) * Dodge();
+        //int TrueDamage = (int)TrueDamageFloat;
 
         if (CritAdd != 0)
-            PopupManager.instance.CreatePopup(Target.transform.position, TrueDamage, true);
+            PopupManager.instance.CreatePopup(Target.transform.position, FinalDMG, true);
         else
-            PopupManager.instance.CreatePopup(Target.transform.position, TrueDamage, false);
-        Target.Damage(TrueDamage);
+            PopupManager.instance.CreatePopup(Target.transform.position, FinalDMG, false);
+        Target.Damage(FinalDMG);
         int Dodge()
         {
             int Roll = Random.Range(0, 100);
@@ -239,16 +240,18 @@ public class BattleAI : MonoBehaviour
             float RealDamage = Damage * InverseDamage;
             return (int)RealDamage;
         }
-        int AddCrit()
+        int AddCrit(out bool IsCrit)
         {
             int Roll = Random.Range(0, 100);
             if (Roll < pirate.CritPercent)
             {
+                IsCrit = true;
                 return pirate.CritDamage;
             }
             else
             {
-                return 0;
+                IsCrit = false;
+                return 1;
             }
         }
     }

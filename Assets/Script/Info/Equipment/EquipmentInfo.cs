@@ -12,10 +12,8 @@ public enum EquipmentType
 [CreateAssetMenu(fileName = "Info", menuName = "ScriptableObjects/Equipment", order = 3)]
 public class EquipmentInfo : ScriptableObject
 {
-    //public string Name;
-    public int ArmourIncrease;
-    public int DamageIncrease;
     public Sprite icon;
     public EquipmentType type;
     public int MinLevel;
+    public AllInfo.StatMultiplierBar BaseStats;
 }
