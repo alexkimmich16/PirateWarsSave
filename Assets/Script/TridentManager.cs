@@ -53,4 +53,9 @@ public class TridentManager : MonoBehaviour
             AddCharacterSlot(SceneLoader.instance.DisplayNum);
         }
     }
+
+    public void Back()
+    {
+        SceneLoader.instance.LoadScene("Main");
+    }
 }

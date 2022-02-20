@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: 15a9329a292081e4886d2543e8954e23
+=======
+<<<<<<< Updated upstream:Assets/Captan Chrs Test.meta
+guid: cde2ae1298f9dca46908c5b00aaae0e1
+=======
+guid: 15a9329a292081e4886d2543e8954e23
+>>>>>>> Stashed changes:Assets/Animations + characters.meta
+>>>>>>> Stashed changes
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

@@ -35,6 +35,12 @@ public class SelectionMenu : MonoBehaviour
     public List<GameObject> CharacterAssets;
     public List<GameObject> InventoryAssets;
 
+    public Image ThreevThree;
+    public Image FivevFive;
+
+    public Sprite ActiveBattleType;
+    public Sprite InActiveBattleType;
+    private bool ThreeVTHreeIsActive;
     public void ButtonRemovePirate(int Num)
     {
         CharacterHolders[Num].Active = false;
@@ -175,6 +181,22 @@ public class SelectionMenu : MonoBehaviour
             }
         }
         MapLevels.instance.SetActivePirates(pirates);
-        SceneLoader.instance.LoadScene("Map");
+        MapLevels.instance.LoadLevel(0);
+        //ThreeVTHreeIsActive
+    }
+
+    public void SetBattleTypeActive(bool ThreeVThreeActive)
+    {
+        ThreeVTHreeIsActive = ThreeVThreeActive;
+        if (ThreeVThreeActive == true)
+        {
+            ThreevThree.sprite = ActiveBattleType;
+            FivevFive.sprite = InActiveBattleType;
+        }
+        else
+        {
+            ThreevThree.sprite = InActiveBattleType;
+            FivevFive.sprite = ActiveBattleType;
+        }
     }
 }

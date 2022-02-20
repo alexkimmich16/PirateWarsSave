@@ -87,7 +87,7 @@ public class InventorySlot : MonoBehaviour
 					}
 					else
 					{
-						//Debug.LogError("No where to set eqiptment to");
+						Debug.LogError("No where to set eqiptment to");
 					}
 				}
 			}
