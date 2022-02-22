@@ -53,6 +53,7 @@ public class BattleController : MonoBehaviour
             Spawned.name = pirates[i].Name;
             Spawned.GetComponent<BattleAI>().Friendly = true;
             Friend.Add(Spawned.GetComponent<BattleAI>());
+            Spawned.GetComponent<BattleAI>().pirate.CheckExperience();
         }
     }
 
@@ -64,6 +65,7 @@ public class BattleController : MonoBehaviour
             Spawned.name = pirates[i].Name;
             Spawned.GetComponent<BattleAI>().Friendly = false;
             Enemy.Add(Spawned.GetComponent<BattleAI>());
+            Spawned.GetComponent<BattleAI>().pirate.CheckExperience();
         }
     }
 }

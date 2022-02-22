@@ -11,7 +11,7 @@ public class Selected : MonoBehaviour
     #endregion
 
     //public List<ScriptableObject> Active = new List<ScriptableObject>();
-    public AllInfo.GamePirate Currentpirate;
+    //public AllInfo.GamePirate Currentpirate;
 
     public List<Image> Images = new List<Image>();
 
@@ -28,13 +28,13 @@ public class Selected : MonoBehaviour
 
     private void Start()
     {
-        Currentpirate = AllInfo.instance.GamePirates[CurrentCharacter];
+        //Currentpirate = AllInfo.instance.GamePirates[CurrentCharacter];
         SetNewPirate();
     }
     public void SetPirateNum(int Num)
     {
         CurrentCharacter = Num;
-        Currentpirate = AllInfo.instance.GamePirates[Num];
+        AllInfo.instance.GamePirates[CurrentCharacter] = AllInfo.instance.GamePirates[Num];
         SetNewPirate();
     }
     public void ButtonConvertRemoveArmor(int SlotNum)
@@ -51,7 +51,7 @@ public class Selected : MonoBehaviour
             EquipmentType type = (EquipmentType)i;
             if (HasEquipment(type) == true)
             {
-                Images[i].sprite = Currentpirate.gameEquipment[i].equipmentInfo.icon;
+                Images[i].sprite = AllInfo.instance.GamePirates[CurrentCharacter].gameEquipment[i].equipmentInfo.icon;
                 Images[i].enabled = true;
             }
         }
@@ -63,9 +63,9 @@ public class Selected : MonoBehaviour
         int Equipment = (int)EquipmentType;
         Images[Equipment].sprite = null;
         Images[Equipment].enabled = false;
-        AllInfo.instance.GameEquipments.Add(Currentpirate.gameEquipment[Equipment]);
-        Currentpirate.gameEquipment[Equipment] = null;
-        SubtractStats(Currentpirate.gameEquipment[Equipment]);
+        SubtractStats(AllInfo.instance.GamePirates[CurrentCharacter].gameEquipment[Equipment]);
+        AllInfo.instance.GameEquipments.Add(AllInfo.instance.GamePirates[CurrentCharacter].gameEquipment[Equipment]);
+        AllInfo.instance.GamePirates[CurrentCharacter].gameEquipment[Equipment] = null;
         Inventoryhelp.UpdateUI();
     }
     public void SetEquipment(AllInfo.GameEquipment equipment)
@@ -75,39 +75,39 @@ public class Selected : MonoBehaviour
         int Equipment = (int)equipment.equipmentInfo.type;
         Images[Equipment].sprite = equipment.equipmentInfo.icon;
         Images[Equipment].enabled = true;
-        Currentpirate.gameEquipment[Equipment] = equipment;
+        AllInfo.instance.GamePirates[CurrentCharacter].gameEquipment[Equipment] = equipment;
         AddStats(equipment);
         AllInfo.instance.GameEquipments.Remove(equipment);
         Inventoryhelp.UpdateUI();
     }
     public void AddStats(AllInfo.GameEquipment equipment)
     {
-        Currentpirate.Health += equipment.Health;
-        Currentpirate.Damage += equipment.Damage;
-        Currentpirate.Armour += equipment.Armour;
-        Currentpirate.CritPercent += equipment.CritPercent;
-        Currentpirate.CritDamage += equipment.CritDamage;
-        Currentpirate.Intellect += equipment.Intellect;
-        Currentpirate.Dexterity += equipment.Dexterity;
+        AllInfo.instance.GamePirates[CurrentCharacter].Health += equipment.Health;
+        AllInfo.instance.GamePirates[CurrentCharacter].Damage += equipment.Damage;
+        AllInfo.instance.GamePirates[CurrentCharacter].Armour += equipment.Armour;
+        AllInfo.instance.GamePirates[CurrentCharacter].CritPercent += equipment.CritPercent;
+        AllInfo.instance.GamePirates[CurrentCharacter].CritDamage += equipment.CritDamage;
+        AllInfo.instance.GamePirates[CurrentCharacter].Intellect += equipment.Intellect;
+        AllInfo.instance.GamePirates[CurrentCharacter].Dexterity += equipment.Dexterity;
     }
     public void SubtractStats(AllInfo.GameEquipment equipment)
     {
-        Currentpirate.Health -= equipment.Health;
-        Currentpirate.Damage -= equipment.Health;
-        Currentpirate.Armour -= equipment.Health;
-        Currentpirate.CritPercent -= equipment.Health;
-        Currentpirate.CritDamage -= equipment.Health;
-        Currentpirate.Intellect -= equipment.Health;
-        Currentpirate.Dexterity -= equipment.Health;
+        AllInfo.instance.GamePirates[CurrentCharacter].Health -= equipment.Health;
+        AllInfo.instance.GamePirates[CurrentCharacter].Damage -= equipment.Damage;
+        AllInfo.instance.GamePirates[CurrentCharacter].Armour -= equipment.Armour;
+        AllInfo.instance.GamePirates[CurrentCharacter].CritPercent -= equipment.CritPercent;
+        AllInfo.instance.GamePirates[CurrentCharacter].CritDamage -= equipment.CritDamage;
+        AllInfo.instance.GamePirates[CurrentCharacter].Intellect -= equipment.Intellect;
+        AllInfo.instance.GamePirates[CurrentCharacter].Dexterity -= equipment.Dexterity;
     }
     public bool HasEquipment(EquipmentType type)
     {
         int Num = (int)type;
-        if (Num < Currentpirate.gameEquipment.Count)
+        if (Num < AllInfo.instance.GamePirates[CurrentCharacter].gameEquipment.Count)
         {
-            if (Currentpirate.gameEquipment[Num] != null)
+            if (AllInfo.instance.GamePirates[CurrentCharacter].gameEquipment[Num] != null)
             {
-                if (Currentpirate.gameEquipment[Num].equipmentInfo != null)
+                if (AllInfo.instance.GamePirates[CurrentCharacter].gameEquipment[Num].equipmentInfo != null)
                 {
                     return true;
                 }
@@ -122,7 +122,7 @@ public class Selected : MonoBehaviour
     }
     public void SetCurrentPirate(AllInfo.GamePirate Pirate)
     {
-        Currentpirate = Pirate;
+        AllInfo.instance.GamePirates[CurrentCharacter] = Pirate;
         for (int i = 0; i < Images.Count; i++)
         {
             Images[i].sprite = Pirate.gameEquipment[i].equipmentInfo.icon;

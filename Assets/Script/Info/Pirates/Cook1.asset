@@ -17,7 +17,7 @@ MonoBehaviour:
   Prefab: {fileID: 0}
   BaseStats:
     Health: 0
-    Damage: 0
+    Damage: 5
     Armour: 0
     CritPercent: 0
     CritDamage: 0

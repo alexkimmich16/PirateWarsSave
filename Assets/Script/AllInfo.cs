@@ -57,13 +57,18 @@ public class AllInfo : MonoBehaviour
         }
         public void CheckExperience()
         {
+            int BeforeLvl = Level;
+            int BeforeRank = Rank;
+            Level = 0;
+            Rank = 0;
+            float ExperienceCheck = Experience;
             bool Reached = false;
             while(Reached == false)
             {
-                Debug.Log(Level);
-                if (Experience >= AllInfo.instance.LevelCaps[Rank].Max[Level])
+                //Debug.Log(Level);
+                if (ExperienceCheck >= AllInfo.instance.LevelCaps[Rank].Max[Level])
                 {
-                    Experience -= AllInfo.instance.LevelCaps[Rank].Max[Level];
+                    ExperienceCheck -= AllInfo.instance.LevelCaps[Rank].Max[Level];
                     if (Level + 1 > AllInfo.instance.LevelCaps[Rank].Max.Count - 1)
                     {
                         Level = 0;
@@ -75,9 +80,7 @@ public class AllInfo : MonoBehaviour
                     }
                 }
                 else
-                {
                     Reached = true;
-                }
             }
             RecalculateStats();
         }
@@ -183,7 +186,6 @@ public class AllInfo : MonoBehaviour
     [Range(0, 25)]
     public float PirateRankPercentAdd;
 
-
     public int GetTotalEXP(bool IsPirate, int ListNum)
     {
         int Total = 0;
@@ -248,6 +250,10 @@ public class AllInfo : MonoBehaviour
     private void Start()
     {
         SetListNum();
+        for (int i = 0; i < GamePirates.Count; i++)
+            GamePirates[i].CheckExperience();
+        for (int i = 0; i < GameEquipments.Count; i++)
+            GameEquipments[i].CheckExperience();
     }
     public void SetListNum()
     {

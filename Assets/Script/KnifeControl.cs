@@ -68,7 +68,6 @@ public class KnifeControl : MonoBehaviour
                 SetAnimationState(true);
             }
         }
-        
         if (CurrentState == State.Sending)
         {
             Vector3 AdjustedPos = new Vector3(Objective.position.x, Objective.position.y + YAdd, Objective.position.z);

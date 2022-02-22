@@ -92,9 +92,7 @@ public class BattleAI : MonoBehaviour
                     knife.SendWeapon(Target.transform);
                 }
             }
-        }
-        
-        
+        }        
         if (DeathTimer > DeathTime)
         {
             Destroy(gameObject);
@@ -210,20 +208,21 @@ public class BattleAI : MonoBehaviour
     public void DoDamage()
     {
         float CritAdd = AddCrit(out bool Crit) / 100;
-        float CritDamage = AttackDamage * CritAdd;
-        int FinalDMG = (int)(AttackDamage - (AttackDamage * BattleController.instance.ArmorEffect * Target.pirate.Armour)) * Dodge();
+
+        //float CritDamage = AttackDamage * CritAdd;
+        int DodgeEffect = Dodge();
+        float equasion = AttackDamage * BattleController.instance.ArmorEffect * Target.pirate.Armour;
+        float DamageFloat = ((AttackDamage - (AttackDamage * BattleController.instance.ArmorEffect * Target.pirate.Armour)) * CritAdd) * DodgeEffect;
+        int FinalDMG = (int)DamageFloat;
+        Debug.Log("FinalDMG: " + equasion + "  DodgeEffect: " + DodgeEffect);
         //float TrueDamageFloat = (CritDamage - ArmorReduce(CritDamage)) * Dodge();
         //int TrueDamage = (int)TrueDamageFloat;
-
-        if (CritAdd != 0)
-            PopupManager.instance.CreatePopup(Target.transform.position, FinalDMG, true);
-        else
-            PopupManager.instance.CreatePopup(Target.transform.position, FinalDMG, false);
+        PopupManager.instance.CreatePopup(Target.transform.position, FinalDMG, Crit);
         Target.Damage(FinalDMG);
         int Dodge()
         {
             int Roll = Random.Range(0, 100);
-            if (Roll < Target.pirate.Dexterity)
+            if (Roll > Target.pirate.Dexterity)
             {
                 return 1;
             }
@@ -243,7 +242,7 @@ public class BattleAI : MonoBehaviour
         int AddCrit(out bool IsCrit)
         {
             int Roll = Random.Range(0, 100);
-            if (Roll < pirate.CritPercent)
+            if (Roll > pirate.CritPercent)
             {
                 IsCrit = true;
                 return pirate.CritDamage;
