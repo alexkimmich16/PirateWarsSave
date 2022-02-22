@@ -20,6 +20,10 @@ public class BattleController : MonoBehaviour
     [Range(0, 1)]
     public float ArmorEffect = 0.002f;
 
+    [Range(0, 10)]
+    public float DamageEffect = 0.002f;
+
+
     public void CheckResults()
     {
         if (Friend.Count == 0)
@@ -53,6 +57,7 @@ public class BattleController : MonoBehaviour
             Spawned.name = pirates[i].Name;
             Spawned.GetComponent<BattleAI>().Friendly = true;
             Friend.Add(Spawned.GetComponent<BattleAI>());
+            
             Spawned.GetComponent<BattleAI>().pirate.CheckExperience();
         }
     }
@@ -65,6 +70,7 @@ public class BattleController : MonoBehaviour
             Spawned.name = pirates[i].Name;
             Spawned.GetComponent<BattleAI>().Friendly = false;
             Enemy.Add(Spawned.GetComponent<BattleAI>());
+            Spawned.GetComponent<BattleAI>().pirate.Experience = pirates[i].Experience;
             Spawned.GetComponent<BattleAI>().pirate.CheckExperience();
         }
     }

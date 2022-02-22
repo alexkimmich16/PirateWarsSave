@@ -28,15 +28,14 @@ public class PopupManager : MonoBehaviour
     {
         GameObject popup;
         if (Crit == false)
-        {
             popup = Instantiate(BasicPopup, Position, Quaternion.identity);
-        }
         else
-        {
             popup = Instantiate(CritPopup, Position, Quaternion.identity);
-        }
 
-        popup.GetComponent<DamagePopup>().Initialise(Damage.ToString());
+        if (Damage != 0)
+            popup.GetComponent<DamagePopup>().Initialise(Damage.ToString());
+        else
+            popup.GetComponent<DamagePopup>().Initialise("Dodge!");
         Destroy(popup, TimeDelete);
     }
     

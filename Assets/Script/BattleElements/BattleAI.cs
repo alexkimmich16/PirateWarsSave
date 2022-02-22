@@ -207,16 +207,11 @@ public class BattleAI : MonoBehaviour
     }
     public void DoDamage()
     {
-        float CritAdd = AddCrit(out bool Crit) / 100;
-
-        //float CritDamage = AttackDamage * CritAdd;
+        float CritAdd = AddCrit(out bool Crit);
         int DodgeEffect = Dodge();
-        float equasion = AttackDamage * BattleController.instance.ArmorEffect * Target.pirate.Armour;
-        float DamageFloat = ((AttackDamage - (AttackDamage * BattleController.instance.ArmorEffect * Target.pirate.Armour)) * CritAdd) * DodgeEffect;
-        int FinalDMG = (int)DamageFloat;
-        Debug.Log("FinalDMG: " + equasion + "  DodgeEffect: " + DodgeEffect);
-        //float TrueDamageFloat = (CritDamage - ArmorReduce(CritDamage)) * Dodge();
-        //int TrueDamage = (int)TrueDamageFloat;
+        float DamageFloat = ((AttackDamage - (AttackDamage * BattleController.instance.ArmorEffect * Target.pirate.Armour)) * CritAdd) * DodgeEffect * BattleController.instance.DamageEffect;
+        int FinalDMG = Mathf.RoundToInt(DamageFloat);
+        Debug.Log("FinalDMG: " + DamageFloat + "  DodgeEffect: " + DodgeEffect + "  CritAdd: " + CritAdd + "  AttackDamage: " + AttackDamage + "  Armor: " + Target.pirate.Armour + "  AttackDamage: " + AttackDamage);
         PopupManager.instance.CreatePopup(Target.transform.position, FinalDMG, Crit);
         Target.Damage(FinalDMG);
         int Dodge()
@@ -242,7 +237,8 @@ public class BattleAI : MonoBehaviour
         int AddCrit(out bool IsCrit)
         {
             int Roll = Random.Range(0, 100);
-            if (Roll > pirate.CritPercent)
+            //Debug.Log("Roll: " + Roll + "  pirate.CritPercent: " + pirate.CritPercent);
+            if (Roll < pirate.CritPercent)
             {
                 IsCrit = true;
                 return pirate.CritDamage;
