@@ -33,13 +33,13 @@ MonoBehaviour:
   slopeFoamStrength: 0.5
   slopeFoamFlowSpeed: 20
   slopeFoamDistance: 50
-  rippleHeight: 0.127
+  rippleHeight: 0.06
   rippleSpeed: 2.17
-  rippleNoiseScale: 2.3
+  rippleNoiseScale: 9.7
   enableWave: 1
-  waveDirection: 234
+  waveDirection: 0
   waveSpeed: 1.6
-  waveHeight: 1.35
+  waveHeight: 1.25
   waveLength: 21.77
   waveSteepness: 0.008
   waveDeform: 0
