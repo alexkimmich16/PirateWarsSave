@@ -8,6 +8,8 @@ public class Cook5Con : MonoBehaviour
     Animator m_Animator;
     public GameObject pan;
     public GameObject target_sp;
+    public GameObject stun_effect;
+    public GameObject self_sp;
     public GameObject[] cook5_pati;
 
     string state;
@@ -41,5 +43,11 @@ public class Cook5Con : MonoBehaviour
     public void SkillEffect(){
         GameObject attackEffect;
         attackEffect = Instantiate(cook5_pati[0], target_sp.transform.position, Quaternion.identity);
+    }
+    public void Stun (){
+        m_Animator.SetTrigger("stun");
+        GameObject ob;
+        ob = Instantiate(stun_effect, self_sp.transform.position, self_sp.transform.rotation);
+
     }
 }

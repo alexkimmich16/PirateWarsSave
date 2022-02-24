@@ -27,7 +27,32 @@ ModelImporter:
   - first:
       74: 4681209322335472632
     second: Cook1_Skill_2
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cook1_tg
+    second: {fileID: 2100000, guid: 715b748df6e8c6c469930e3ce14dcc61, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 365a172f87592c64580180d294c95cb0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: b2b8bb070221cc54fac30af0214fbcfe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: ab801eb5004ec484ebac46c80c6469c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal2
+    second: {fileID: 2100000, guid: 0fb0eb5e43633774a9525330b1896d87, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

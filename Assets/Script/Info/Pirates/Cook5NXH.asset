@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eefedd22b95dc9a4ba83c0007f9b9cb8, type: 3}
+  m_Name: Cook5NXH
+  m_EditorClassIdentifier: 
+  Class: 3
+  icon: {fileID: 21300000, guid: 21a3dc3b8d3039243ab3af342a844192, type: 3}
+  Prefab: {fileID: 5105396022854411534, guid: 66fe2f95912e8cc40b78db1dd15f155c, type: 3}
+  BaseStats:
+    Health: 0
+    Damage: 0
+    Armour: 0
+    CritPercent: 0
+    CritDamage: 0
+    Intellect: 0
+    Dexterity: 0

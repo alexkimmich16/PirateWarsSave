@@ -10,7 +10,7 @@ public class Cc2Con : MonoBehaviour
     string state;
     void Start()
     {
-        //m_Animator = gameObject.GetComponent<Animator>();
+        m_Animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
