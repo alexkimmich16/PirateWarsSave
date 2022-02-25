@@ -22,7 +22,7 @@ public class BattleController : MonoBehaviour
 
     [Range(0, 10)]
     public float DamageEffect = 0.002f;
-
+    public GameObject LoseOBJ;
 
     public void CheckResults()
     {
@@ -37,7 +37,7 @@ public class BattleController : MonoBehaviour
     }
     public void OnLose()
     {
-
+        LoseOBJ.SetActive(true);
     }
     public void OnWin()
     {
