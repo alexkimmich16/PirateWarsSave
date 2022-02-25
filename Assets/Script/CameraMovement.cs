@@ -41,6 +41,7 @@ public class CameraMovement : MonoBehaviour
                 else if (currentPlace == Interactable.Shop)
                 {
                     //Application.OpenURL("http://unity3d.com/");
+                    MoveTo(Interactable.Main);
                 }
                 else if (currentPlace == Interactable.Trident)
                 {
