@@ -16,10 +16,10 @@ MonoBehaviour:
   icon: {fileID: 0}
   Prefab: {fileID: 5016529177350879543, guid: 73c2d7fef5669784bbff3b3dff1be1de, type: 3}
   BaseStats:
-    Health: 0
-    Damage: 0
-    Armour: 0
-    CritPercent: 0
-    CritDamage: 0
-    Intellect: 0
-    Dexterity: 0
+    Health: 2
+    Damage: 8
+    Armour: 7
+    CritPercent: 8
+    CritDamage: 6
+    Intellect: 1
+    Dexterity: 4
