@@ -1298,10 +1298,9 @@ MonoBehaviour:
   RotationSpeed: 0
   Distance: 0
   TurnRotation: 2
-  animator: {fileID: 6348025076214137973, guid: a38dd4d525446ee46bcf1ad86313a8f6,
-    type: 3}
-  AttackString: Cook1_Attack
-  DeathString: Cook1_Death
+  animator: {fileID: 2371148921441454204}
+  AttackString: qm2_Attack
+  DeathString: qm2_Death
   DeathTime: 2.75
   Dying: 0
   ThrowWaitTime: 0
