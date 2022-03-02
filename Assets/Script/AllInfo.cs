@@ -30,9 +30,7 @@ public class AllInfo : MonoBehaviour
     [System.Serializable]
     public class GamePirate
     {
-        public string Name;
         public PirateInfo pirateBase;
-
         public int Health;
         public int Damage;
         public int Armour;

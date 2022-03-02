@@ -54,7 +54,7 @@ public class BattleController : MonoBehaviour
         for (int i = 0; i < pirates.Count; i++)
         {
             GameObject Spawned = Instantiate(pirates[i].pirateBase.Prefab, FriendlySpawns[i].position, FriendlySpawns[i].rotation);
-            Spawned.name = pirates[i].Name;
+            Spawned.name = pirates[i].pirateBase.name;
             Spawned.GetComponent<BattleAI>().Friendly = true;
             Friend.Add(Spawned.GetComponent<BattleAI>());
             
@@ -67,7 +67,7 @@ public class BattleController : MonoBehaviour
         for (int i = 0; i < pirates.Count; i++)
         {
             GameObject Spawned = Instantiate(pirates[i].pirateBase.Prefab, EnemySpawns[i].position, EnemySpawns[i].rotation);
-            Spawned.name = pirates[i].Name;
+            Spawned.name = pirates[i].pirateBase.name;
             Spawned.GetComponent<BattleAI>().Friendly = false;
             Enemy.Add(Spawned.GetComponent<BattleAI>());
             Spawned.GetComponent<BattleAI>().pirate.Experience = pirates[i].Experience;
