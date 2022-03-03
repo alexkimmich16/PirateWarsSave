@@ -2061,14 +2061,13 @@ MonoBehaviour:
   RotationSpeed: 0
   Distance: 0
   TurnRotation: 2
-  animator: {fileID: 6348025076214137973, guid: a38dd4d525446ee46bcf1ad86313a8f6,
-    type: 3}
+  animator: {fileID: 8834223132413123392}
   AttackString: Cap1_Attack
   DeathString: Cap1_Death
   DeathTime: 2.75
   Dying: 0
   ThrowWaitTime: 0
-  knife: {fileID: 8494929379044533817, guid: a38dd4d525446ee46bcf1ad86313a8f6, type: 3}
+  knife: {fileID: 0}
 --- !u!1 &6717756294775280372
 GameObject:
   m_ObjectHideFlags: 0

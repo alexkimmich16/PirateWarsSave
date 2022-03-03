@@ -31,19 +31,16 @@ public class AllInfo : MonoBehaviour
     public class GamePirate
     {
         public PirateInfo pirateBase;
-        public int Health;
-        public int Damage;
-        public int Armour;
-        public int CritPercent;
-        public int CritDamage;
-        public int Intellect;
-        public int Dexterity;
+
+        [HideInInspector]
+        public int Health, Damage, Armour, CritPercent, CritDamage, Intellect, Dexterity;
 
         public int Rank;
         public int Level;
         public float Experience;
         public List<GameEquipment> gameEquipment = new List<GameEquipment>();
 
+        [HideInInspector]
         public int NumInList;
 
         public void AddExperience(int ExperienceAdd)
