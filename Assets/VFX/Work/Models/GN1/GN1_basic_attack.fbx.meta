@@ -53,7 +53,7 @@ ModelImporter:
       name: uv check
     second: {fileID: 2100000, guid: 07a0c434e01c3a440afe91a70574d37e, type: 2}
   materials:
-    materialImportMode: 2
+    materialImportMode: 0
     materialName: 1
     materialSearch: 1
     materialLocation: 1

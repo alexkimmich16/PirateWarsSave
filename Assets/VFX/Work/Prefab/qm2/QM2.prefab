@@ -1271,7 +1271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef82fbde75b3e7148b140e5926ca70ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navMeshAgent: {fileID: 1993124489859553703}
   pirate:
     pirateBase: {fileID: 11400000, guid: 54a62f3eba4e0a9469c0418435328553, type: 2}
     Health: 0
@@ -1298,9 +1297,8 @@ MonoBehaviour:
   RotationSpeed: 0
   Distance: 0
   TurnRotation: 2
-  animator: {fileID: 2371148921441454204}
-  AttackString: qm2_Attack
-  DeathString: qm2_Death
+  AttackString: qm2_attack
+  DeathString: qm2_stun
   DeathTime: 2.75
   Dying: 0
   ThrowWaitTime: 0

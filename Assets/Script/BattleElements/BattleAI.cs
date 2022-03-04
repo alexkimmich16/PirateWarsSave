@@ -5,10 +5,15 @@ using UnityEngine.AI;
 
 public class BattleAI : MonoBehaviour
 {
-    public NavMeshAgent navMeshAgent;
+    private NavMeshAgent navMeshAgent;
     public AllInfo.GamePirate pirate;
+    [HideInInspector]
     public bool Friendly;
+
+
+    [HideInInspector]
     public BattleController BC;
+    [HideInInspector]
     public BattleAI Target;
 
     public float MinDistanceObjective = 0.3f;
@@ -28,7 +33,7 @@ public class BattleAI : MonoBehaviour
     private Vector3 ObjectivePoint;
 
     [Header("Animation")]
-    public Animator animator;
+    private Animator animator;
     public string AttackString;
     public string DeathString;
     public float DeathTime;
@@ -44,6 +49,8 @@ public class BattleAI : MonoBehaviour
     {
         CurrentHealth = MaxHealth;
         BC = BattleController.instance;
+        animator = gameObject.GetComponent<Animator>();
+        navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
     }
     public void AttackCount()
     {

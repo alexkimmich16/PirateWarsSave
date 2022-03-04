@@ -22,6 +22,8 @@ public class SelectionMenu : MonoBehaviour
         public int NumInList;
         public GameObject Character;
     }
+
+    public static float CharacterSize = 15f;
     public List<CharacterHolder> CharacterHolders;
     public List<Transform> Positions;
     public List<GameObject> Characters;
@@ -73,9 +75,8 @@ public class SelectionMenu : MonoBehaviour
                 Destroy(Spawned.GetComponent<BattleAI>());
                 Destroy(Spawned.GetComponent<Rigidbody>());
                 Destroy(Spawned.GetComponent<BattleAI>());
-                float Size = 9f;
                 Spawned.transform.rotation = Quaternion.Euler(0,180,0);
-                Spawned.transform.localScale = new Vector3(Size, Size, Size);
+                Spawned.transform.localScale = new Vector3(CharacterSize, CharacterSize, CharacterSize);
                 if (Spawned.GetComponent<KnifeControl>() != null)
                 {
                     Destroy(Spawned.GetComponent<KnifeControl>());
