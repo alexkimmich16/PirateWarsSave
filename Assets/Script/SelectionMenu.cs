@@ -48,6 +48,7 @@ public class SelectionMenu : MonoBehaviour
         CharacterHolders[Num].Active = false;
         Destroy(Characters[Num]);
         UpdatePirate();
+        //Debug.Log("remove: " + Num);
     }
     public void SetCurrentPirate(int Listnum)
     {

@@ -32,11 +32,10 @@ public class AllInfo : MonoBehaviour
     {
         public PirateInfo pirateBase;
 
-        [HideInInspector]
+        //[HideInInspector]
         public int Health, Damage, Armour, CritPercent, CritDamage, Intellect, Dexterity;
-
-        public int Rank;
-        public int Level;
+        [HideInInspector]
+        public int Level, Rank;
         public float Experience;
         public List<GameEquipment> gameEquipment = new List<GameEquipment>();
 
@@ -181,6 +180,19 @@ public class AllInfo : MonoBehaviour
     [Range(0, 25)]
     public float PirateRankPercentAdd;
 
+
+    public int GetCharNum(PirateInfo pirate)
+    {
+        for (int i = 0; i < PirateBases.Count; i++)
+        {
+            if(pirate == PirateBases[i])
+            {
+                return i;
+            }
+        }
+        Debug.LogError("Didn't Find Pirate:  " + pirate.name + "in list!");
+        return 1000;
+    }
     public int GetTotalEXP(bool IsPirate, int ListNum)
     {
         int Total = 0;

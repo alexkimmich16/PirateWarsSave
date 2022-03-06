@@ -23,6 +23,7 @@ public class BattleAI : MonoBehaviour
 
     public int AttackDamage = 5;
 
+    [HideInInspector]
     public int MaxHealth;
     public int CurrentHealth;
 
@@ -36,19 +37,32 @@ public class BattleAI : MonoBehaviour
     private Animator animator;
     public string AttackString;
     public string DeathString;
+    public string SkillString;
+    
     public float DeathTime;
     private float DeathTimer = 0f;
     public bool Dying = false;
 
-    public float ThrowWaitTime;
+    public float AttackWait;
     private bool ThrowWaiting;
     private float ThrowWaitTimer;
     public KnifeControl knife;
 
+
+    public float SpecialTime;
+    private float SpecialTimer;
+
+    public delegate void SomeCallbackFunction();
+    // the event itself
+    public event SomeCallbackFunction OnHit;
+
     private void Start()
     {
-        CurrentHealth = MaxHealth;
         BC = BattleController.instance;
+
+        MaxHealth = pirate.Health;
+        CurrentHealth = MaxHealth;
+        
         animator = gameObject.GetComponent<Animator>();
         navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
     }
@@ -90,13 +104,27 @@ public class BattleAI : MonoBehaviour
         if(ThrowWaiting == true)
         {
             ThrowWaitTimer += Time.deltaTime;
-            if (ThrowWaitTimer > ThrowWaitTime)
+            SpecialTimer += Time.deltaTime;
+            if (Melee(pirate.pirateBase.Class) == true)
             {
-                ThrowWaiting = false;
-                if (knife != null)
+                if (ThrowWaitTimer > AttackWait)
                 {
+                    if (SpecialTimer > SpecialTime)
+                    {
+                        SkillController.instance.UseSkill(AllInfo.instance.GetCharNum(pirate.pirateBase), transform);
+                        animator.Play(SkillString);
+                    }
+                    else
+                    {
+                        if (Melee(pirate.pirateBase.Class) == false)
+                            knife.SendWeapon(Target.transform);
+                        else
+                            DoDamage();
+                    }
+
+                    ThrowWaiting = false;
+                    
                     ThrowWaitTimer = 0f;
-                    knife.SendWeapon(Target.transform);
                 }
             }
         }        
@@ -233,7 +261,7 @@ public class BattleAI : MonoBehaviour
                 return 0;
             }
         }
-        int ArmorReduce(float Damage)
+        int ArmorRedue(float Damage)
         {
             int Armor = Target.pirate.Armour;
             float ArmorMultiplier = Armor / 100;
@@ -260,8 +288,8 @@ public class BattleAI : MonoBehaviour
     public void Attack()
     {
         animator.Play(AttackString);
-        
         ThrowWaiting = true;
+       
     }
     public void Death()
     {
@@ -281,7 +309,7 @@ public class BattleAI : MonoBehaviour
     }
     public bool Melee(CharacterClass Class)
     {
-        if (Class == CharacterClass.Captain || Class == CharacterClass.MeleeDPS || Class == CharacterClass.QuarterMaster)
+        if (Class == CharacterClass.Captain || Class == CharacterClass.MeleeDPS || Class == CharacterClass.QuarterMaster || Class == CharacterClass.Support)
         {
             return true;
         }

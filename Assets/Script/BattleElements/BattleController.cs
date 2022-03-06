@@ -56,6 +56,7 @@ public class BattleController : MonoBehaviour
             GameObject Spawned = Instantiate(pirates[i].pirateBase.Prefab, FriendlySpawns[i].position, FriendlySpawns[i].rotation);
             Spawned.name = pirates[i].pirateBase.name;
             Spawned.GetComponent<BattleAI>().Friendly = true;
+            Spawned.GetComponent<BattleAI>().pirate = pirates[i];
             Friend.Add(Spawned.GetComponent<BattleAI>());
             
             Spawned.GetComponent<BattleAI>().pirate.CheckExperience();
