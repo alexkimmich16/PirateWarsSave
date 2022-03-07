@@ -48,7 +48,6 @@ public class BattleAI : MonoBehaviour
     private float ThrowWaitTimer;
     public KnifeControl knife;
 
-
     public float SpecialTime;
     private float SpecialTimer;
 
@@ -57,7 +56,6 @@ public class BattleAI : MonoBehaviour
     public event SomeCallbackFunction OnHit;
 
     public bool SkillActive;
-
     private void Start()
     {
         BC = BattleController.instance;
@@ -106,7 +104,6 @@ public class BattleAI : MonoBehaviour
         if(ThrowWaiting == true)
         {
             ThrowWaitTimer += Time.deltaTime;
-            
             if (Melee(pirate.pirateBase.Class) == true)
             {
                 if (ThrowWaitTimer > AttackWait)
@@ -125,7 +122,6 @@ public class BattleAI : MonoBehaviour
                         else
                             DoDamage();
                     }
-
                     ThrowWaiting = false;
                     
                     ThrowWaitTimer = 0f;
@@ -246,68 +242,11 @@ public class BattleAI : MonoBehaviour
         }
         
     }
-    public void DoDamage()
-    {
-        //move some to the "take damage function"
-        
-        float CritAdd = AddCrit(out bool Crit);
-        int DodgeEffect = Dodge();
-        float DamageFloat = ((AttackDamage - (AttackDamage * BattleController.instance.ArmorEffect * Target.pirate.Armour)) * CritAdd) * DodgeEffect * BattleController.instance.DamageEffect * SkillMultiplier();
-        //doskills
-        int FinalDMG = Mathf.RoundToInt(DamageFloat);
-        Debug.Log("FinalDMG: " + DamageFloat + "  DodgeEffect: " + DodgeEffect + "  CritAdd: " + CritAdd + "  AttackDamage: " + AttackDamage + "  Armor: " + Target.pirate.Armour + "  AttackDamage: " + AttackDamage);
-        PopupManager.instance.CreatePopup(Target.transform.position, FinalDMG, Crit);
-        Target.Damage(FinalDMG);
-
-        float SkillMultiplier()
-        {
-            if (AllInfo.instance.GetCharNum(Target.pirate.pirateBase) == 0 && Target.gameObject.GetComponent<BattleAI>().SkillActive == true)
-            {
-                return 0.45f;
-            }
-            return 1;
-        }
-        int Dodge()
-        {
-            int Roll = Random.Range(0, 100);
-            if (Roll > Target.pirate.Dexterity)
-            {
-                return 1;
-            }
-            else
-            {
-                return 0;
-            }
-        }
-        int ArmorRedue(float Damage)
-        {
-            int Armor = Target.pirate.Armour;
-            float ArmorMultiplier = Armor / 100;
-            float InverseDamage = 1 - ArmorMultiplier;
-            float RealDamage = Damage * InverseDamage;
-            return (int)RealDamage;
-        }
-        int AddCrit(out bool IsCrit)
-        {
-            int Roll = Random.Range(0, 100);
-            //Debug.Log("Roll: " + Roll + "  pirate.CritPercent: " + pirate.CritPercent);
-            if (Roll < pirate.CritPercent)
-            {
-                IsCrit = true;
-                return pirate.CritDamage;
-            }
-            else
-            {
-                IsCrit = false;
-                return 1;
-            }
-        }
-    }
+    
     public void Attack()
     {
         animator.Play(AttackString);
         ThrowWaiting = true;
-       
     }
     public void Death()
     {
@@ -336,15 +275,7 @@ public class BattleAI : MonoBehaviour
             return false;
         }
     }
-    public void Damage(int DamageDone)
-    {
-        CurrentHealth -= DamageDone;
-        if (CurrentHealth < 1)
-        {
-            Death();
-        }
-    }
-
+    
     public IEnumerator OverTimeDamage(int Damage, float Interval, float Range)
     {
         float Current = 0;
@@ -357,5 +288,85 @@ public class BattleAI : MonoBehaviour
         }
 
         //int TotalDamages =  (int)Mathf.Floor(3 / Interval);
+    }
+
+    public void DoDamage()
+    {
+        float CritAdd = AddCrit(out bool Crit);
+        float TotalDamage = AttackDamage * CritAdd * BattleController.instance.DamageEffect * SkillMultiplier();
+        int FinalDMG = Mathf.RoundToInt(TotalDamage);
+        //Debug.Log("FinalDMG: " + TotalDamage + "  CritAdd: " + CritAdd + "  AttackDamage: " + AttackDamage);
+        Target.Damage(FinalDMG, Crit);
+        
+        float SkillMultiplier()
+        {
+            return 1;
+        }
+        
+        
+        int AddCrit(out bool IsCrit)
+        {
+            int Roll = Random.Range(0, 100);
+            //Debug.Log("Roll: " + Roll + "  pirate.CritPercent: " + pirate.CritPercent);
+            if (Roll < pirate.CritPercent)
+            {
+                IsCrit = true;
+                return pirate.CritDamage;
+            }
+            else
+            {
+                IsCrit = false;
+                return 1;
+            }
+        }
+    }
+
+    public void Damage(int DamageDone, bool Crit)
+    {
+        float TrueDamage = DamageDone * ArmorReduce() * Dodge(out bool DodgeTrue) * BattleController.instance.DamageEffect * SkillMultiplier();
+        int DamageInt = Mathf.RoundToInt(TrueDamage);
+        Debug.Log("Final: " + TrueDamage + "DamageDone: " + DamageDone + "ArmorReduce(): " + ArmorReduce() + "DodgeTrue: " + DodgeTrue + "SkillMultiplier(): " + SkillMultiplier() + DodgeTrue + "  DamageEffect: " + BattleController.instance.DamageEffect);
+        CurrentHealth -= DamageDone;
+
+        if (DodgeTrue)
+            PopupManager.instance.CreateStringPopup(Target.transform.position, "Dodge", Crit);
+        else
+            PopupManager.instance.CreatePopup(Target.transform.position, DamageInt, Crit);
+
+
+
+        if (CurrentHealth < 1)
+        {
+            Death();
+        }
+
+
+
+        float ArmorReduce()
+        {
+            return 1 - (BattleController.instance.ArmorEffect * pirate.Armour);
+        }
+        int Dodge(out bool IsDodge)
+        {
+            int Roll = Random.Range(0, 100);
+            if (Roll > pirate.Dexterity)
+            {
+                IsDodge = false;
+                return 1;
+            }
+            else
+            {
+                IsDodge = true;
+                return 0;
+            }
+        }
+        float SkillMultiplier()
+        {
+            if (AllInfo.instance.GetCharNum(pirate.pirateBase) == 0 && gameObject.GetComponent<BattleAI>().SkillActive == true)
+            {
+                return 0.45f;
+            }
+            return 1;
+        }
     }
 }
