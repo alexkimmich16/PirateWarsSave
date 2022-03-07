@@ -7341,10 +7341,13 @@ MonoBehaviour:
   TurnRotation: 2
   AttackString: attack
   DeathString: death
+  SkillString: 
   DeathTime: 2.75
   Dying: 0
   AttackWait: 0
   knife: {fileID: 8494929379044533817, guid: a38dd4d525446ee46bcf1ad86313a8f6, type: 3}
+  SpecialTime: 14
+  SkillActive: 0
 --- !u!1 &8204304506063848795
 GameObject:
   m_ObjectHideFlags: 0

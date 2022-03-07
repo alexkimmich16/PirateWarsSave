@@ -597,6 +597,7 @@ Transform:
   - {fileID: 3699669412451387212}
   - {fileID: 4988228775146041157}
   - {fileID: 4665030118017764011}
+  - {fileID: 2583800876977341807}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -684,7 +685,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef82fbde75b3e7148b140e5926ca70ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navMeshAgent: {fileID: -6558153319852042482}
   pirate:
     pirateBase: {fileID: 11400000, guid: 54a62f3eba4e0a9469c0418435328553, type: 2}
     Health: 0
@@ -694,8 +694,8 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
     NumInList: 0
@@ -711,13 +711,15 @@ MonoBehaviour:
   RotationSpeed: 0
   Distance: 0
   TurnRotation: 2
-  animator: {fileID: 2972975434797978631}
   AttackString: Cap2_Attack
   DeathString: Cap2_Death
+  SkillString: 
   DeathTime: 2.75
   Dying: 0
-  ThrowWaitTime: 0
+  AttackWait: 0
   knife: {fileID: 8494929379044533817, guid: a38dd4d525446ee46bcf1ad86313a8f6, type: 3}
+  SpecialTime: 12
+  SkillActive: 0
 --- !u!1 &1690957243964518564
 GameObject:
   m_ObjectHideFlags: 0
@@ -1467,6 +1469,36 @@ Transform:
   - {fileID: 2352981692678132988}
   m_Father: {fileID: 3925107832424294813}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3223663870885234090
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2583800876977341807}
+  m_Layer: 0
+  m_Name: cap2_sp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2583800876977341807
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3223663870885234090}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2141199152366969944}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3588393346102598449
 GameObject:

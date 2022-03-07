@@ -56,6 +56,8 @@ public class BattleAI : MonoBehaviour
     // the event itself
     public event SomeCallbackFunction OnHit;
 
+    public bool SkillActive;
+
     private void Start()
     {
         BC = BattleController.instance;
@@ -104,13 +106,15 @@ public class BattleAI : MonoBehaviour
         if(ThrowWaiting == true)
         {
             ThrowWaitTimer += Time.deltaTime;
-            SpecialTimer += Time.deltaTime;
+            
             if (Melee(pirate.pirateBase.Class) == true)
             {
                 if (ThrowWaitTimer > AttackWait)
                 {
                     if (SpecialTimer > SpecialTime)
                     {
+                        //Debug.Log(AllInfo.instance.GetCharNum(pirate.pirateBase));
+                        SpecialTimer = 0;
                         SkillController.instance.UseSkill(AllInfo.instance.GetCharNum(pirate.pirateBase), transform);
                         animator.Play(SkillString);
                     }
@@ -142,10 +146,12 @@ public class BattleAI : MonoBehaviour
             if (Vector3.Distance(transform.position, ObjectivePoint) < 2f)
             {
                 animator.SetBool("Moving", false);
+                SpecialTimer += Time.deltaTime;
             }
             else
             {
                 animator.SetBool("Moving", true);
+                
             }
 
             if (Melee(pirate.pirateBase.Class) == true)
@@ -242,13 +248,25 @@ public class BattleAI : MonoBehaviour
     }
     public void DoDamage()
     {
+        //move some to the "take damage function"
+        
         float CritAdd = AddCrit(out bool Crit);
         int DodgeEffect = Dodge();
-        float DamageFloat = ((AttackDamage - (AttackDamage * BattleController.instance.ArmorEffect * Target.pirate.Armour)) * CritAdd) * DodgeEffect * BattleController.instance.DamageEffect;
+        float DamageFloat = ((AttackDamage - (AttackDamage * BattleController.instance.ArmorEffect * Target.pirate.Armour)) * CritAdd) * DodgeEffect * BattleController.instance.DamageEffect * SkillMultiplier();
+        //doskills
         int FinalDMG = Mathf.RoundToInt(DamageFloat);
         Debug.Log("FinalDMG: " + DamageFloat + "  DodgeEffect: " + DodgeEffect + "  CritAdd: " + CritAdd + "  AttackDamage: " + AttackDamage + "  Armor: " + Target.pirate.Armour + "  AttackDamage: " + AttackDamage);
         PopupManager.instance.CreatePopup(Target.transform.position, FinalDMG, Crit);
         Target.Damage(FinalDMG);
+
+        float SkillMultiplier()
+        {
+            if (AllInfo.instance.GetCharNum(Target.pirate.pirateBase) == 0 && Target.gameObject.GetComponent<BattleAI>().SkillActive == true)
+            {
+                return 0.45f;
+            }
+            return 1;
+        }
         int Dodge()
         {
             int Roll = Random.Range(0, 100);
@@ -325,5 +343,19 @@ public class BattleAI : MonoBehaviour
         {
             Death();
         }
+    }
+
+    public IEnumerator OverTimeDamage(int Damage, float Interval, float Range)
+    {
+        float Current = 0;
+        
+        while (Current < 3)
+        {
+            SkillController.instance.DealAroundDamage(transform, transform.GetComponent<BattleAI>().Friendly, Range, Damage);
+            Current += Interval;
+            yield return new WaitForSeconds(Interval);
+        }
+
+        //int TotalDamages =  (int)Mathf.Floor(3 / Interval);
     }
 }

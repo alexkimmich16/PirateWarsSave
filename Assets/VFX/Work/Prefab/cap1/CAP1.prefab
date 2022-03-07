@@ -2034,7 +2034,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef82fbde75b3e7148b140e5926ca70ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navMeshAgent: {fileID: -7724405968759932404}
   pirate:
     pirateBase: {fileID: 11400000, guid: 54a62f3eba4e0a9469c0418435328553, type: 2}
     Health: 0
@@ -2044,8 +2043,8 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
     NumInList: 0
@@ -2061,13 +2060,14 @@ MonoBehaviour:
   RotationSpeed: 0
   Distance: 0
   TurnRotation: 2
-  animator: {fileID: 8834223132413123392}
   AttackString: Cap1_Attack
   DeathString: Cap1_Death
+  SkillString: 
   DeathTime: 2.75
   Dying: 0
-  ThrowWaitTime: 0
+  AttackWait: 0
   knife: {fileID: 0}
+  SpecialTime: 9
 --- !u!1 &6717756294775280372
 GameObject:
   m_ObjectHideFlags: 0

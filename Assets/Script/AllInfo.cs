@@ -32,7 +32,7 @@ public class AllInfo : MonoBehaviour
     {
         public PirateInfo pirateBase;
 
-        //[HideInInspector]
+        [HideInInspector]
         public int Health, Damage, Armour, CritPercent, CritDamage, Intellect, Dexterity;
         [HideInInspector]
         public int Level, Rank;

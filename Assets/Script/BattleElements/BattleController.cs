@@ -24,6 +24,42 @@ public class BattleController : MonoBehaviour
     public float DamageEffect = 0.002f;
     public GameObject LoseOBJ;
 
+    public List<float> StunEnemies;
+    public bool StunEnemy()
+    {
+        if (StunEnemies.Count > 0)
+            return true;
+        else
+            return false;
+    }
+    
+    public List<float> StunFriendlys;
+    public bool StunFriendly()
+    {
+        if (StunFriendlys.Count > 0)
+            return true;
+        else
+            return false;
+    }
+    private void Update()
+    {
+        for (int i = 0; i < StunEnemies.Count; i++)
+        {
+            StunEnemies[i] -= Time.deltaTime;
+            if (StunEnemies[i] < 0)
+            {
+                StunEnemies.Remove(StunEnemies[i]);
+            }
+        }
+        for (int i = 0; i < StunFriendlys.Count; i++)
+        {
+            StunFriendlys[i] -= Time.deltaTime;
+            if (StunFriendlys[i] < 0)
+            {
+                StunFriendlys.Remove(StunFriendlys[i]);
+            }
+        }
+    }
     public void CheckResults()
     {
         if (Friend.Count == 0)
@@ -37,7 +73,7 @@ public class BattleController : MonoBehaviour
     }
     public void OnLose()
     {
-        LoseOBJ.SetActive(true);
+        //LoseOBJ.SetActive(true);
     }
     public void OnWin()
     {
@@ -69,6 +105,7 @@ public class BattleController : MonoBehaviour
         {
             GameObject Spawned = Instantiate(pirates[i].pirateBase.Prefab, EnemySpawns[i].position, EnemySpawns[i].rotation);
             Spawned.name = pirates[i].pirateBase.name;
+            Spawned.GetComponent<BattleAI>().pirate = pirates[i];
             Spawned.GetComponent<BattleAI>().Friendly = false;
             Enemy.Add(Spawned.GetComponent<BattleAI>());
             Spawned.GetComponent<BattleAI>().pirate.Experience = pirates[i].Experience;

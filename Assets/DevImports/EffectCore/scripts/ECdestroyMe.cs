@@ -19,6 +19,11 @@ public class ECdestroyMe : MonoBehaviour{
 
         if(timer >= deathtimer)
         {
+            if (transform.parent != null)
+            {
+                transform.parent.GetComponent<BattleAI>().SkillActive = false;
+            }
+            
             Destroy(gameObject);
         }
 	
