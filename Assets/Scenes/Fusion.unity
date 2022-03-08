@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -287,12 +287,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
     Experience: 0
   ActivePirate: 0
   pirate:
-    Name: 
     pirateBase: {fileID: 0}
     Health: 0
     Damage: 0
@@ -301,11 +299,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
-    rarity: 0
     NumInList: 0
 --- !u!114 &38855437
 MonoBehaviour:
@@ -642,12 +639,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
     Experience: 0
   ActivePirate: 0
   pirate:
-    Name: 
     pirateBase: {fileID: 0}
     Health: 0
     Damage: 0
@@ -656,11 +651,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
-    rarity: 0
     NumInList: 0
 --- !u!114 &109174573
 MonoBehaviour:
@@ -888,12 +882,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
     Experience: 0
   ActivePirate: 0
   pirate:
-    Name: 
     pirateBase: {fileID: 0}
     Health: 0
     Damage: 0
@@ -902,11 +894,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
-    rarity: 0
     NumInList: 0
 --- !u!114 &127511606
 MonoBehaviour:
@@ -1167,12 +1158,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
     Experience: 0
   ActivePirate: 0
   pirate:
-    Name: 
     pirateBase: {fileID: 0}
     Health: 0
     Damage: 0
@@ -1181,11 +1170,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
-    rarity: 0
     NumInList: 0
 --- !u!114 &301520210
 MonoBehaviour:
@@ -1610,12 +1598,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
     Experience: 0
   ActivePirate: 0
   pirate:
-    Name: 
     pirateBase: {fileID: 0}
     Health: 0
     Damage: 0
@@ -1624,11 +1610,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
-    rarity: 0
     NumInList: 0
 --- !u!114 &412191907
 MonoBehaviour:
@@ -1898,7 +1883,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 5}
+  m_AnchoredPosition: {x: 0, y: 11.7}
   m_SizeDelta: {x: 70, y: 20.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &479591427
@@ -1922,8 +1907,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Pirates
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fa08fff1716a04db18700207b6c202e5, type: 2}
+  m_sharedMaterial: {fileID: 7908499825950019370, guid: fa08fff1716a04db18700207b6c202e5,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2188,12 +2174,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
     Experience: 0
   ActivePirate: 0
   pirate:
-    Name: 
     pirateBase: {fileID: 0}
     Health: 0
     Damage: 0
@@ -2202,11 +2186,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
-    rarity: 0
     NumInList: 0
 --- !u!114 &486693612
 MonoBehaviour:
@@ -2396,12 +2379,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
     Experience: 0
   ActivePirate: 0
   pirate:
-    Name: 
     pirateBase: {fileID: 0}
     Health: 0
     Damage: 0
@@ -2410,11 +2391,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
-    rarity: 0
     NumInList: 0
 --- !u!114 &546813752
 MonoBehaviour:
@@ -2826,12 +2806,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
     Experience: 0
   ActivePirate: 0
   pirate:
-    Name: 
     pirateBase: {fileID: 0}
     Health: 0
     Damage: 0
@@ -2840,11 +2818,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
-    rarity: 0
     NumInList: 0
 --- !u!114 &629411943
 MonoBehaviour:
@@ -3134,12 +3111,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
     Experience: 0
   ActivePirate: 0
   pirate:
-    Name: 
     pirateBase: {fileID: 0}
     Health: 0
     Damage: 0
@@ -3148,11 +3123,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
-    rarity: 0
     NumInList: 0
 --- !u!114 &653005063
 MonoBehaviour:
@@ -3222,7 +3196,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 3.3}
+  m_AnchoredPosition: {x: 0, y: 8.4}
   m_SizeDelta: {x: 62.69, y: 23.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &661195710
@@ -3248,8 +3222,9 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fa08fff1716a04db18700207b6c202e5, type: 2}
+  m_sharedMaterial: {fileID: 7908499825950019370, guid: fa08fff1716a04db18700207b6c202e5,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3598,12 +3573,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
     Experience: 0
   ActivePirate: 0
   pirate:
-    Name: 
     pirateBase: {fileID: 0}
     Health: 0
     Damage: 0
@@ -3612,11 +3585,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
-    rarity: 0
     NumInList: 0
 --- !u!114 &770124184
 MonoBehaviour:
@@ -3686,7 +3658,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16.5, y: 258.8}
+  m_AnchoredPosition: {x: -16.5, y: 281.8}
   m_SizeDelta: {x: 205.8, y: 39.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &796989078
@@ -3710,8 +3682,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Fusion
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: aa2f3c655b3634b2b852b64fd197fd58, type: 2}
+  m_sharedMaterial: {fileID: 6447333859754382329, guid: aa2f3c655b3634b2b852b64fd197fd58,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3735,8 +3708,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56
-  m_fontSizeBase: 56
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3845,15 +3818,16 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: aa2f3c655b3634b2b852b64fd197fd58, type: 2}
+  m_sharedMaterial: {fileID: 6447333859754382329, guid: aa2f3c655b3634b2b852b64fd197fd58,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294759935
+  m_fontColor: {r: 1, g: 0.8349056, b: 0.98919857, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4349,12 +4323,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
     Experience: 0
   ActivePirate: 0
   pirate:
-    Name: 
     pirateBase: {fileID: 0}
     Health: 0
     Damage: 0
@@ -4363,11 +4335,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
-    rarity: 0
     NumInList: 0
 --- !u!114 &963861911
 MonoBehaviour:
@@ -4722,12 +4693,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
     Experience: 0
   ActivePirate: 0
   pirate:
-    Name: 
     pirateBase: {fileID: 0}
     Health: 0
     Damage: 0
@@ -4736,11 +4705,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
-    rarity: 0
     NumInList: 0
 --- !u!114 &1009230411
 MonoBehaviour:
@@ -4968,12 +4936,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
     Experience: 0
   ActivePirate: 0
   pirate:
-    Name: 
     pirateBase: {fileID: 0}
     Health: 0
     Damage: 0
@@ -4982,11 +4948,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
-    rarity: 0
     NumInList: 0
 --- !u!114 &1221556899
 MonoBehaviour:
@@ -5140,12 +5105,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
     Experience: 0
   ActivePirate: 0
   pirate:
-    Name: 
     pirateBase: {fileID: 0}
     Health: 0
     Damage: 0
@@ -5154,11 +5117,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
-    rarity: 0
     NumInList: 0
 --- !u!114 &1254039346
 MonoBehaviour:
@@ -5440,12 +5402,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
     Experience: 0
   ActivePirate: 0
   pirate:
-    Name: 
     pirateBase: {fileID: 0}
     Health: 0
     Damage: 0
@@ -5454,11 +5414,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
-    rarity: 0
     NumInList: 0
 --- !u!114 &1403853253
 MonoBehaviour:
@@ -5706,12 +5665,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
     Experience: 0
   ActivePirate: 0
   pirate:
-    Name: 
     pirateBase: {fileID: 0}
     Health: 0
     Damage: 0
@@ -5720,11 +5677,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
-    rarity: 0
     NumInList: 0
 --- !u!114 &1448875297
 MonoBehaviour:
@@ -6152,12 +6108,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
     Experience: 0
   ActivePirate: 0
   pirate:
-    Name: 
     pirateBase: {fileID: 0}
     Health: 0
     Damage: 0
@@ -6166,11 +6120,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
-    rarity: 0
     NumInList: 0
 --- !u!114 &1528234727
 MonoBehaviour:
@@ -6338,15 +6291,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: Upgrade
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fa08fff1716a04db18700207b6c202e5, type: 2}
+  m_sharedMaterial: {fileID: 7908499825950019370, guid: fa08fff1716a04db18700207b6c202e5,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4289381887
+  m_fontColor: {r: 1, g: 0.7726889, b: 0.6650944, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6770,12 +6724,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
     Experience: 0
   ActivePirate: 0
   pirate:
-    Name: 
     pirateBase: {fileID: 0}
     Health: 0
     Damage: 0
@@ -6784,11 +6736,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
-    rarity: 0
     NumInList: 0
 --- !u!114 &1653398844
 MonoBehaviour:
@@ -6956,15 +6907,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: Sacrifice
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fa08fff1716a04db18700207b6c202e5, type: 2}
+  m_sharedMaterial: {fileID: 7908499825950019370, guid: fa08fff1716a04db18700207b6c202e5,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4294962635
+  m_fontColor: {r: 0.7971698, g: 0.92840743, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7809,12 +7761,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
     Experience: 0
   ActivePirate: 0
   pirate:
-    Name: 
     pirateBase: {fileID: 0}
     Health: 0
     Damage: 0
@@ -7823,11 +7773,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
-    rarity: 0
     NumInList: 0
 --- !u!114 &1857345825
 MonoBehaviour:
@@ -8088,12 +8037,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
     Experience: 0
   ActivePirate: 0
   pirate:
-    Name: 
     pirateBase: {fileID: 0}
     Health: 0
     Damage: 0
@@ -8102,11 +8049,10 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
-    rarity: 0
     NumInList: 0
 --- !u!114 &1948423973
 MonoBehaviour:
@@ -8366,7 +8312,6 @@ MonoBehaviour:
       CritDamage: 0
       Intellect: 0
       Dexterity: 0
-      Rank: 0
       Level: 0
       Experience: 0
     image: {fileID: 1855334259}
@@ -8384,7 +8329,6 @@ MonoBehaviour:
       CritDamage: 0
       Intellect: 0
       Dexterity: 0
-      Rank: 0
       Level: 0
       Experience: 0
     image: {fileID: 1735785136}
@@ -8436,7 +8380,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.07}
+  m_AnchoredPosition: {x: 0, y: 7.2}
   m_SizeDelta: {x: 30.42, y: 41.628647}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1981221435
@@ -8460,8 +8404,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: ...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fa08fff1716a04db18700207b6c202e5, type: 2}
+  m_sharedMaterial: {fileID: 7908499825950019370, guid: fa08fff1716a04db18700207b6c202e5,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
