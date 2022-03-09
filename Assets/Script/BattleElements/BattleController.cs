@@ -87,29 +87,57 @@ public class BattleController : MonoBehaviour
 
     public void SpawnFriendly(List<AllInfo.GamePirate> pirates)
     {
-        for (int i = 0; i < pirates.Count; i++)
+        if(MapLevels.instance.FirstOnly == false)
         {
-            GameObject Spawned = Instantiate(pirates[i].pirateBase.Prefab, FriendlySpawns[i].position, FriendlySpawns[i].rotation);
-            Spawned.name = pirates[i].pirateBase.name;
+            for (int i = 0; i < pirates.Count; i++)
+            {
+                GameObject Spawned = Instantiate(pirates[i].pirateBase.Prefab, FriendlySpawns[i].position, FriendlySpawns[i].rotation);
+                Spawned.name = pirates[i].pirateBase.name;
+                Spawned.GetComponent<BattleAI>().Friendly = true;
+                Spawned.GetComponent<BattleAI>().pirate = pirates[i];
+                Friend.Add(Spawned.GetComponent<BattleAI>());
+
+                Spawned.GetComponent<BattleAI>().pirate.CheckExperience();
+            }
+        }
+        else
+        {
+            GameObject Spawned = Instantiate(pirates[0].pirateBase.Prefab, FriendlySpawns[0].position, FriendlySpawns[0].rotation);
+            Spawned.name = pirates[0].pirateBase.name;
             Spawned.GetComponent<BattleAI>().Friendly = true;
-            Spawned.GetComponent<BattleAI>().pirate = pirates[i];
+            Spawned.GetComponent<BattleAI>().pirate = pirates[0];
             Friend.Add(Spawned.GetComponent<BattleAI>());
-            
             Spawned.GetComponent<BattleAI>().pirate.CheckExperience();
         }
+        
     }
 
     public void SpawnEnemy(List<AllInfo.GamePirate> pirates)
     {
-        for (int i = 0; i < pirates.Count; i++)
+        if (MapLevels.instance.FirstOnly == false)
         {
-            GameObject Spawned = Instantiate(pirates[i].pirateBase.Prefab, EnemySpawns[i].position, EnemySpawns[i].rotation);
-            Spawned.name = pirates[i].pirateBase.name;
-            Spawned.GetComponent<BattleAI>().pirate = pirates[i];
+            for (int i = 0; i < pirates.Count; i++)
+            {
+                GameObject Spawned = Instantiate(pirates[i].pirateBase.Prefab, EnemySpawns[i].position, EnemySpawns[i].rotation);
+                Spawned.name = pirates[i].pirateBase.name;
+                Spawned.GetComponent<BattleAI>().pirate = pirates[i];
+                Spawned.GetComponent<BattleAI>().Friendly = false;
+                Enemy.Add(Spawned.GetComponent<BattleAI>());
+                Spawned.GetComponent<BattleAI>().pirate.Experience = pirates[i].Experience;
+                Spawned.GetComponent<BattleAI>().pirate.CheckExperience();
+            }
+        }
+        else
+        {
+            GameObject Spawned = Instantiate(pirates[0].pirateBase.Prefab, EnemySpawns[0].position, EnemySpawns[0].rotation);
+            Spawned.name = pirates[0].pirateBase.name;
+            Spawned.GetComponent<BattleAI>().pirate = pirates[0];
             Spawned.GetComponent<BattleAI>().Friendly = false;
             Enemy.Add(Spawned.GetComponent<BattleAI>());
-            Spawned.GetComponent<BattleAI>().pirate.Experience = pirates[i].Experience;
+            Spawned.GetComponent<BattleAI>().pirate.Experience = pirates[0].Experience;
             Spawned.GetComponent<BattleAI>().pirate.CheckExperience();
         }
+
+        
     }
 }

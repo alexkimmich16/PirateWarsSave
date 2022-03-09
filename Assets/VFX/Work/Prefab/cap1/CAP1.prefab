@@ -2035,37 +2035,91 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pirate:
-    pirateBase: {fileID: 11400000, guid: 54a62f3eba4e0a9469c0418435328553, type: 2}
-    Health: 0
-    Damage: 0
-    Armour: 0
-    CritPercent: 0
-    CritDamage: 0
-    Intellect: 0
-    Dexterity: 0
+    pirateBase: {fileID: 11400000, guid: 068193a06ea4618458b9da3bf56c65d3, type: 2}
+    Health: 140
+    Damage: 6
+    Armour: 18
+    CritPercent: 3
+    CritDamage: 1
+    Intellect: 1
+    Dexterity: 2
     Level: 0
     Rank: 0
     Experience: 0
-    gameEquipment: []
+    gameEquipment:
+    - equipmentInfo: {fileID: 0}
+      rarity: 0
+      Health: 0
+      Damage: 0
+      Armour: 0
+      CritPercent: 0
+      CritDamage: 0
+      Intellect: 0
+      Dexterity: 0
+      Level: 0
+      Experience: 436.83
+    - equipmentInfo: {fileID: 0}
+      rarity: 0
+      Health: 0
+      Damage: 0
+      Armour: 0
+      CritPercent: 0
+      CritDamage: 0
+      Intellect: 0
+      Dexterity: 0
+      Level: 0
+      Experience: 0
+    - equipmentInfo: {fileID: 0}
+      rarity: 0
+      Health: 0
+      Damage: 0
+      Armour: 0
+      CritPercent: 0
+      CritDamage: 0
+      Intellect: 0
+      Dexterity: 0
+      Level: 0
+      Experience: 0
+    - equipmentInfo: {fileID: 0}
+      rarity: 0
+      Health: 0
+      Damage: 0
+      Armour: 0
+      CritPercent: 0
+      CritDamage: 0
+      Intellect: 0
+      Dexterity: 0
+      Level: 0
+      Experience: 0
+    - equipmentInfo: {fileID: 0}
+      rarity: 0
+      Health: 0
+      Damage: 0
+      Armour: 0
+      CritPercent: 0
+      CritDamage: 0
+      Intellect: 0
+      Dexterity: 0
+      Level: 0
+      Experience: 0
     NumInList: 0
-  Friendly: 0
+  Friendly: 1
   BC: {fileID: 0}
   Target: {fileID: 0}
-  MinDistanceObjective: 1.5
-  AttackTimer: 0
-  AttackTime: 1
   AttackDamage: 5
-  MaxHealth: 20
-  CurrentHealth: 0
+  MaxHealth: 140
+  CurrentHealth: 120
   RotationSpeed: 0
-  Distance: 0
+  Distance: 1.4867965
   TurnRotation: 2
   AttackString: Cap1_Attack
   DeathString: Cap1_Death
   SkillString: skill
   DeathTime: 2.75
   Dying: 0
-  AttackWait: 0
+  AttackTime: 3.89
+  AttackTimer: 0
+  AttackWait: 2.05
   knife: {fileID: 0}
   SpecialTime: 9
   SkillActive: 0

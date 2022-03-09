@@ -20,7 +20,7 @@ public class MapLevels : MonoBehaviour
     {
         MyActivePirates = NewActivePirates;
     }
-
+    public bool FirstOnly;
     public List<AllInfo.GamePirate> MyActivePirates;
     public List<Level> Levels;
 

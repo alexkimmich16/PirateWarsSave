@@ -16,7 +16,7 @@ public class BattleAI : MonoBehaviour
     [HideInInspector]
     public BattleAI Target;
 
-    public static float MinDistanceObjective = 0.3f;
+    public static float MinDistanceObjective = 1.5f;
 
     
 
@@ -49,7 +49,6 @@ public class BattleAI : MonoBehaviour
             return false;
     }
     [Header("Attack")]
-    
     public float AttackTime = 4;
     public float AttackTimer;
     public float AttackWait;
@@ -139,7 +138,7 @@ public class BattleAI : MonoBehaviour
         {
             //distance smaller than whatever
             ObjectivePoint = GetObjective();
-            float Distance = Vector3.Distance(transform.position, ObjectivePoint);
+            Distance = Vector3.Distance(transform.position, ObjectivePoint);
             if (Distance < MinDistanceObjective)
             {
                 animator.SetBool("Moving", false);
@@ -246,7 +245,6 @@ public class BattleAI : MonoBehaviour
         }
         
     }
-   
     public void Death()
     {
         Dying = true;
@@ -274,7 +272,6 @@ public class BattleAI : MonoBehaviour
             return false;
         }
     }
-    
     public IEnumerator OverTimeDamage(int Damage, float Interval, float Range)
     {
         float Current = 0;
@@ -288,7 +285,6 @@ public class BattleAI : MonoBehaviour
 
         //int TotalDamages =  (int)Mathf.Floor(3 / Interval);
     }
-
     public void DoDamage()
     {
         float CritAdd = AddCrit(out bool Crit);
@@ -319,22 +315,21 @@ public class BattleAI : MonoBehaviour
             }
         }
     }
-
     public void Damage(int DamageDone, bool Crit)
     {
         float TrueDamage = DamageDone * ArmorReduce() * Dodge(out bool DodgeTrue) * BattleController.instance.DamageEffect * SkillMultiplier();
         int DamageInt = Mathf.RoundToInt(TrueDamage);
-        Debug.Log("Final: " + TrueDamage + "DamageDone: " + DamageDone + "ArmorReduce(): " + ArmorReduce() + "DodgeTrue: " + DodgeTrue + "SkillMultiplier(): " + SkillMultiplier() + DodgeTrue + "  DamageEffect: " + BattleController.instance.DamageEffect);
+        //Debug.Log("Final: " + TrueDamage + "DamageDone: " + DamageDone + "ArmorReduce(): " + ArmorReduce() + "DodgeTrue: " + DodgeTrue + "SkillMultiplier(): " + SkillMultiplier() + DodgeTrue + "  DamageEffect: " + BattleController.instance.DamageEffect);
         CurrentHealth -= DamageDone;
 
         if (DodgeTrue)
-            PopupManager.instance.CreateStringPopup(Target.transform.position, "Dodge", Crit);
+            PopupManager.instance.CreateStringPopup(transform.position, "Dodge", Crit);
         else
-            PopupManager.instance.CreatePopup(Target.transform.position, DamageInt, Crit);
+            PopupManager.instance.CreatePopup(transform.position, DamageInt, Crit);
 
 
 
-        if (CurrentHealth < 1)
+        if (CurrentHealth < 1 && SkillController.instance.Testing == false)
         {
             Death();
         }
@@ -368,7 +363,6 @@ public class BattleAI : MonoBehaviour
             return 1;
         }
     }
-
     public IEnumerator DoSkill()
     {
         SpecialTimer = 0;
@@ -379,9 +373,10 @@ public class BattleAI : MonoBehaviour
     public IEnumerator DoAttack()
     {
         animator.Play(AttackString);
-
-        yield return new WaitForSeconds(SkillController.instance.SkillWaitTime);
-
+        float AnimationTime = AnimationLength(AttackString);
+        float WaitTime = AnimationTime - AttackWait;
+        yield return new WaitForSeconds(WaitTime);
+        Debug.Log("AnimTime: " + AnimationTime);
         if (Melee(pirate.pirateBase.Class) == false)
         {
             knife.SendWeapon(Target.transform);
@@ -392,5 +387,16 @@ public class BattleAI : MonoBehaviour
             DoDamage();
             StopCoroutine(DoAttack());
         }
+    }
+    float AnimationLength(string name)
+    {
+        float time = 0;
+        RuntimeAnimatorController ac = animator.runtimeAnimatorController;
+
+        for (int i = 0; i < ac.animationClips.Length; i++)
+            if (ac.animationClips[i].name == name)
+                time = ac.animationClips[i].length;
+
+        return time;
     }
 }

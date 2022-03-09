@@ -11,12 +11,18 @@ public class SkillController : MonoBehaviour
     //create skills prefabs
 
     //code damage
-
+    public bool UseSkills;
     public List<GameObject> Skills;
     public float SkillWaitTime;
+    public bool Testing;
     public void UseSkill(int SkillNum, Transform pos)
     {
-        Instantiate(Skills[SkillNum], pos.position, pos.rotation);
+        //UseSkills
+        if (UseSkills == false)
+            return;
+
+
+        //Instantiate(Skills[SkillNum], pos.position, pos.rotation);
         if (SkillNum == 0)
         {
             GameObject self_sp = pos.Find("cap1_sp").gameObject;
@@ -95,9 +101,6 @@ public class SkillController : MonoBehaviour
             //GameObject self_sp = pos.Find("cc4_sp").gameObject;
             //GameObject Flask = Instantiate(Skills[7], flask_sp.transform.position, flask_sp.transform.rotation);
         }
-
-
-        
     }
     public void DealAroundDamage(Transform pos, bool Friendly, float Range, int Damage)
     {

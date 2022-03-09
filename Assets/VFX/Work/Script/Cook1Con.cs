@@ -17,11 +17,6 @@ public class Cook1Con : MonoBehaviour
         m_Animator = gameObject.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void Skill(){
         //KnifeHide();
         state = "skill";
