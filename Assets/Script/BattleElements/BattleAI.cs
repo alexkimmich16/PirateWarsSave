@@ -16,10 +16,9 @@ public class BattleAI : MonoBehaviour
     [HideInInspector]
     public BattleAI Target;
 
-    public float MinDistanceObjective = 0.3f;
+    public static float MinDistanceObjective = 0.3f;
 
-    public float AttackTimer;
-    public float AttackTime = 4;
+    
 
     public int AttackDamage = 5;
 
@@ -30,7 +29,7 @@ public class BattleAI : MonoBehaviour
     public float RotationSpeed;
     public float Distance;
     public float TurnRotation;
-    private bool FoundLongPosition = false;
+    private bool FoundPosition = false;
     private Vector3 ObjectivePoint;
 
     [Header("Animation")]
@@ -42,10 +41,20 @@ public class BattleAI : MonoBehaviour
     public float DeathTime;
     private float DeathTimer = 0f;
     public bool Dying = false;
-
+    public bool Attacking()
+    {
+        if (AttackTimer > AttackTime)
+            return true;
+        else
+            return false;
+    }
+    [Header("Attack")]
+    
+    public float AttackTime = 4;
+    public float AttackTimer;
     public float AttackWait;
-    private bool ThrowWaiting;
-    private float ThrowWaitTimer;
+    //private bool Attacking;
+    //private float ThrowWaitTimer;
     public KnifeControl knife;
 
     public float SpecialTime;
@@ -65,15 +74,6 @@ public class BattleAI : MonoBehaviour
         
         animator = gameObject.GetComponent<Animator>();
         navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
-    }
-    public void AttackCount()
-    {
-        AttackTimer += Time.deltaTime;
-        if (AttackTimer > AttackTime)
-        {
-            Attack();
-            AttackTimer = 0f;
-        }
     }
     public void TurnTowards(Transform Objective)
     {
@@ -101,30 +101,29 @@ public class BattleAI : MonoBehaviour
     }
     void Update()
     {
-        if(ThrowWaiting == true)
+        if (Attacking() == true)
         {
-            ThrowWaitTimer += Time.deltaTime;
+            AttackTimer = 0f;
             if (Melee(pirate.pirateBase.Class) == true)
             {
-                if (ThrowWaitTimer > AttackWait)
+                if (SpecialTimer > SpecialTime)
                 {
-                    if (SpecialTimer > SpecialTime)
-                    {
-                        //Debug.Log(AllInfo.instance.GetCharNum(pirate.pirateBase));
-                        SpecialTimer = 0;
-                        SkillController.instance.UseSkill(AllInfo.instance.GetCharNum(pirate.pirateBase), transform);
-                        animator.Play(SkillString);
-                    }
-                    else
-                    {
-                        if (Melee(pirate.pirateBase.Class) == false)
-                            knife.SendWeapon(Target.transform);
-                        else
-                            DoDamage();
-                    }
-                    ThrowWaiting = false;
-                    
-                    ThrowWaitTimer = 0f;
+                    StartCoroutine(DoSkill());
+                }
+                else
+                {
+                    StartCoroutine(DoAttack());
+                }
+            }
+            else
+            {
+                if (SpecialTimer > SpecialTime)
+                {
+                    StartCoroutine(DoSkill());
+                }
+                else
+                {
+                    StartCoroutine(DoAttack());
                 }
             }
         }        
@@ -139,61 +138,66 @@ public class BattleAI : MonoBehaviour
         else if (Target != null && Target.Dying == false)
         {
             //distance smaller than whatever
-            if (Vector3.Distance(transform.position, ObjectivePoint) < 2f)
+            ObjectivePoint = GetObjective();
+            float Distance = Vector3.Distance(transform.position, ObjectivePoint);
+            if (Distance < MinDistanceObjective)
             {
                 animator.SetBool("Moving", false);
                 SpecialTimer += Time.deltaTime;
+                AttackTimer += Time.deltaTime;
+
+                TurnTowards(Target.transform);
+                navMeshAgent.SetDestination(transform.position);
+                //AttackCount();
             }
             else
             {
                 animator.SetBool("Moving", true);
-                
+                navMeshAgent.SetDestination(Target.transform.position);
             }
-
+            /*
             if (Melee(pirate.pirateBase.Class) == true)
             {
-                Distance = Vector3.Distance(transform.position, Target.transform.position);
-                if (Distance > MinDistanceObjective)
-                {
-                    // too far
-                    Target = FindTarget();
-                    ObjectivePoint = Target.transform.position;
-                    navMeshAgent.SetDestination(Target.transform.position);
-                }
-                else
-                {
-                    // close
-                    navMeshAgent.SetDestination(transform.position);
-                    Target = FindTarget();
-                    TurnTowards(Target.transform);
-                    AttackCount();
-                }
+                
             }
             else if (Melee(pirate.pirateBase.Class) == false)
             {
                 //ranged
-                if (FoundLongPosition == false)
+                if (FoundPosition == false)
                 {
                     //find reasonable far position and stay
                     ObjectivePoint = FindDistancePoint(BattleController.instance.transform.position, MinDistanceObjective);
                     navMeshAgent.SetDestination(ObjectivePoint);
-                    Target = FindTarget();
-                    FoundLongPosition = true;
+                    FoundPosition = true;
                 }
-                Distance = Vector3.Distance(transform.position, ObjectivePoint);
-
-                //found position
-                if (Distance < 0.1f)
-                {
-                    TurnTowards(Target.transform);
-                    AttackCount();
-                }
-                //find point and stay, if transform moves out of distance chase, if comes toward me, stay and shoot
             }
+            */
         }
         else if (Target == null)
         {
             Target = FindTarget();
+        }
+        Vector3 GetObjective()
+        {
+            if (Melee(pirate.pirateBase.Class) == true)
+            {
+                return Target.transform.position;
+            }
+            else
+            {
+                //ranged
+                if (FoundPosition == false)
+                {
+                    //find reasonable far position and stay
+                    FoundPosition = true;
+                    return FindDistancePoint(BattleController.instance.transform.position, MinDistanceObjective);
+
+                }
+                else
+                {
+                    return ObjectivePoint;
+                }
+            }
         }
     }
     BattleAI FindTarget()
@@ -242,12 +246,7 @@ public class BattleAI : MonoBehaviour
         }
         
     }
-    
-    public void Attack()
-    {
-        animator.Play(AttackString);
-        ThrowWaiting = true;
-    }
+   
     public void Death()
     {
         Dying = true;
@@ -367,6 +366,31 @@ public class BattleAI : MonoBehaviour
                 return 0.45f;
             }
             return 1;
+        }
+    }
+
+    public IEnumerator DoSkill()
+    {
+        SpecialTimer = 0;
+        animator.Play(SkillString);
+        yield return new WaitForSeconds(SkillController.instance.SkillWaitTime);
+        SkillController.instance.UseSkill(AllInfo.instance.GetCharNum(pirate.pirateBase), transform);
+    }
+    public IEnumerator DoAttack()
+    {
+        animator.Play(AttackString);
+
+        yield return new WaitForSeconds(SkillController.instance.SkillWaitTime);
+
+        if (Melee(pirate.pirateBase.Class) == false)
+        {
+            knife.SendWeapon(Target.transform);
+            yield return new WaitForSeconds(SkillController.instance.SkillWaitTime);
+        }
+        else
+        {
+            DoDamage();
+            StopCoroutine(DoAttack());
         }
     }
 }

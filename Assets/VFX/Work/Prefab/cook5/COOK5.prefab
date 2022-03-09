@@ -1579,7 +1579,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef82fbde75b3e7148b140e5926ca70ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navMeshAgent: {fileID: 1633881761058954840}
   pirate:
     pirateBase: {fileID: 11400000, guid: 54a62f3eba4e0a9469c0418435328553, type: 2}
     Health: 0
@@ -1589,8 +1588,8 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
     NumInList: 0
@@ -1606,13 +1605,15 @@ MonoBehaviour:
   RotationSpeed: 0
   Distance: 0
   TurnRotation: 2
-  animator: {fileID: 8489876663119805082}
   AttackString: Cook5_Attack
   DeathString: Cook5_Death
+  SkillString: Cook5_Skill
   DeathTime: 2.75
   Dying: 0
-  ThrowWaitTime: 0
+  AttackWait: 0
   knife: {fileID: 8494929379044533817, guid: a38dd4d525446ee46bcf1ad86313a8f6, type: 3}
+  SpecialTime: 0
+  SkillActive: 0
 --- !u!1 &5292843983266356967
 GameObject:
   m_ObjectHideFlags: 0

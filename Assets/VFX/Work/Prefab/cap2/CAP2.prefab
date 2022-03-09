@@ -713,7 +713,7 @@ MonoBehaviour:
   TurnRotation: 2
   AttackString: Cap2_Attack
   DeathString: Cap2_Death
-  SkillString: 
+  SkillString: Cap2_Skill
   DeathTime: 2.75
   Dying: 0
   AttackWait: 0

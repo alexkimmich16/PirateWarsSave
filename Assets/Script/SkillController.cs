@@ -13,7 +13,7 @@ public class SkillController : MonoBehaviour
     //code damage
 
     public List<GameObject> Skills;
-
+    public float SkillWaitTime;
     public void UseSkill(int SkillNum, Transform pos)
     {
         Instantiate(Skills[SkillNum], pos.position, pos.rotation);

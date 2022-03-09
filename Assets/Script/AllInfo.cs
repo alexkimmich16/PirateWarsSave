@@ -159,7 +159,6 @@ public class AllInfo : MonoBehaviour
     [Header("GameData")]
     public List<GamePirate> GamePirates;
     public List<GameEquipment> GameEquipments;
-    
 
     [Header("LevelData")]
     public List<Rank> LevelCaps;

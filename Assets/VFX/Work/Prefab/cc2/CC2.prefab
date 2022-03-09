@@ -936,7 +936,7 @@ MonoBehaviour:
   TurnRotation: 2
   AttackString: CC2Attack
   DeathString: CC2_Attack
-  SkillString: 
+  SkillString: skill
   DeathTime: 2.75
   Dying: 0
   AttackWait: 0

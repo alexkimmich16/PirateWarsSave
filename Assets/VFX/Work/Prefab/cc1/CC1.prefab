@@ -7341,7 +7341,7 @@ MonoBehaviour:
   TurnRotation: 2
   AttackString: attack
   DeathString: death
-  SkillString: 
+  SkillString: skill
   DeathTime: 2.75
   Dying: 0
   AttackWait: 0

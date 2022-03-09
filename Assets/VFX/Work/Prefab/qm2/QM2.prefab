@@ -1280,8 +1280,8 @@ MonoBehaviour:
     CritDamage: 0
     Intellect: 0
     Dexterity: 0
-    Rank: 0
     Level: 0
+    Rank: 0
     Experience: 0
     gameEquipment: []
     NumInList: 0
@@ -1299,10 +1299,13 @@ MonoBehaviour:
   TurnRotation: 2
   AttackString: qm2_attack
   DeathString: qm2_stun
+  SkillString: skill
   DeathTime: 2.75
   Dying: 0
-  ThrowWaitTime: 0
+  AttackWait: 0
   knife: {fileID: 8494929379044533817, guid: a38dd4d525446ee46bcf1ad86313a8f6, type: 3}
+  SpecialTime: 0
+  SkillActive: 0
 --- !u!1 &4917732829904537025
 GameObject:
   m_ObjectHideFlags: 0
